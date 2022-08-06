@@ -1,0 +1,46 @@
+{
+    "name": "Whatsapp Extension",
+    "icons": {
+        "48": "icon/icon.png",
+        "128": "icon/icon2.png"
+    },
+
+    "description": "Allows you to use Whatsapp efficiently",
+    "version": "0.2",
+    "manifest_version": 3,
+
+    "background": {
+        "service_worker": "provider/provider.js"
+    },
+
+    "permissions": ["storage", "activeTab", "tabs", "scripting"],
+
+    "action": {
+        "default_popup": "popup/index.html"
+    },
+
+    "options_page": "options/index.html",
+
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+O",
+                "mac": "Command+Shift+F"
+            },
+            "description": "Opens Whatsapp extension"
+        }
+    },
+
+    "content_scripts": [
+        {
+            "matches": [
+                "https://web.whatsapp.com/"
+            ],
+            "js": [
+                "provider/provider.js",
+                "script/customStyles.js",
+                "script/textboxShortcuts.js"
+            ]
+        }
+    ]
+}
