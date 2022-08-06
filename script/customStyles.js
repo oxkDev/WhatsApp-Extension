@@ -419,7 +419,7 @@ function stylesOnStart(){
         `html[dir] body {
             /* shadow colour */
             --shadow-own: #000000${tran.overlayLighter};
-            --shadow-own-rgb: ${"#000000"};
+            --shadow-own-rgb: ${hexToRgb("#000000")};
             --danger-fade: ${theme.danger}${tran.overlay};
             --input-border: ${main.grey}${tran.overlayLight};
             --input-border-active: 00a884${tran.overlayLight};
@@ -792,7 +792,7 @@ function stylesOnStart(){
     }`);
     // profile page
     customStyles.insertRule(`
-    html[dir] .dark .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx.tkdu00h0.gfz4du6o.r7fjleex.jv8uhy2r.lhggkp7q.qq0sjtgm.ln8gz9je.tm2tP.copyable-area, html[dir] .se2m7z6i {
+    html[dir] .dark .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx.tkdu00h0.gfz4du6o.r7fjleex.jv8uhy2r.lhggkp7q.qq0sjtgm.ln8gz9je.tm2tP.copyable-area, html[dir] .dark .se2m7z6i {
         background: ${background.darker}bb;
         backdrop-filter: blur(${blurValue.heavy});
     }`);
@@ -941,9 +941,10 @@ function stylesOnStart(){
         right: 0;
         top: 0;
         height: 30px;
+        width: 60px;
         display: flex;
         align-items: center;
-        background: linear-gradient(45deg,rgba(var(--shadow-own-rgb),0),rgba(var(--shadow-own-rgb),0.01) 45%,rgba(var(--shadow-own-rgb),0.1) 70%,rgba(var(--shadow-own-rgb),0.1));
+        background: linear-gradient(30deg,rgba(var(--shadow-own-rgb),0),rgba(var(--shadow-own-rgb),0.05) 45%,rgba(var(--shadow-own-rgb),0.1) 70%,rgba(var(--shadow-own-rgb),0.2));
     }`);
     customStyles.insertRule(`
     html[dir=ltr] ._3e9My, html[dir=ltr] ._3sryO {
