@@ -39,6 +39,8 @@
             "js": [
                 "provider/provider.js",
                 "script/customStyles.js",
+                "script/customBackgroundImage.js",
+                "script/customColours.js",
                 "script/textboxShortcuts.js"
             ]
         }

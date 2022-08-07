@@ -64,7 +64,7 @@ class Utility {
 }
 
 // // erythrite
-// const theme = {
+// const defaultTheme = {
 //     primary: "#ff5b61",
 //     secondary: "#ffcccb",
 //     light: "#aa366a",
@@ -73,7 +73,7 @@ class Utility {
 //     link: "#ff0000",
 // };
 
-// const background = {
+// const defaultBackground = {
 //     primary: "#FF8991",
 //     secondary: "#ffcccb",
 //     dark: "#f8c8dc",
@@ -81,17 +81,17 @@ class Utility {
 //     darker: "#f9cddf",
 // };
 
-// const message = {
-//     send: theme.primary,
-//     receive: background.secondary,
+// const defaultMessage = {
+//     send: defaultTheme.primary,
+//     receive: defaultBackground.secondary,
 //     status: {
 //         read: "#ff3535",
 //         sent: "#000000" + "32",
 //     },
 // };
 
-// const text = {
-//     header: theme.light,
+// const defaultText = {
+//     header: defaultTheme.light,
 //     primary: "#000000" + "b3",
 //     secondary: "#000000" + "80",
 //     tersary: "#000000" + "47",
@@ -101,7 +101,7 @@ class Utility {
 // const whiteBlack = ["#000000", "#FFFFFF"];
 
 // // oxk Light
-// const theme = {
+// const defaultTheme = {
 //     primary: "#083a55",
 //     secondary: "#141b20",
 //     light: "#2a7095",
@@ -110,7 +110,7 @@ class Utility {
 //     link: "#459dd9",
 // };
 
-// const background = {
+// const defaultBackground = {
 //     primary: "#061527",
 //     secondary: "#1a232a",
 //     dark: "#071423",
@@ -118,17 +118,17 @@ class Utility {
 //     darker: "#000c1a",
 // };
 
-// const message = {
-//     send: theme.primary,
-//     receive: background.secondary,
+// const defaultMessage = {
+//     send: defaultTheme.primary,
+//     receive: defaultBackground.secondary,
 //     status: {
 //         read: "#f2f9ffd4",
 //         sent: "#ffffff" + "32",
 //     },
 // };
 
-// const text = {
-//     header: theme.light,
+// const defaultText = {
+//     header: defaultTheme.light,
 //     primary: "#000000" + "b3",
 //     secondary: "#000000" + "70",
 //     tersary: "#000000" + "47",
@@ -138,7 +138,7 @@ class Utility {
 // const whiteBlack = ["#000000", "#FFFFFF"];
 
 // oxk Dark
-const theme = {
+const defaultTheme = {
     primary: "#083a55",
     secondary: "#141b20",
     light: "#2a7095",
@@ -147,7 +147,7 @@ const theme = {
     link: "#459dd9",
 };
 
-const background = {
+const defaultBackground = {
     primary: "#061527",
     secondary: "#1a232a",
     dark: "#071423",
@@ -155,17 +155,17 @@ const background = {
     darker: "#000c1a",
 };
 
-const message = {
-    send: theme.primary,
-    receive: background.secondary,
+const defaultMessage = {
+    send: defaultTheme.primary,
+    receive: defaultBackground.secondary,
     status: {
         read: "#f2f9ffd4",
         sent: "#ffffff" + "32",
     },
 };
 
-const text = {
-    header: theme.light,
+const defaultText = {
+    header: defaultTheme.light,
     primary: "#ffffff" + "b3",
     secondary: "#ffffff" + "70",
     tersary: "#ffffff" + "47",
@@ -205,10 +205,10 @@ const DefaultData = {
         {
             blurStatus: true,
             backgroundImgStatus: true,
-            theme: theme,
-            background: background,
-            message: message,
-            text: text,
+            theme: defaultTheme,
+            background: defaultBackground,
+            message: defaultMessage,
+            text: defaultText,
             blurValue: {
                 medium: "30px",
                 light: "20px",
@@ -239,11 +239,12 @@ const provider = (function() {
             user.get("utilities", function (result){
                 utilities = result.utilities;
                 if (!utilities){
-                    resetData();
+                    resetData(func());
                     console.log("newData");
+                } else {
+                    if (func) func();
                 }
                 console.log("utilities: ", utilities);
-                if (func) func();
             });
             return utilities;
         },

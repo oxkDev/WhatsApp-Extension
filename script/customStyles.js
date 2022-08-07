@@ -1,432 +1,291 @@
 // var blurFields = [["/*", "*/", "ee"], ["", "", "b0"]];
 // var blr = blurFields[+true];
-var backgroundImg = {
-    // erythrite
-    pink1: {
-        link: "https://i.pinimg.com/564x/f0/93/53/f09353ea441a92997606810a61bf0ef9.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["erythrite", "pink"],
-    },
-    pink2: {
-        link: "https://i.pinimg.com/564x/45/b0/ba/45b0ba6f1601c840918821796dba958a.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["erythrite", "pink"],
-    },
-    pinkEiffelTower: {
-        link: "https://i.pinimg.com/564x/42/99/d5/4299d550ef9b9f0b8c82e63803794d58.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["erythrite", "pink"],
-    },
-    pinkheartsRepeatable: {
-        link: "https://i.pinimg.com/564x/15/f8/e4/15f8e4ee3a386164ca18fa04c7df40d4.jpg",
-        size: "auto",
-        repeat: "repeat",
-        tags: ["erythrite", "pink", "pattern"],
-    },
-
-    // others
-    pinkPurpleBlueFluidPaint: {
-        link: "https://wallpaperaccess.com/full/2245332.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["fluidPaint", "blue", "pink", "black", "Purple"],
-    },
-    orangeBlackBlueFluidPaint: {
-        link: "https://wallpaperaccess.com/full/2361576.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["fluidPaint", "blue", "orange", "black"],
-    },
-    orangeBlueFluidPaint: {
-        link: "https://wallpaperaccess.com/full/1836721.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["fluidPaint", "blue", "orange"],
-    },
-    darkBluePurpleFluidPaint: {
-        link: "https://wallpaperaccess.com/full/2064925.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["fluidPaint", "blue", "purple"],
-    },
-    greenBlueFluidPaint: {
-        link: "https://wallpaperaccess.com/full/136866.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["fluidPaint", "green", "blue"],
-    },
-    blueFabricWave: {
-        link: "https://wallpaperaccess.com/full/5934471.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["fabric", "wave"],
-    },
-    earthSurface: {
-        link: "https://wallpaperaccess.com/full/5934395.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["space", "blue", "black"],
-    },
-    eclipseSpace: {
-        link: "https://wallpaperaccess.com/full/19605.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["space", "blue", "black"],
-    },
-    earthTop: {
-        link: "https://wallpaperaccess.com/full/19607.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["space", "blue", "black"],
-    },
-    lightBlueTwoDimentionalWave: {
-        link: "https://wallpaperaccess.com/full/5934397.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["2d", "wave", "blue", "pink"],
-    },
-    blackPolynomial: {
-        link: "https://wallpaperaccess.com/full/5509779.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["black", "polynomial"],
-    },
-    bluePowderSplash: {
-        link: "https://wallpaperaccess.com/full/5441840.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["black", "blue", "powder"],
-    },
-    bluePinkFadyWaves: {
-        link: "https://wallpaperaccess.com/full/7522312.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["2d", "wave", "blue", "pink", "purple"],
-    },
-    redBlackWaves: {
-        link: "https://wallpaperaccess.com/full/7522400.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["wave", "red", "black"],
-    },
-    linePaths: {
-        link: "https://wallpaperaccess.com/full/7522179.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["2d", "black", "blue", "red", "pink"],
-    },
-    windows11: {
-        link: "https://wallpaperaccess.com/full/6233787.jpg",
-        repeat: "no-repeat",
-        size: "cover",
-        tags: ["wave", "blue", "black"],
-    },
-    montery: {
-        link: "https://media.idownloadblog.com/wp-content/uploads/2021/06/macOS-Monterey-wallpaper-Dark.jpg",
-        repeat: "no-repeat",
-        size: "cover",
-        tags: ["wave", "2d", "purple", "pink", "red"],
-    },
-    bluePinkTwoDimentionalWaves: {
-        link: "https://i.redd.it/52f61nfzmwl51.jpg",
-        repeat: "no-repeat",
-        size: "cover",
-        tags: ["blue", "pink", "2d", "wave"],
-    },
-}
-
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : `255, 0, 0`;
 }
 
-var styleElement = document.createElement("style");
-document.head.appendChild(styleElement);
-var customStyles = styleElement.sheet;
+var customStylesElement = document.createElement("style");
+document.head.appendChild(customStylesElement);
+var customStyles = customStylesElement.sheet;
 // colours
-function stylesOnStart(){
+
+function customStylesOnStart(){
     var blurValue = utilities.styles.utilData.blurValue;
     var main = utilities.styles.utilData.main;
     var theme = utilities.styles.utilData.theme;
     var tran = utilities.styles.utilData.tran;
-    var msg = utilities.styles.utilData.message;
-    var text = utilities.styles.utilData.text;
-    var background = utilities.styles.utilData.background;
+    // styleVariables = [
+    //     `html[dir] body.dark {
+    //         /* startup background */
+    //         --startup-background: ${background.darker};
+    //         --startup-background-rgb: ${hexToRgb(background.darker)};
+    //         --app-background: ${background.darker};
+    //         --border-panel: ${background.darker};
 
-    styleVariables = [
-        `html[dir] body.dark {
-            /* startup background */
-            --startup-background: ${background.darker};
-            --startup-background-rgb: ${hexToRgb(background.darker)};
-            --app-background: ${background.darker};
-            --border-panel: ${background.darker};
+    //         /* messages */ 
+    //         --outgoing-background: ${msg.send}${tran.unBlur};
+    //         --outgoing-background-rgb: ${hexToRgb(msg.send)};
+    //         --outgoing-background-deeper: ${main.black}${tran.overlayLight};
+    //         --icon-ack: ${msg.status.read};
+    //         --bubble-meta-icon: ${msg.status.sent};
+    //         --inverse: ${main.white}${tran.overlay};
+    //         --audio-process-incoming: #5e94b4;
+    //         --incoming-background: ${msg.receive}${tran.unBlur};
+    //         --incoming-background-rgb: ${hexToRgb(msg.receive)};
+    //         --incoming-background-deeper: ${main.black}${tran.overlayLight};
+    //         --message-primary: ${text.primary};
+    //         --audio-track-outgoing: ${main.black}${tran.overlay};
+    //         --audio-track-incoming: ${main.black}${tran.overlay};
+    //         --audio-control-outgoing: ${main.white}${tran.overlay};
+    //         --audio-control-incoming: ${main.white}${tran.overlay};
+    //         --reactions-bubble-border:  ${main.transparent};
+    //         --ptt-draft-waveform-background: ${main.transparent};
+    //         --button-bubble: ${theme.light};
+    //         --round-entry-point-background-color: ${main.black}${tran.unBlur};
+    //         --quick-action-button-background: ${main.black}${tran.unBlur};
 
-            /* messages */ 
-            --outgoing-background: ${msg.send}${tran.unBlur};
-            --outgoing-background-rgb: ${hexToRgb(msg.send)};
-            --outgoing-background-deeper: ${main.black}${tran.overlayLight};
-            --icon-ack: ${msg.status.read};
-            --bubble-meta-icon: ${msg.status.sent};
-            --inverse: ${main.white}${tran.overlay};
-            --audio-process-incoming: #5e94b4;
-            --incoming-background: ${msg.receive}${tran.unBlur};
-            --incoming-background-rgb: ${hexToRgb(msg.receive)};
-            --incoming-background-deeper: ${main.black}${tran.overlayLight};
-            --message-primary: ${text.primary};
-            --audio-track-outgoing: ${main.black}${tran.overlay};
-            --audio-track-incoming: ${main.black}${tran.overlay};
-            --audio-control-outgoing: ${main.white}${tran.overlay};
-            --audio-control-incoming: ${main.white}${tran.overlay};
-            --reactions-bubble-border:  ${main.transparent};
-            --ptt-draft-waveform-background: ${main.transparent};
-            --button-bubble: ${theme.light};
-            --round-entry-point-background-color: ${main.black}${tran.unBlur};
-            --quick-action-button-background: ${main.black}${tran.unBlur};
+    //         /* unread bar */
+    //         --unread-background: ${theme.secondary}${tran.overlay};
+    //         --unread-bar-background: ${theme.secondary}${tran.overlayHeavy};
 
-            /* unread bar */
-            --unread-background: ${theme.secondary}${tran.overlay};
-            --unread-bar-background: ${theme.secondary}${tran.overlayHeavy};
-
-            /* message screen */
-            --conversation-panel-border: ${main.transparent};
-            --conversation-panel-background: ${background.darker};
-            --intro-background: ${background.darker};
-            --intro-border: ${theme.primary};
-            --notification-e2e-background: ${background.dark}${tran.unBlur};
-            --system-message-background: ${background.dark}${tran.unBlur};
+    //         /* message screen */
+    //         --conversation-panel-border: ${main.transparent};
+    //         --conversation-panel-background: ${background.darker};
+    //         --intro-background: ${background.darker};
+    //         --intro-border: ${theme.primary};
+    //         --notification-e2e-background: ${background.dark}${tran.unBlur};
+    //         --system-message-background: ${background.dark}${tran.unBlur};
             
-            /* message bar */
-            --compose-input-background: ${main.black}${tran.overlayLight};
-            --compose-input-border: ${main.transparent};
-            --compose-panel-background: ${main.transparent};
-            --rich-text-panel-background: ${theme.secondary}${tran.unBlur};
-            --popup-panel-background: ${main.black}${tran.overlay};
-            --panel-input-background: ${background.primary}${tran.unBlur};
-            --media-editor-image-caption-input-background: ${main.black}${tran.overlay};
-            --active-tab-marker: ${theme.lighter}${tran.overlayHeavy};
-            --sticker-button-background: ${main.black}${tran.overlay};
+    //         /* message bar */
+    //         --compose-input-background: ${main.black}${tran.overlayLight};
+    //         --compose-input-border: ${main.transparent};
+    //         --compose-panel-background: ${main.transparent};
+    //         --rich-text-panel-background: ${theme.secondary}${tran.unBlur};
+    //         --popup-panel-background: ${main.black}${tran.overlay};
+    //         --panel-input-background: ${background.primary}${tran.unBlur};
+    //         --media-editor-image-caption-input-background: ${main.black}${tran.overlay};
+    //         --active-tab-marker: ${theme.lighter}${tran.overlayHeavy};
+    //         --sticker-button-background: ${main.black}${tran.overlay};
             
-            /* messages background */
-            --thumb-border-viewer-active: ${main.white}${tran.overlayLighter};
-            --thumb-border-viewer-active-rgb: ${main.white};
+    //         /* messages background */
+    //         --thumb-border-viewer-active: ${main.white}${tran.overlayLighter};
+    //         --thumb-border-viewer-active-rgb: ${main.white};
 
-            /* contact bar / contact header */
-            --panel-header-background: ${theme.secondary}${tran.unBlur};
-            --conversation-header-border: ${main.transparent};
+    //         /* contact bar / contact header */
+    //         --panel-header-background: ${theme.secondary}${tran.unBlur};
+    //         --conversation-header-border: ${main.transparent};
             
-            /* selector bar */
-            --panel-background: ${theme.secondary}${tran.unBlur};
+    //         /* selector bar */
+    //         --panel-background: ${theme.secondary}${tran.unBlur};
 
-            /* message info */
-            --drawer-section-background: ${theme.primary}${tran.overlayLight};
-            --input-button-more: ${theme.link};
+    //         /* message info */
+    //         --drawer-section-background: ${theme.primary}${tran.overlayLight};
+    //         --input-button-more: ${theme.link};
             
-            /* contact/chat list */
-            --background-default: ${background.dark};
-            --background-default-active: ${main.grey}20;
-            --background-default-hover: ${main.grey}10;
-            --chatlist-icon: ${main.white}${tran.overlayLight};
-            --border-list: ${main.white}${tran.overlayLighter};
-            --border-stronger: ${main.transparent};
-            --avatar-placeholder-background: ${main.white}${tran.overlayLighter};
-            --avatar-placeholder-primary: ${main.grey}${tran.overlayLight};
-            --search-input-background: ${main.black}${tran.overlayLight};
-            --search-container-background: ${background.darker};
-            --search-input-container-background: ${theme.secondary};
-            --search-input-container-background-active: ${theme.secondary};
-            --panel-background-colored-deeper: ${theme.secondary};
-            --butterbar-connection-background: ${theme.secondary};
-            --butterbar-connection-icon: ${theme.light};
-            --butterbar-update-background: ${theme.secondary};
-            --butterbar-notice-smb-background: ${theme.secondary};
-            --butterbar-default-background: ${background.dark};
-            --butterbar-notification-icon: ${theme.light};
+    //         /* contact/chat list */
+    //         --background-default: ${background.dark};
+    //         --background-default-active: ${main.grey}20;
+    //         --background-default-hover: ${main.grey}10;
+    //         --chatlist-icon: ${main.white}${tran.overlayLight};
+    //         --border-list: ${main.white}${tran.overlayLighter};
+    //         --border-stronger: ${main.transparent};
+    //         --avatar-placeholder-background: ${main.white}${tran.overlayLighter};
+    //         --avatar-placeholder-primary: ${main.grey}${tran.overlayLight};
+    //         --search-input-background: ${main.black}${tran.overlayLight};
+    //         --search-container-background: ${background.darker};
+    //         --search-input-container-background: ${theme.secondary};
+    //         --search-input-container-background-active: ${theme.secondary};
+    //         --panel-background-colored-deeper: ${theme.secondary};
+    //         --butterbar-connection-background: ${theme.secondary};
+    //         --butterbar-connection-icon: ${theme.light};
+    //         --butterbar-update-background: ${theme.secondary};
+    //         --butterbar-notice-smb-background: ${theme.secondary};
+    //         --butterbar-default-background: ${background.dark};
+    //         --butterbar-notification-icon: ${theme.light};
             
-            /* settings side menu */
-            --panel-background-colored: ${theme.secondary};
-            --drawer-background-deep: ${background.darker}${tran.unBlur};
-            --border-panel: ${background.darker}${tran.unBlur};
-            --drawer-gallery-background: ${background.dark};
-            --drawer-gallery-background-hover: ${main.white}${tran.overlayLighter};
-            --photopicker-overlay-background: ${main.black}${tran.overlay};
+    //         /* settings side menu */
+    //         --panel-background-colored: ${theme.secondary};
+    //         --drawer-background-deep: ${background.darker}${tran.unBlur};
+    //         --border-panel: ${background.darker}${tran.unBlur};
+    //         --drawer-gallery-background: ${background.dark};
+    //         --drawer-gallery-background-hover: ${main.white}${tran.overlayLighter};
+    //         --photopicker-overlay-background: ${main.black}${tran.overlay};
 
-            /* popup media screen */
-            --media-viewer-background: ${background.darker}${tran.unBlur};
-            --panel-background: ${theme.secondary};
-            --panel-background-deeper: ${background.darker}${tran.unBlur};
-            --panel-background-lighter: ${background.primary}${tran.overlayLight};
-            --modal-backdrop: ${background.darker}${tran.unBlur};
-            --modal-backdrop-solid: ${background.darker};
-            --modal-background: ${main.white}${tran.overlayLighter};
-            --chevron-button-background: ${main.white}${tran.overlayLighter};
-            --button-background-disabled: ${main.black}${tran.overlayLight};
-            --media-editor-thumb-border-active: ${theme.light};
+    //         /* popup media screen */
+    //         --media-viewer-background: ${background.darker}${tran.unBlur};
+    //         --panel-background: ${theme.secondary};
+    //         --panel-background-deeper: ${background.darker}${tran.unBlur};
+    //         --panel-background-lighter: ${background.primary}${tran.overlayLight};
+    //         --modal-backdrop: ${background.darker}${tran.unBlur};
+    //         --modal-backdrop-solid: ${background.darker};
+    //         --modal-background: ${main.white}${tran.overlayLighter};
+    //         --chevron-button-background: ${main.white}${tran.overlayLighter};
+    //         --button-background-disabled: ${main.black}${tran.overlayLight};
+    //         --media-editor-thumb-border-active: ${theme.light};
 
-            /* media thumbnail */
-            --media-gallery-thumb-background: ${main.white}${tran.overlayLighter};
+    //         /* media thumbnail */
+    //         --media-gallery-thumb-background: ${main.white}${tran.overlayLighter};
             
-            /* progress indicator */
-            --progress-primary: ${theme.primary};
-            --progress-primary-rgb: ${hexToRgb(theme.primary)};
-            --progress-background: ${background.darker}${tran.unBlur};
+    //         /* progress indicator */
+    //         --progress-primary: ${theme.primary};
+    //         --progress-primary-rgb: ${hexToRgb(theme.primary)};
+    //         --progress-background: ${background.darker}${tran.unBlur};
 
-            /* buttons */
-            --button-round-background: ${theme.lighter}${tran.overlay};
-            --button-secondary: ${theme.lighter}${tran.overlayHeavy};
-            --button-secondary-border: ${theme.lighter}${tran.overlay};
-            --button-secondary-hover: ${theme.lighter}${tran.overlay};
-            --button-primary: ${text.primary};
-            --button-primary-background: ${theme.lighter}${tran.overlay};
-            --button-primary-background-hover: ${theme.lighter}${tran.overlay};
-            --ptt-draft-button-send-hover: ${main.white}${tran.overlayLighter};
-            --ptt-draft-button-send: ${main.transparent};
-            --button-plain-background: ${theme.light}${tran.overlay};
-            --button-plain-background-hover: ${theme.lighter}${tran.overlay};
+    //         /* buttons */
+    //         --button-round-background: ${theme.lighter}${tran.overlay};
+    //         --button-secondary: ${theme.lighter}${tran.overlayHeavy};
+    //         --button-secondary-border: ${theme.lighter}${tran.overlay};
+    //         --button-secondary-hover: ${theme.lighter}${tran.overlay};
+    //         --button-primary: ${text.primary};
+    //         --button-primary-background: ${theme.lighter}${tran.overlay};
+    //         --button-primary-background-hover: ${theme.lighter}${tran.overlay};
+    //         --ptt-draft-button-send-hover: ${main.white}${tran.overlayLighter};
+    //         --ptt-draft-button-send: ${main.transparent};
+    //         --button-plain-background: ${theme.light}${tran.overlay};
+    //         --button-plain-background-hover: ${theme.lighter}${tran.overlay};
 
-            /* switches */
-            --switch-button-color: ${main.white}${tran.overlay};
-            --switch-track-color: ${main.grey}${tran.overlay};
-            --switch-button-checked-color: ${theme.lighter};
-            --switch-track-checked-color: ${theme.primary};
+    //         /* switches */
+    //         --switch-button-color: ${main.white}${tran.overlay};
+    //         --switch-track-color: ${main.grey}${tran.overlay};
+    //         --switch-button-checked-color: ${theme.lighter};
+    //         --switch-track-checked-color: ${theme.primary};
             
-            /* status screen */
-            --status-background: ${background.darker}${tran.unBlur};
-            --status-background-hover: ${main.black}${tran.overlayLight};
-            --status-primary: ${text.primary};
+    //         /* status screen */
+    //         --status-background: ${background.darker}${tran.unBlur};
+    //         --status-background-hover: ${main.black}${tran.overlayLight};
+    //         --status-primary: ${text.primary};
             
-            /* popup */
-            --reactions-tray-background: ${background.primary}${tran.unBlur};
-            --dropdown-background: ${background.primary}${tran.unBlur};
-            --dropdown-background-hover: ${main.white}${tran.overlayLighter};
-            --pip-manager-content: ${background.darker}${tran.unBlur};
-            --picker-background: ${background.primary}${tran.unBlur};
-            --reactions-details-background: ${background.primary}${tran.unBlur};
-            --tooltip-background: ${background.primary}${tran.unBlur};
-            --compose-panel-background-hover: ${main.white}${tran.overlayLighter};
+    //         /* popup */
+    //         --reactions-tray-background: ${background.primary}${tran.unBlur};
+    //         --dropdown-background: ${background.primary}${tran.unBlur};
+    //         --dropdown-background-hover: ${main.white}${tran.overlayLighter};
+    //         --pip-manager-content: ${background.darker}${tran.unBlur};
+    //         --picker-background: ${background.primary}${tran.unBlur};
+    //         --reactions-details-background: ${background.primary}${tran.unBlur};
+    //         --tooltip-background: ${background.primary}${tran.unBlur};
+    //         --compose-panel-background-hover: ${main.white}${tran.overlayLighter};
 
-            /* floating notification */
-            --toast-background: ${background.primary}${tran.unBlur};
+    //         /* floating notification */
+    //         --toast-background: ${background.primary}${tran.unBlur};
 
-            /* primary colours / svg icon colours */
-            --icon-fixed: ${main.white}${tran.overlay};
-            --icon-search-back: ${theme.light};
-            --icon-bright-highlight: ${theme.light};
-            --icon-high-emphasis: ${theme.light};
-            --icon-lighter: ${main.white}${tran.overlayLight};
-            --icon-pinned: ${main.white}${tran.overlay};
-            --unread-marker-background: ${theme.lighter};
-            --unread-timestamp: ${theme.light};
-            --teal: ${theme.lighter};
-            --teal-lighter: ${theme.lighter}
-            --round-icon-background: ${theme.light};
-            --typing: ${theme.light};
-            --spinner-highlight: ${theme.light};
-            --ptt-draft-button-stop: ${theme.light};
-            --ptt-draft-button-stop-hover: ${theme.lighter};
-            --menu-tabs-list-active: ${theme.lighter};
-            --highlight: ${theme.light};
-            --svg-gray-button: ${theme.grey}${tran.overlay};
-            --svg-icon-theme-primary: ${theme.primary};
-            --svg-icon-theme-light: ${theme.light};
-            --svg-icon-theme-lighter: ${theme.lighter};
-            --svg-icon-main-white: ${main.white}${tran.overlay};
-            --media-editor-icon-color: ${main.white}${tran.overlay};
-            --panel-header-icon: ${main.white}${tran.overlay};
-            --checkbox-background: ${theme.lighter};
-            --round-icon-background: ${theme.light};
-            --input-empty-value-placeholder: ${theme.light};
-            --butterbar-update-icon: ${theme.light};
-            --beta-tag-background: ${theme.light};
-            --chat-marker-background: ${theme.light}${tran.overlayHeavy};
-            --reactions-picker-bg: ${main.white}${tran.overlayLighter};
+    //         /* primary colours / svg icon colours */
+    //         --icon-fixed: ${main.white}${tran.overlay};
+    //         --icon-search-back: ${theme.light};
+    //         --icon-bright-highlight: ${theme.light};
+    //         --icon-high-emphasis: ${theme.light};
+    //         --icon-lighter: ${main.white}${tran.overlayLight};
+    //         --icon-pinned: ${main.white}${tran.overlay};
+    //         --unread-marker-background: ${theme.lighter};
+    //         --unread-timestamp: ${theme.light};
+    //         --teal: ${theme.lighter};
+    //         --teal-lighter: ${theme.lighter}
+    //         --round-icon-background: ${theme.light};
+    //         --typing: ${theme.light};
+    //         --spinner-highlight: ${theme.light};
+    //         --ptt-draft-button-stop: ${theme.light};
+    //         --ptt-draft-button-stop-hover: ${theme.lighter};
+    //         --menu-tabs-list-active: ${theme.lighter};
+    //         --highlight: ${theme.light};
+    //         --svg-gray-button: ${theme.grey}${tran.overlay};
+    //         --svg-icon-theme-primary: ${theme.primary};
+    //         --svg-icon-theme-light: ${theme.light};
+    //         --svg-icon-theme-lighter: ${theme.lighter};
+    //         --svg-icon-main-white: ${main.white}${tran.overlay};
+    //         --media-editor-icon-color: ${main.white}${tran.overlay};
+    //         --panel-header-icon: ${main.white}${tran.overlay};
+    //         --checkbox-background: ${theme.lighter};
+    //         --round-icon-background: ${theme.light};
+    //         --input-empty-value-placeholder: ${theme.light};
+    //         --butterbar-update-icon: ${theme.light};
+    //         --beta-tag-background: ${theme.light};
+    //         --chat-marker-background: ${theme.light}${tran.overlayHeavy};
+    //         --reactions-picker-bg: ${main.white}${tran.overlayLighter};
             
-            /* other colours */
-            --danger: ${theme.danger};
-            --link: ${theme.link};
-            --mention-at-symbol: ${theme.link};
-            --icon: ${main.white}${tran.overlay};
+    //         /* other colours */
+    //         --danger: ${theme.danger};
+    //         --link: ${theme.link};
+    //         --mention-at-symbol: ${theme.link};
+    //         --icon: ${main.white}${tran.overlay};
             
-            /* text input light */
-            --input-border-active: ${theme.light}${tran.overlayLight};
+    //         /* text input light */
+    //         --input-border-active: ${theme.light}${tran.overlayLight};
 
-            /* security */
-            --security-icon-lock: ${theme.light}${tran.overlay};
-            --security-icon-shield: ${background.darker}${tran.overlayLight};
-            --security-icon-background: ${theme.primary};
+    //         /* security */
+    //         --security-icon-lock: ${theme.light}${tran.overlay};
+    //         --security-icon-shield: ${background.darker}${tran.overlayLight};
+    //         --security-icon-background: ${theme.primary};
 
-            /* side audio popup */
-            --ptt-ooc-background: ${theme.secondary}${tran.unBlur};
-            --ptt-draft-button-play-pause-out-of-chat: ${main.white}${tran.overlay};
+    //         /* side audio popup */
+    //         --ptt-ooc-background: ${theme.secondary}${tran.unBlur};
+    //         --ptt-draft-button-play-pause-out-of-chat: ${main.white}${tran.overlay};
 
-            /* other text colours */
-            --primary: ${text.primary};
-            --primary-title: ${theme.light};
-            --compose-primary: ${text.primary};
-            --primary-muted: ${text.secondary};
-            --primary-strong: ${text.primary};
-            --primary-strong-rgb: ${hexToRgb(text.primary.substring(0, 7))};
-            --primary-stronger: ${text.secondary};
-            --primary-strongest: ${text.primary};
-            --secondary: ${text.tersary};
-            --secondary-stronger: ${text.secondary};
-            --text-muted: ${text.tersary}
-            --text-secondary-lighter: ${text.secondary};
-            --unread-marker-text: ${text.contrast};
-            --chat-meta: ${text.tersary};
-            --bubble-meta: ${text.secondary};
-            --status-secondary: ${text.secondary};
-            --quoted-message-text: ${text.secondary};
-            --drawer-header-title: ${text.primary};
-            --link-preview: ${text.secondary};
-            --link-preview-light: ${text.tersary};
-            --link-preview-lighter: ${text.tersary};
-            --system-message-text: ${text.secondary};
-            --chat-marker-admin: ${text.contrast};
-            --tooltip-text: ${text.secondary};
-            --input-placeholder: ${text.secondary};
-        }`,
-        `html[dir] body.dark.blur {
-            --outgoing-background: ${msg.send}${tran.blur};
-            --incoming-background: ${msg.receive}${tran.blur};
-            --unread-bar-background: ${theme.secondary}${tran.overlay};
-            --round-entry-point-background-color: ${main.black}${tran.blur};
-            --quick-action-button-background: ${main.black}${tran.blur};
-            --notification-e2e-background: ${background.dark}${tran.blur};
-            --system-message-background: ${background.dark}${tran.blur};
-            --rich-text-panel-background: ${theme.secondary}${tran.blur};
-            --panel-input-background: ${background.primary}${tran.blur};
-            --panel-header-background: ${theme.secondary}${tran.blur};
-            --panel-background: ${theme.secondary}${tran.blur};
-            --drawer-background-deep: ${background.darker}${tran.blur};
-            --border-panel: ${background.darker}${tran.blur};
-            --media-viewer-background: ${background.darker}${tran.blur};
-            --panel-background-deeper: ${background.darker}${tran.blur};
-            --modal-backdrop: ${background.darker}${tran.blur};
-            --progress-background: ${background.darker}${tran.blur};
-            --status-background: ${background.darker}${tran.blur};
-            --reactions-tray-background: ${background.primary}${tran.blur};
-            --dropdown-background: ${background.primary}${tran.blur};
-            --pip-manager-content: ${background.darker}${tran.blur};
-            --picker-background: ${background.primary}${tran.blur};
-            --reactions-details-background: ${background.primary}${tran.blur};
-            --tooltip-background: ${background.primary}${tran.blur};
-            --toast-background: ${background.primary}${tran.blur};
-            --ptt-ooc-background: ${theme.secondary}${tran.blur};
-        }`,
-        `html[dir] body {
-            /* shadow colour */
-            --shadow-own: #000000${tran.overlayLighter};
-            --shadow-own-rgb: ${hexToRgb("#000000")};
-            --danger-fade: ${theme.danger}${tran.overlay};
-            --input-border: ${main.grey}${tran.overlayLight};
-            --input-border-active: 00a884${tran.overlayLight};
-            --blur-radius-thumbnail: ${blurValue.lighter};
-            --radius-thumb: 12px;
-        }`
-    ];
+    //         /* other text colours */
+    //         --primary: ${text.primary};
+    //         --primary-title: ${theme.light};
+    //         --compose-primary: ${text.primary};
+    //         --primary-muted: ${text.secondary};
+    //         --primary-strong: ${text.primary};
+    //         --primary-strong-rgb: ${hexToRgb(text.primary.substring(0, 7))};
+    //         --primary-stronger: ${text.secondary};
+    //         --primary-strongest: ${text.primary};
+    //         --secondary: ${text.tersary};
+    //         --secondary-stronger: ${text.secondary};
+    //         --text-muted: ${text.tersary}
+    //         --text-secondary-lighter: ${text.secondary};
+    //         --unread-marker-text: ${text.contrast};
+    //         --chat-meta: ${text.tersary};
+    //         --bubble-meta: ${text.secondary};
+    //         --status-secondary: ${text.secondary};
+    //         --quoted-message-text: ${text.secondary};
+    //         --drawer-header-title: ${text.primary};
+    //         --link-preview: ${text.secondary};
+    //         --link-preview-light: ${text.tersary};
+    //         --link-preview-lighter: ${text.tersary};
+    //         --system-message-text: ${text.secondary};
+    //         --chat-marker-admin: ${text.contrast};
+    //         --tooltip-text: ${text.secondary};
+    //         --input-placeholder: ${text.secondary};
+    //     }`,
+    //     `html[dir] body.dark.blur {
+    //         --outgoing-background: ${msg.send}${tran.blur};
+    //         --incoming-background: ${msg.receive}${tran.blur};
+    //         --unread-bar-background: ${theme.secondary}${tran.overlay};
+    //         --round-entry-point-background-color: ${main.black}${tran.blur};
+    //         --quick-action-button-background: ${main.black}${tran.blur};
+    //         --notification-e2e-background: ${background.dark}${tran.blur};
+    //         --system-message-background: ${background.dark}${tran.blur};
+    //         --rich-text-panel-background: ${theme.secondary}${tran.blur};
+    //         --panel-input-background: ${background.primary}${tran.blur};
+    //         --panel-header-background: ${theme.secondary}${tran.blur};
+    //         --panel-background: ${theme.secondary}${tran.blur};
+    //         --drawer-background-deep: ${background.darker}${tran.blur};
+    //         --border-panel: ${background.darker}${tran.blur};
+    //         --media-viewer-background: ${background.darker}${tran.blur};
+    //         --panel-background-deeper: ${background.darker}${tran.blur};
+    //         --modal-backdrop: ${background.darker}${tran.blur};
+    //         --progress-background: ${background.darker}${tran.blur};
+    //         --status-background: ${background.darker}${tran.blur};
+    //         --reactions-tray-background: ${background.primary}${tran.blur};
+    //         --dropdown-background: ${background.primary}${tran.blur};
+    //         --pip-manager-content: ${background.darker}${tran.blur};
+    //         --picker-background: ${background.primary}${tran.blur};
+    //         --reactions-details-background: ${background.primary}${tran.blur};
+    //         --tooltip-background: ${background.primary}${tran.blur};
+    //         --toast-background: ${background.primary}${tran.blur};
+    //         --ptt-ooc-background: ${theme.secondary}${tran.blur};
+    //     }`,
+    //     `html[dir] body {
+    //         /* shadow colour */
+    //         --shadow-own: #000000${tran.overlayLighter};
+    //         --shadow-own-rgb: ${hexToRgb("#000000")};
+    //         --danger-fade: ${theme.danger}${tran.overlay};
+    //         --input-border: ${main.grey}${tran.overlayLight};
+    //         --input-border-active: 00a884${tran.overlayLight};
+    //         --blur-radius-thumbnail: ${blurValue.lighter};
+    //         --radius-thumb: 12px;
+    //     }`
+    // ];
 
     blurRules = [
         `@keyframes imageFadeInBlur {
@@ -547,7 +406,7 @@ function stylesOnStart(){
         `html[dir] body.blur ._3Hudz, html[dir] body.blur ._2B4d4, html[dir] body.blur ._3J6wB, html[dir=ltr] body.blur ._9-YHG, html[dir] body.blur .overlay._3IBSU, html[dir] body.blur .ej3x2kt, html[dir] body.blur ._2M_x0, html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0 {
             backdrop-filter: blur(${blurValue.heavy});
         }`,
-        `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html:not([dir='rtl']) body.blur .kfr1vweg, html[dir] body.blur .o--vV, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C {
+        `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html:not([dir='rtl']) body.blur .kfr1vweg, html[dir] body.blur .o--vV, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C, html[dir="ltr"] body.blur div._356RS {
             backdrop-filter: blur(${blurValue.medium});
         }`,
         `html[dir=ltr] body.blur ._2JUrU._2ecOY ._3OC33, html[dir] body.blur .Nm1g1._22AX6, html[dir] body.blur ._2VSMU, html[dir] body.blur ._3nQGi, html[dir] body.blur ._3t1CR, html[dir=ltr] body.blur .EtBAv, html[dir=ltr] body.blur .i_Uj-, html[dir] body.blur ._1w-Ol, html:not([dir='rtl']) body.blur .fahkg6u0, html[dir] body.blur ._1GLVO, html[dir] body.blur ._2JUrU ._3OC33, html[dir] body.blur ._2JUrU ._3Lby7, html[dir] body.blur .epdck8xl, html[dir] body.blur ._3JXTQ, html[dir] body.blur .bs7a17vp.jxacihee.d53pemmv, html[dir] body.blur .GvRI8, html[dir] body.blur ._19zgN._26nDl div[data-testid="tooltip"] {
@@ -738,9 +597,6 @@ function stylesOnStart(){
         }`,
     ];
     // colours
-    styleVariables.forEach(rule => {
-        customStyles.insertRule(rule);
-    })
     // page sizing
     customStyles.insertRule(`
     html[dir] .app-wrapper-web ._1XkO3, ._1iwk6 {
@@ -792,8 +648,7 @@ function stylesOnStart(){
     }`);
     // profile page
     customStyles.insertRule(`
-    html[dir] .dark .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx.tkdu00h0.gfz4du6o.r7fjleex.jv8uhy2r.lhggkp7q.qq0sjtgm.ln8gz9je.tm2tP.copyable-area, html[dir] .dark .se2m7z6i {
-        background: ${background.darker}bb;
+    html[dir] .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx.tkdu00h0.gfz4du6o.r7fjleex.jv8uhy2r.lhggkp7q.qq0sjtgm.ln8gz9je.tm2tP.copyable-area, html[dir] .se2m7z6i {
         backdrop-filter: blur(${blurValue.heavy});
     }`);
     customStyles.insertRule(`
@@ -863,7 +718,6 @@ function stylesOnStart(){
     html[dir] .o--vV.B_YVs._24No0, html[dir=ltr] ._1y99G {
         border-radius: 30px;
         overflow: hidden;
-        color: ${text.secondary};
         background: var(--reactions-tray-background);
     }`);
     customStyles.insertRule(`
@@ -1024,20 +878,29 @@ function stylesOnStart(){
 
     // message bar slide up / popup
     customStyles.insertRule(`
-    html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html[dir=ltr] ._1GHsB {
-        width: initial;
+    html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html[dir=ltr] ._1GHsB, html[dir=ltr] div._356RS {
         margin: 5px;
         border-radius: 20px;
+        border: none;
         background: var(--rich-text-panel-background);
+        overflow: hidden;
+    }`);
+    customStyles.insertRule(`
+    html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div {
+        width: initial;
     }`);
     customStyles.insertRule(`
     html[dir=ltr] .a-HbF, html[dir=ltr] ._2bgh7, html[dir=ltr] ._16kef, html[dir=ltr] ._1TdPb {
-        border: 0;
+        border: none;
         padding: 5px;
     }`);
     customStyles.insertRule(`
     html[dir] ._1IN0t, html[dir=ltr] ._2stdY {
         border-radius: 18px;
+        margin: 0;
+    }`);
+    customStyles.insertRule(`
+    html[dir=ltr] div._356RS {
         margin: 0px;
     }`);
     customStyles.insertRule(`
@@ -1065,11 +928,22 @@ function stylesOnStart(){
         border-radius: 23px;
     }`);
     customStyles.insertRule(`
-    html[dir=ltr] .d10gensu {
+    html[dir=ltr] .d10gensu, html[dir=ltr] div._3-qS1 {
         max-height: 40vh;
-        height: 40vh;
+        // height: 40vh;
         width: 50%;
         max-width: 400px;
+    }`);
+    customStyles.insertRule(`
+    html[dir=ltr] div._3-qS1 {
+        left: 0;
+        right: 0;
+        overflow: unset;
+    }`);
+    customStyles.insertRule(`
+    html[dir=ltr] div._1Uy4i {
+        left: 34px;
+        right: 0;
     }`);
 
     // media message
@@ -1093,10 +967,6 @@ function stylesOnStart(){
     customStyles.insertRule(`
     html:not([dir='rtl']) .en6yos0k, html:not([dir='rtl']) .j2mzdvlq {
         z-index: 100;
-    }`);
-    customStyles.insertRule(`
-    html[dir] ._3vRLq {
-        background-color: ${main.white}${tran.overlayLighter};
     }`);
     customStyles.insertRule(`
     html[dir] .e1lnay39 {
@@ -1183,16 +1053,12 @@ function stylesOnStart(){
         border-radius: 20px;
     }`);
     customStyles.insertRule(`
-    html[dir] body.dark ._20C5O, html:not([dir='rtl']) .s2vc4xk1:hover {
-        background-color: ${main.white}${tran.overlayLighter};
-    }`);
-    customStyles.insertRule(`
     html[dir] body.dark ._20C5O:hover {
         background-color: var(--button-primary-background-hover);
     }`);
     // popup insert media screen
     customStyles.insertRule(`
-    html[dir=ltr] ._1Mcu-._2NB7f, html[dir="ltr"] div > ._9-YHG {
+    html[dir=ltr] body.dark ._1Mcu-._2NB7f, html[dir="ltr"] body.dark div > ._9-YHG {
         background-color: var(--media-viewer-background);
     }`);
     // switches
@@ -1393,7 +1259,7 @@ function stylesOnStart(){
     // html[dir] button.fiyt298h {
     //     background-color: fff;
     // }`);
-    
+
     animationRules.forEach(rule => {
         customStyles.insertRule(rule);
     });
@@ -1414,63 +1280,8 @@ function stylesOnStart(){
     //     letter-spacing: 0.5px;
     // }`);
     // font-weight: 200 !important;
-
-    // background image
-    customStyles.insertRule(`
-    body.backgroundImage [data-asset-chat-background-dark] {
-        background: transparent;
-    }`);
-
-    customStyles.insertRule(`
-    html[dir="ltr"] ._3xTHG {
-        background: var(--conversation-panel-background);
-        opacity: 1;
-        transition: all 1s ease-in-out 1s;
-        background-size: cover;
-        background-position: center;
-    }`);
-    
-    // var imgIndex = randInt(Object.values(backgroundImg).length);
-    // console.log(imgIndex);
-    // var img = Object.values(backgroundImg)[imgIndex];
-    
-    customStyles.insertRule(`
-    html[dir=ltr] ._3xTHG {
-        background: var(--conversation-panel-background);
-    }`);
 }
 
-function changeBackground(force, tags, filters){
-    if (force || (!randInt(2) && utilities.styles.utilData.backgroundImgStatus)){
-        var images = [];
-        Object.values(backgroundImg).forEach(iamgeValue => {
-            if (
-                iamgeValue.tags.find(value => {
-                    if (filters) {
-                        for (i in filters){
-                            if (filters[i] == value) return false;
-                        }
-                    }
-                    if (!tags) return true;
-                    return tags.find(tag => {
-                        return tag == value;
-                    })
-                })
-            ) images.push(iamgeValue);
-        });
-
-        var imgIndex = randInt(images.length);
-        var img = Object.values(images)[imgIndex];
-        console.log(customStyles.cssRules.length - 1, Object.values(images).length, imgIndex);
-
-        customStyles.deleteRule(0);
-        customStyles.insertRule(`
-        html[dir=ltr] body.backgroundImage ._3xTHG {
-            background: #00000000 url("${img.link}") ${img.repeat} center;
-            background-size: ${img.size};
-        }`);
-    }
-}
 
 function setClasses(){
     provider.getData(() => {

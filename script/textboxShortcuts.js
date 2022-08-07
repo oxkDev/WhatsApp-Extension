@@ -294,8 +294,7 @@ function messageJumper(_event) {
 var a = true
 function stylesOnNewContact(){
     changeBackground(a, ["fluidPaint", "wave", "space"], ["polynomial"]);
-    a = false;
-    console.log(styleSheet.cssRules); 
+    a = false; 
     // changeBlur();
 }
 
@@ -364,7 +363,9 @@ console.log('Running script...');
 window.onload = () => {
     document.addEventListener("mouseover", initialiseFinal);
     provider.getData(() => {
-        stylesOnStart();
+        customStylesOnStart();
+        backgroundImageStylesOnStart();
+        customColoursOnStart();
         setClasses();
     });
 }

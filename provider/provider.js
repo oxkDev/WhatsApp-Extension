@@ -10,17 +10,18 @@ class Utility {
     }
 };
 
+
 // // erythrite
-// const theme = {
+// const defaultTheme = {
 //     primary: "#ff5b61",
 //     secondary: "#ffcccb",
 //     light: "#aa366a",
-//     lighter: "#8b0000",
+//     lighter: "#f64747",
 //     danger: "#ff0000",
 //     link: "#ff0000",
 // };
 
-// const background = {
+// const defaultBackground = {
 //     primary: "#FF8991",
 //     secondary: "#ffcccb",
 //     dark: "#f8c8dc",
@@ -28,56 +29,64 @@ class Utility {
 //     darker: "#f9cddf",
 // };
 
-// const message = {
-//     send: theme.primary,
-//     receive: background.secondary,
+// const defaultMessage = {
+//     send: defaultTheme.primary,
+//     receive: defaultBackground.secondary,
 //     status: {
-//         read: "#FFB6C1",
+//         read: "#ff3535",
 //         sent: "#000000" + "32",
 //     },
 // };
 
-// const text = {
+// const defaultText = {
+//     header: defaultTheme.light,
 //     primary: "#000000" + "b3",
-//     secondary: "#000000" + "ee"
+//     secondary: "#000000" + "80",
+//     tersary: "#000000" + "47",
+//     contrast: "#FFFFFF" + "70"
 // }
 
+// const whiteBlack = ["#000000", "#FFFFFF"];
+
 // // oxk Light
-// const theme = {
-//     primary: "#478db3",
-//     secondary: "#ffffff",
-//     light: "#298abe",
-//     lighter: "#64c9ff",
+// const defaultTheme = {
+//     primary: "#083a55",
+//     secondary: "#141b20",
+//     light: "#2a7095",
+//     lighter: "#298abe",
 //     danger: "#f14040",
 //     link: "#459dd9",
 // };
 
-// const background = {
-//     primary: "#5a5e62",
-//     secondary: "#d9e4ed",
-//     dark: "#e0e4e9",
+// const defaultBackground = {
+//     primary: "#061527",
+//     secondary: "#1a232a",
+//     dark: "#071423",
 //     light: "#0f1f31",
-//     darker: "#ffffff",
+//     darker: "#000c1a",
 // };
 
-// const message = {
-//     send: theme.primary,
-//     receive: background.secondary,
+// const defaultMessage = {
+//     send: defaultTheme.primary,
+//     receive: defaultBackground.secondary,
 //     status: {
 //         read: "#f2f9ffd4",
 //         sent: "#ffffff" + "32",
 //     },
 // };
 
-// const text = {
-//     header: theme.light,
+// const defaultText = {
+//     header: defaultTheme.light,
 //     primary: "#000000" + "b3",
 //     secondary: "#000000" + "70",
-//     tersary: "#000000" + "47"
+//     tersary: "#000000" + "47",
+//     contrast: "#ffffff" + "70",
 // }
 
+// const whiteBlack = ["#000000", "#FFFFFF"];
+
 // oxk Dark
-const theme = {
+const defaultTheme = {
     primary: "#083a55",
     secondary: "#141b20",
     light: "#2a7095",
@@ -86,7 +95,7 @@ const theme = {
     link: "#459dd9",
 };
 
-const background = {
+const defaultBackground = {
     primary: "#061527",
     secondary: "#1a232a",
     dark: "#071423",
@@ -94,20 +103,24 @@ const background = {
     darker: "#000c1a",
 };
 
-const message = {
-    send: theme.primary,
-    receive: background.secondary,
+const defaultMessage = {
+    send: defaultTheme.primary,
+    receive: defaultBackground.secondary,
     status: {
         read: "#f2f9ffd4",
         sent: "#ffffff" + "32",
     },
 };
 
-const text = {
+const defaultText = {
+    header: defaultTheme.light,
     primary: "#ffffff" + "b3",
     secondary: "#ffffff" + "70",
-    tersary: "#ffffff" + "47"
+    tersary: "#ffffff" + "47",
+    contrast: "#000000" + "70",
 }
+
+const whiteBlack = ["#FFFFFF", "#000000"];
 
 const DefaultData = {
     linkChanger: new Utility(
@@ -140,10 +153,10 @@ const DefaultData = {
         {
             blurStatus: true,
             backgroundImgStatus: true,
-            theme: theme,
-            background: background,
-            message: message,
-            text: text,
+            theme: defaultTheme,
+            background: defaultBackground,
+            message: defaultMessage,
+            text: defaultText,
             blurValue: {
                 medium: "30px",
                 light: "20px",
@@ -151,8 +164,8 @@ const DefaultData = {
                 heavy: "45px",
             },
             main: {
-                white: "#000000",
-                black: "#ffffff",
+                white: whiteBlack[0],
+                black: whiteBlack[1],
                 grey: "#777777",
                 transparent: "transparent",
             },
@@ -161,12 +174,12 @@ const DefaultData = {
                 overlayHeavy: "75",
                 overlayLight: "32",
                 overlayLighter: "0f",
-                blur: "b3",
-                unBlur: "e3",
+                blur: "b0",
+                unBlur: "ea",
             },
         }
     ),
-};
+}
 
 const provider = (function() {
     return {
@@ -174,11 +187,12 @@ const provider = (function() {
             user.get("utilities", function (result){
                 utilities = result.utilities;
                 if (!utilities){
-                    resetData();
+                    resetData(func());
                     console.log("newData");
+                } else {
+                    if (func) func();
                 }
                 console.log("utilities: ", utilities);
-                if (func) func();
             });
             return utilities;
         },
