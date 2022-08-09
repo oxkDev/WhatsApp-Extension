@@ -9,7 +9,7 @@ var isWin = navigator.userAgentData.platform == "Windows";
 // var selectedContact;
 var textbox;
 var jumper = {
-    element: undefined,
+    element: "",
     n: 0,
 }
 
@@ -251,39 +251,42 @@ function keyCombinationListener(_event) {
 //--------------------------------------------------------------------------------------------------------- up down messages jumper
 
 function messageJumper(_event) {
-    jumper.element = [];
-    Array.from(document.querySelectorAll('.message-out ._1Gy50 > .i0jNr.selectable-text.copyable-text > span')).forEach(elm => {
-        jumper.element.push(elm.textContent);
+    var elements = [];
+    Array.from(document.querySelectorAll('.message-out ._1Gy50 > .i0jNr.selectable-text.copyable-text')).forEach(elm => {
+        elements.push(elm.textContent);
     });
-    jumper.element.push(!jumper.n ? textbox.textContent : "");
-    jumper.element = jumper.element.reverse();
-    console.log(jumper.element);
-    if (jumper.n && (textbox.textContent == "" || textbox.textContent != jumper.element[jumper.n].textContent)){
-        console.log("reset");
-        jumper.n = 0;
-    }
+
+    if (!jumper.n) jumper.element = textbox.textContent;
+    elements.push(jumper.element);
+    elements = elements.reverse();
+    
+    console.log("test: ", _event.shiftKey, _event.ctrlKey, jumper.n, elements[jumper.n], "==", textbox.textContent);
+    console.log(elements);
+    
+    if (textbox.textContent != elements[jumper.n]) jumper.n = 0;
+
+    console.log("test2: ", _event.shiftKey, _event.ctrlKey, jumper.n, elements[jumper.n], "==", textbox.textContent);
     // console.log(prev);
-    // console.log("test: ", _event.shiftKey, _event.ctrlKey, jumper.element[jumper.n].textContent, "==", textbox.textContent);
-    if (_event.shiftKey && _event.ctrlKey && jumper.element[jumper.n].textContent == textbox.textContent){
+    if (_event.shiftKey && _event.ctrlKey && elements[jumper.n] == textbox.textContent){
         console.log("jumper");
         if (_event.key == "ArrowDown"){ //--------------------------------------------------------------- down key
             window.InputEvent = window.Event || window.InputEvent;
             if (jumper.n > 0){
                 jumper.n -= 1;
             }
-            console.log("down", jumper.n, jumper.element[jumper.n].textContent);
-            setText(jumper.element[jumper.n].textContent);
+            console.log("down", jumper.n, elements[jumper.n]);
+            setText(elements[jumper.n]);
             // console.log(`index: ${jumper.n}`);
             // textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
             return false;
         }
         if (_event.key == "ArrowUp"){ //--------------------------------------------------------------- up key
             window.InputEvent = window.Event || window.InputEvent;
-            if (jumper.n < jumper.element.length - 1){
+            if (jumper.n < elements.length - 1){
                 jumper.n += 1;
             }
-            console.log("up", jumper.n, jumper.element[jumper.n].textContent);
-            setText(jumper.element[jumper.n].textContent);
+            console.log("up", jumper.n, elements[jumper.n]);
+            setText(elements[jumper.n]);
             // textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
             return false;
         }
