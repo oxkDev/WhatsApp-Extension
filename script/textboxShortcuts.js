@@ -255,7 +255,7 @@ function messageJumper(_event) {
     Array.from(document.querySelectorAll('.message-out ._1Gy50 > .i0jNr.selectable-text.copyable-text > span')).forEach(elm => {
         jumper.element.push(elm.textContent);
     });
-    jumper.element.push(!jumper.n ? textbox : "");
+    jumper.element.push(!jumper.n ? textbox.textContent : "");
     jumper.element = jumper.element.reverse();
     console.log(jumper.element);
     if (jumper.n && (textbox.textContent == "" || textbox.textContent != jumper.element[jumper.n].textContent)){
