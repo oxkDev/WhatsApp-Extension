@@ -10,7 +10,7 @@ function customColoursOnStart() {
     var text = utilities.styles.utilData.text;
     var background = utilities.styles.utilData.background;
 
-    colourVairables = [
+    colourVariables = [
         `html[dir] body.dark {
             /* startup background */
             --startup-background: ${background.darker};
@@ -279,10 +279,7 @@ function customColoursOnStart() {
             --input-border-active: 00a884${tran.overlayLight};
             --blur-radius-thumbnail: ${blurValue.lighter};
             --radius-thumb: 12px;
-        }`
-    ];
-
-    customColourStyles = [
+        }`,
         // profile pageQ
         `html[dir] .dark .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx.tkdu00h0.gfz4du6o.r7fjleex.jv8uhy2r.lhggkp7q.qq0sjtgm.ln8gz9je.tm2tP.copyable-area, html[dir] .dark .se2m7z6i {
             background: ${background.darker}bb;
@@ -300,13 +297,7 @@ function customColoursOnStart() {
             background-color: ${main.white}${tran.overlayLighter};
         }`,
     ];
-
-    colourVairables.forEach(rule => {
-        customColours.insertRule(rule);
-    });
-
-    customColourStyles.forEach(rule => {
-        customColours.insertRule(rule);
-    });
-
+    for (i in colourVariables) {
+        customColours.insertRule(colourVariables[i], i);
+    };
 }

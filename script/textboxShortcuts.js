@@ -7,8 +7,8 @@ var isWin = navigator.userAgentData.platform == "Windows";
 // var element;
 // var contacts;
 // var selectedContact;
-// var textbox;
-var prev = {
+var textbox;
+var jumper = {
     element: undefined,
     n: 0,
 }
@@ -73,12 +73,12 @@ Range.prototype.setCaretPosition = function(offset, container, type){
         this.setEnd(container[0], (container[0] == container[1]) * type + offset[0]);
     // }, 500);
 }
-Element.prototype.setText = function(text){
-    document.execCommand("selectAll", true);
-    document.execCommand("insertText", true, text);
+function setText(text){
+    document.execCommand("selectAll");
+    setTimeout(() => {document.execCommand("insertText", false, text)}, 0);
     // this.innerHTML = text;
     // textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
-    new KeyboardEvent("", {bubbles: true});
+    // new KeyboardEvent("", {bubbles: true});
 }
 Element.prototype.dblclick = function() {
     return this.dispatchEvent(new MouseEvent("dblclick", {
@@ -122,19 +122,19 @@ function randInt(max) {
 }
 
 function replaceTxt(txt, finder, replacement){
-    textbox.setText(txt.replace(finder, replacement));
+    setText(txt.replace(finder, replacement));
 }
 
-function inverse(array){
+Array.prototype.reverse = function() {
     var output = [];
-    for(i = array.length-1; i >= 0; i--){
-        output.push(array[i]);
+    for(i = this.length-1; i >= 0; i--){
+        output.push(this[i]);
     }
     return output;
 }
 
 function sendMessage(msg){
-    textbox.setText(msg);
+    setText(msg);
     // textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
     document.querySelector("button.tvf2evcx.oq44ahr5.lb5m6g5c.svlsagor.p2rjqpw5.epia9gcq").click();
 }
@@ -154,13 +154,12 @@ function dataChangeHandler(){
 
 function spamMessage(spamData, message){
     // sendMessage(message); //  your code here
-    (function myLoop(i) {
-        setTimeout(function() {
-            if (utilities.spammer.status) sendMessage(message); //  your code here
-            console.log(message);
-            if (--i && utilities.spammer.status) myLoop(i);   //  decrement i and call myLoop again if i > 0
-        }, spamData.delay);
-    })(spamData.count - 1);
+    var i = 0;
+    interval = setInterval(function() {
+        if (utilities.spammer.status && !(i++ == spamData.count)) sendMessage(message); //  your code here
+        else clearInterval(interval);   //  decrement i and call myLoop again if i > 0
+        console.log(message);
+    }, spamData.delay);
 }
 
 //--------------------------------------------------------------------------------------------------------- symbols adder
@@ -175,13 +174,13 @@ function extraSideSymbols(type){
     console.log(`text: ${selection.startContainer.textContent.slice(selection.startOffset - type.length, selection.startOffset)}, ${selection.endContainer.textContent.slice(selection.endOffset, selection.endOffset + type.length)}`)
     console.log(`Selection: ${selection.startOffset}, ${selection.endOffset}`);
     
-    // textbox.setText(doAdd ? textbox.innerText.addToSelection(start, end, type) : textbox.innerText.removeFromSelection(start, end, type));
+    // setText(doAdd ? textbox.innerText.addToSelection(start, end, type) : textbox.innerText.removeFromSelection(start, end, type));
     // if (doAdd) {
     selection.editSelection(type);
     // selection.setCaretPosition();
         // selection.endContainer.textContent = selection.endContainer.textContent.slice(0, selection.endOffset) + type + selection.startContainer.textContent.slice(selection.startOffset);
     // }
-    // textbox.setText(`${type}${selection.cloneContents().textContent}${type}`);
+    // setText(`${type}${selection.cloneContents().textContent}${type}`);
     // document.execCommand("selectAll", false);
     // document.execCommand("insertText", false, doAdd ? textbox.innerText.addToSelection(start, end, type) : textbox.innerText.removeFromSelection(start, end, type))
     // if (textbox.innerText !== ''){
@@ -202,7 +201,7 @@ function keyCombinationListener(_event) {
     if (_event.key == "Enter" && textbox.textContent != "" && !_event.shiftKey) { //--------------------------------------------------------------- enter key
         if (utilities.linkChanger.status){
             console.log('changing text');
-            textbox.setText(textbox.textContent.replaceAll(" ", "_"));
+            setText(textbox.textContent.replaceAll(" ", "_"));
             textbox.textContent += `_${utilities.linkChanger.utilData.ranStr[randInt(utilities.linkChanger.utilData.ranStr.length)]}`;
         }
         if (utilities.spammer.status){
@@ -250,40 +249,41 @@ function keyCombinationListener(_event) {
 }
 
 //--------------------------------------------------------------------------------------------------------- up down messages jumper
+
 function messageJumper(_event) {
-    var elm = Array.from(document.querySelectorAll('.message-out ._1Gy50 > .i0jNr.selectable-text.copyable-text > span'));
-    if (!prev.n){
-        curTxt = document.createElement("div")
-        curTxt.textContent = textbox.textContent;
-    }
-    elm.push(curTxt);
-    prev.element = inverse(elm);
-    if (prev.n && (textbox.textContent == "" || textbox.textContent != prev.element[prev.n].textContent)){
+    jumper.element = [];
+    Array.from(document.querySelectorAll('.message-out ._1Gy50 > .i0jNr.selectable-text.copyable-text > span')).forEach(elm => {
+        jumper.element.push(elm.textContent);
+    });
+    jumper.element.push(!jumper.n ? textbox : "");
+    jumper.element = jumper.element.reverse();
+    console.log(jumper.element);
+    if (jumper.n && (textbox.textContent == "" || textbox.textContent != jumper.element[jumper.n].textContent)){
         console.log("reset");
-        prev.n = 0;
+        jumper.n = 0;
     }
     // console.log(prev);
-    // console.log("test:", prev.n, prev.element, textbox.textContent);
-    if (_event.shiftKey && _event.ctrlKey && prev.element[prev.n].textContent == textbox.textContent){
+    // console.log("test: ", _event.shiftKey, _event.ctrlKey, jumper.element[jumper.n].textContent, "==", textbox.textContent);
+    if (_event.shiftKey && _event.ctrlKey && jumper.element[jumper.n].textContent == textbox.textContent){
         console.log("jumper");
         if (_event.key == "ArrowDown"){ //--------------------------------------------------------------- down key
             window.InputEvent = window.Event || window.InputEvent;
-            if (prev.n > 0){
-                prev.n -= 1;
+            if (jumper.n > 0){
+                jumper.n -= 1;
             }
-            console.log("down", prev.n, prev.element[prev.n].textContent);
-            textbox.setText(prev.element[prev.n].textContent);
-            // console.log(`index: ${prev.n}`);
+            console.log("down", jumper.n, jumper.element[jumper.n].textContent);
+            setText(jumper.element[jumper.n].textContent);
+            // console.log(`index: ${jumper.n}`);
             // textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
             return false;
         }
         if (_event.key == "ArrowUp"){ //--------------------------------------------------------------- up key
             window.InputEvent = window.Event || window.InputEvent;
-            if (prev.n < prev.element.length - 1){
-                prev.n += 1;
+            if (jumper.n < jumper.element.length - 1){
+                jumper.n += 1;
             }
-            console.log("up", prev.n, prev.element[prev.n].textContent);
-            textbox.setText(prev.element[prev.n].textContent);
+            console.log("up", jumper.n, jumper.element[jumper.n].textContent);
+            setText(jumper.element[jumper.n].textContent);
             // textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
             return false;
         }
