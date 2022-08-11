@@ -1,10 +1,5 @@
 // var blurFields = [["/*", "*/", "ee"], ["", "", "b0"]];
 // var blr = blurFields[+true];
-function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : `255, 0, 0`;
-}
-
 var customStylesElement = document.createElement("style");
 document.head.appendChild(customStylesElement);
 var customStyles = customStylesElement.sheet;
@@ -135,7 +130,7 @@ function customStylesOnStart(){
         `html[dir] body.blur ._3Hudz, html[dir] body.blur ._2B4d4, html[dir] body.blur ._3J6wB, html[dir=ltr] body.blur ._9-YHG, html[dir] body.blur .overlay._3IBSU, html[dir] body.blur .ej3x2kt, html[dir] body.blur ._2M_x0, html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0 {
             backdrop-filter: blur(${blurValue.heavy});
         }`,
-        `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html:not([dir='rtl']) body.blur .kfr1vweg, html[dir] body.blur .o--vV, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C, html[dir="ltr"] body.blur div._356RS {
+        `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html:not([dir='rtl']) body.blur .kfr1vweg, html[dir] body.blur .o--vV, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C, html[dir="ltr"] body.blur div._356RS, html[dir] body.blur .NQl4z, html[dir] .ItfyB._3nbHh {
             backdrop-filter: blur(${blurValue.medium});
         }`,
         `html[dir=ltr] body.blur ._2JUrU._2ecOY ._3OC33, html[dir] body.blur .Nm1g1._22AX6, html[dir] body.blur ._2VSMU, html[dir] body.blur ._3nQGi, html[dir] body.blur ._3t1CR, html[dir=ltr] body.blur .EtBAv, html[dir=ltr] body.blur .i_Uj-, html[dir] body.blur ._1w-Ol, html:not([dir='rtl']) body.blur .fahkg6u0, html[dir] body.blur ._1GLVO, html[dir] body.blur ._2JUrU ._3OC33, html[dir] body.blur ._2JUrU ._3Lby7, html[dir] body.blur .epdck8xl, html[dir] body.blur ._3JXTQ, html[dir] body.blur .bs7a17vp.jxacihee.d53pemmv, html[dir] body.blur .GvRI8, html[dir] body.blur ._19zgN._26nDl div[data-testid="tooltip"] {
@@ -197,11 +192,11 @@ function customStylesOnStart(){
             animation: onWhatsAppLoad 500ms ease-out;
         }`,
         // message element appear
-        `html[dir] .Nm1g1._22AX6, html[dir] ._2JUrU ._3OC33, html[dir] ._2JUrU ._3Lby7, html[dir=ltr] .EtBAv, html[dir=ltr] .i_Uj-, html[dir] .CHSLU, html[dir=ltr] ._2Fo6S, html[dir=ltr] ._3ImlL, html[dir=ltr] ._5ML0C {
+        `html[dir] .Nm1g1._22AX6, html[dir] ._2JUrU ._3OC33, html[dir] ._2JUrU ._3Lby7, html[dir=ltr] .EtBAv, html[dir=ltr] .i_Uj-, html[dir] .CHSLU, html[dir=ltr] ._2Fo6S, html[dir=ltr] ._3ImlL, html[dir=ltr] ._5ML0C, html[dir] div[data-testid*="msg"]._1-lf9._3mSPV {
             animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUp;
         }`,
         // media message appear
-        `html[dir] .sxls5clz {
+        `html[dir] .sxls5clz, html[dir] .NQl4z {
             animation: 400ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUp;
         }`,
         // message reactions appear
@@ -387,7 +382,7 @@ function customStylesOnStart(){
     }`);
     // floating popup notification
     customStyles.insertRule(`
-    html[dir] .bs7a17vp.jxacihee.d53pemmv {
+    html[dir] .bs7a17vp.jxacihee.d53pemmv, html[dir] .NQl4z {
         border-radius: 20px;
         overflow: hidden;
     }`);
@@ -475,11 +470,15 @@ function customStylesOnStart(){
     //     margin: 5px;
     //     width: calc(100% - 10px);
     // }`);
-    // message textbox
+    // message bar textbox
     customStyles.insertRule(`
     html[dir] .p3_M1, html:not([dir='rtl']) .llnowng2, html[dir] div > ._1VmmK {
         border-radius: 20px;
         overflow: hidden;
+    }`);
+    customStyles.insertRule(`
+    html[dir] .mwp4sxku {
+        max-height: 20vh;
     }`);
     // ticks
     customStyles.insertRule(`
@@ -488,18 +487,18 @@ function customStylesOnStart(){
     }`);
     // receive messages
     customStyles.insertRule(`
-    html[dir] .message-in .Nm1g1._22AX6, html[dir] .message-in ._3OC33, html[dir] .message-in ._3Hxe_ {
+    html[dir] .message-in .Nm1g1._22AX6, html[dir] .message-in ._3OC33, html[dir] .message-in .ItfyB {
         border-radius: 7px 15px 15px 7px;
         overflow: hidden;
     }`);
     // receive message starter
     customStyles.insertRule(`
-    html[dir=ltr] .message-in ._8YVHI .Nm1g1._22AX6, html[dir] .message-in.focusable-list-item ._3OC33, html[dir] .message-in.focusable-list-item ._3Hxe_ {
+    html[dir=ltr] .message-in ._8YVHI .Nm1g1._22AX6, html[dir] .message-in ._18q-J ._3OC33, html[dir] .message-in ._18q-J .ItfyB {
         border-top-left-radius: 15px;
     }`);
     // sent messages
     customStyles.insertRule(`
-    html[dir] .message-out .Nm1g1._22AX6, html[dir] .message-out ._3OC33, html[dir] .message-out ._3Hxe_ {
+    html[dir] .message-out .Nm1g1._22AX6, html[dir] .message-out ._3OC33, html[dir] .message-out .ItfyB {
         border-radius: 15px 7px 7px 15px;
         overflow: hidden;
     }`);
@@ -509,7 +508,7 @@ function customStylesOnStart(){
     }`);
     // sent message starter
     customStyles.insertRule(`
-    html[dir=ltr] .message-out ._8YVHI .Nm1g1._22AX6, html[dir] .message-out.focusable-list-item ._3OC33, html[dir] .message-out.focusable-list-item ._3Hxe_ {
+    html[dir=ltr] .message-out ._8YVHI .Nm1g1._22AX6, html[dir] .message-out ._18q-J ._3OC33, html[dir] .message-out ._18q-J .ItfyB {
         border-top-right-radius: 15px;
     }`);
     // message padding
@@ -520,7 +519,7 @@ function customStylesOnStart(){
 
     // dropdown menu button
     customStyles.insertRule(`
-    html[dir=ltr] ._3snhK._3I4pa, html[dir=ltr] ._3U8t1._2copG, html[dir="ltr"] ._2wUmf div._18oGY {
+    html[dir=ltr] ._3snhK._3I4pa, html[dir=ltr] ._1-FMR ._18oGY, html[dir="ltr"] ._2wUmf div._18oGY {
         right: 0;
         top: 0;
         height: 30px;
@@ -644,8 +643,10 @@ function customStylesOnStart(){
         padding-left: 10px;
     }`);
     customStyles.insertRule(`
-    html[dir] ._1Hccy, html[dir] ._3x7O3, html[dir] ._3x7O3 > div, html[dir] ._10mnt, html[dir] ._3nQGi ._2hkxa, html[dir] ._3t1CR ._2hkxa, html[dir=ltr] ._1TdPb, html[dir=ltr] ._16kef, html[dir] ._2bgh7, html[dir] ._1NPzg, html[dir] .ga96p4vz:before, html[dir=ltr] ._3U8t1._1UyGr, html[dir] ._2nY6U, html[dir] ._2cYbV .rv6u8h8g, html[dir] div._1Mcu- {
+    html[dir] ._1Hccy, html[dir] ._3x7O3, html[dir] ._3x7O3 > div, html[dir] ._10mnt, html[dir] ._3nQGi ._2hkxa, html[dir] ._3t1CR ._2hkxa, html[dir=ltr] ._1TdPb, html[dir=ltr] ._16kef, html[dir] ._2bgh7, html[dir] ._1NPzg, html[dir] .ga96p4vz:before, html[dir=ltr] ._3U8t1._1UyGr, html[dir] ._2nY6U, html[dir] ._2cYbV .rv6u8h8g, html[dir] div._1Mcu-, html[dir] span[data-icon*="tail"]._1kh65 {
         background: ${main.transparent};
+        fill: ${main.transparent};
+        color: ${main.transparent};
         border: 0;
     }`);
     customStyles.insertRule(`

@@ -30,35 +30,71 @@ var backgroundImg = {
     },
 
     // others
+    authumPainting: {
+        link: "https://wallpaperaccess.com/full/230569.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "painting", "yellow", "black"],
+    },
+    // blueGreenOrangeYellowFluidPaint: {
+    //     link: "https://wallpaperaccess.com/full/1393217.jpg",
+    //     size: "cover",
+    //     repeat: "no-repeat",
+    //     tags: ["art", "fluid", "blue", "green", "orange", "yellow"],
+    // },
+    lightBlueBlackFluidPaint: {
+        link: "https://wallpaperaccess.com/full/2125382.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "blue", "white", "black"],
+    },
+    bluePurpleRedFluidPaint: {
+        link: "https://wallpaperaccess.com/full/2340129.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "blue", "purple", "red"],
+    },
+    lightBlueOrangeFluidPaint: {
+        link: "https://wallpaperaccess.com/full/2361602.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "blue", "orange"],
+    },
+    darkBlueWhiteFluidPaint: {
+        link: "https://wallpaperaccess.com/full/1943708.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "blue", "white", "black"],
+    },
     pinkPurpleBlueFluidPaint: {
         link: "https://wallpaperaccess.com/full/2245332.jpg",
         size: "cover",
         repeat: "no-repeat",
-        tags: ["fluidPaint", "blue", "pink", "black", "Purple"],
+        tags: ["art", "fluid", "blue", "pink", "black", "Purple"],
     },
     orangeBlackBlueFluidPaint: {
         link: "https://wallpaperaccess.com/full/2361576.jpg",
         size: "cover",
         repeat: "no-repeat",
-        tags: ["fluidPaint", "blue", "orange", "black"],
+        tags: ["art", "fluid", "blue", "orange", "black"],
     },
     orangeBlueFluidPaint: {
         link: "https://wallpaperaccess.com/full/1836721.jpg",
         size: "cover",
         repeat: "no-repeat",
-        tags: ["fluidPaint", "blue", "orange"],
+        tags: ["art", "fluid", "blue", "orange"],
     },
     darkBluePurpleFluidPaint: {
         link: "https://wallpaperaccess.com/full/2064925.jpg",
         size: "cover",
         repeat: "no-repeat",
-        tags: ["fluidPaint", "blue", "purple"],
+        tags: ["art", "fluid", "blue", "purple"],
     },
     greenBlueFluidPaint: {
         link: "https://wallpaperaccess.com/full/136866.jpg",
         size: "cover",
         repeat: "no-repeat",
-        tags: ["fluidPaint", "green", "blue"],
+        tags: ["art", "fluid", "green", "blue"],
     },
     blueFabricWave: {
         link: "https://wallpaperaccess.com/full/5934471.jpg",

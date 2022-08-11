@@ -1,6 +1,12 @@
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : `255, 0, 0`;
+}
+
 var customColoursElement = document.createElement("style");
 document.head.appendChild(customColoursElement);
 var customColours = customColoursElement.sheet;
+
 function customColoursOnStart() {
     var blurValue = utilities.styles.utilData.blurValue;
     var main = utilities.styles.utilData.main;
@@ -24,8 +30,9 @@ function customColoursOnStart() {
             --outgoing-background-deeper: ${main.black}${tran.overlayLight};
             --icon-ack: ${msg.status.read};
             --bubble-meta-icon: ${msg.status.sent};
-            --inverse: ${main.white}${tran.overlay};
-            --audio-process-incoming: #5e94b4;
+            --inverse: ${main.grey}${tran.overlay};
+            --inverse-rgb: ${hexToRgb(main.grey)};
+            --audio-process-incoming: ${theme.light};
             --incoming-background: ${msg.receive}${tran.unBlur};
             --incoming-background-rgb: ${hexToRgb(msg.receive)};
             --incoming-background-deeper: ${main.black}${tran.overlayLight};
@@ -285,7 +292,7 @@ function customColoursOnStart() {
             background: ${background.darker}bb;
         }`,
         // emoji menu & message not sent/couldnt send message menu
-        `html[dir] body.dark .o--vV.B_YVs._24No0, html[dir=ltr] body.dark ._1y99G {
+        `html[dir] body.dark .o--vV.B_YVs._24No0, html[dir=ltr] body.dark ._1y99G, body.dark ._2nY6U._3C4Vf ._37FrU {
             color: ${text.secondary};
         }`,
         // media message

@@ -260,8 +260,8 @@ function messageJumper(_event) {
     elements.push(jumper.element);
     elements = elements.reverse();
     
-    console.log("test: ", _event.shiftKey, _event.ctrlKey, jumper.n, elements[jumper.n], "==", textbox.textContent);
-    console.log(elements);
+    // console.log("test: ", _event.shiftKey, _event.ctrlKey, jumper.n, elements[jumper.n], "==", textbox.textContent);
+    // console.log(elements);
     
     if (textbox.textContent != elements[jumper.n]) jumper.n = 0;
 
@@ -296,7 +296,7 @@ function messageJumper(_event) {
 //--------------------------------------------------------------------------------------------------------- styles
 var a = true
 function stylesOnNewContact(){
-    changeBackground(a, ["fluidPaint", "wave", "space"], ["polynomial"]);
+    changeBackground(a, ["wave", "space", "art"], ["polynomial"]);
     a = false; 
     // changeBlur();
 }
