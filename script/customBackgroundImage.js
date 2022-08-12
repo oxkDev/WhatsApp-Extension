@@ -30,11 +30,65 @@ var backgroundImg = {
     },
 
     // others
-    authumPainting: {
+    abstractPolynomials: {
+        link: "https://wallpaperaccess.com/full/1836735.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "abstract", "white", "pink", "blue", "black"],
+    },
+    blackWhiteBlueFluidPaint: {
+        link: "https://wallpaperaccess.com/full/1323952.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "blue", "black", "white"],
+    },
+    blackPinkBacheFluidPaint: {
+        link: "https://wallpaperaccess.com/full/1323419.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "pink", "black"],
+    },
+    moltenBlackFluidPaint: {
+        link: "https://wallpaperaccess.com/full/1836722.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "red", "orange", "black", "molten"],
+    },
+    mountainNightsky: {
+        link: "https://wallpaperaccess.com/full/388374.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["black", "blue", "mountain"],
+    },
+    taibei101topGame: {
+        link: "https://wallpaperaccess.com/full/388261.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "abstract", "game", "blue", "orange"],
+    },
+    supernovaAbstractPaint: {
+        link: "https://wallpaperaccess.com/full/388238.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "abstract", "blue", "black"],
+    },
+    stickerWallpaper: {
+        link: "https://wallpaperaccess.com/full/48098.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["wallpaper", "sticker", "black"],
+    },
+    authumPaintingStreetside: {
         link: "https://wallpaperaccess.com/full/230569.jpg",
         size: "cover",
         repeat: "no-repeat",
         tags: ["art", "painting", "yellow", "black"],
+    },
+    authumPaintingStreetPath: {
+        link: "https://wallpaperaccess.com/full/1393532.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "painting", "yellow", "white"],
     },
     // blueGreenOrangeYellowFluidPaint: {
     //     link: "https://wallpaperaccess.com/full/1393217.jpg",
@@ -42,6 +96,36 @@ var backgroundImg = {
     //     repeat: "no-repeat",
     //     tags: ["art", "fluid", "blue", "green", "orange", "yellow"],
     // },
+    orangeYellowBlueFluidPaint: {
+        link: "https://wallpaperaccess.com/full/1323412.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["wave", "blue", "red", "yellow", "rainbow"],
+    },
+    orangeYellowBlueFluidPaint: {
+        link: "https://wallpaperaccess.com/full/5261426.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["wave", "fluid", "blue", "white"],
+    },
+    orangeYellowBlueFluidPaint: {
+        link: "https://wallpaperaccess.com/full/1393261.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "blue", "orange", "yellow", "rainbow"],
+    },
+    lightBlueBlackFluidPaint: {
+        link: "https://wallpaperaccess.com/full/7144826.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "blue", "white", "black"],
+    },
+    blueBlackPinkFluidPaint: {
+        link: "https://wallpaperaccess.com/full/1393456.jpg",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "fluid", "blue", "pink", "black"],
+    },
     lightBlueBlackFluidPaint: {
         link: "https://wallpaperaccess.com/full/2125382.jpg",
         size: "cover",

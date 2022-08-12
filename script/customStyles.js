@@ -643,12 +643,16 @@ function customStylesOnStart(){
         padding-left: 10px;
     }`);
     customStyles.insertRule(`
-    html[dir] ._1Hccy, html[dir] ._3x7O3, html[dir] ._3x7O3 > div, html[dir] ._10mnt, html[dir] ._3nQGi ._2hkxa, html[dir] ._3t1CR ._2hkxa, html[dir=ltr] ._1TdPb, html[dir=ltr] ._16kef, html[dir] ._2bgh7, html[dir] ._1NPzg, html[dir] .ga96p4vz:before, html[dir=ltr] ._3U8t1._1UyGr, html[dir] ._2nY6U, html[dir] ._2cYbV .rv6u8h8g, html[dir] div._1Mcu-, html[dir] span[data-icon*="tail"]._1kh65 {
-        background: ${main.transparent};
+    html[dir] span[data-icon*="tail"]._1kh65 {
         fill: ${main.transparent};
         color: ${main.transparent};
+    }`);
+    customStyles.insertRule(`
+    html[dir] ._1Hccy, html[dir] ._3x7O3, html[dir] ._3x7O3 > div, html[dir] ._10mnt, html[dir] ._3nQGi ._2hkxa, html[dir] ._3t1CR ._2hkxa, html[dir=ltr] ._1TdPb, html[dir=ltr] ._16kef, html[dir] ._2bgh7, html[dir] ._1NPzg, html[dir] .ga96p4vz:before, html[dir=ltr] ._3U8t1._1UyGr, html[dir] ._2nY6U, html[dir] ._2cYbV .rv6u8h8g, html[dir] div._1Mcu-, html[dir] span[data-icon*="tail"]._1kh65 {
+        background: ${main.transparent};
         border: 0;
     }`);
+
     customStyles.insertRule(`
     html[dir=ltr] ._1iDDZ {
         border-radius: 10px;
@@ -747,6 +751,12 @@ function customStylesOnStart(){
     // messages
     customStyles.insertRule(`
     .tm2tP {
+        order: 1;
+        z-index: 2;
+    }`);
+    // messages screen
+    customStyles.insertRule(`
+    html[dir=ltr] ._1-FMR, html[dir=rtl] ._1-FMR {
         order: 1;
         z-index: 2;
     }`);

@@ -296,7 +296,7 @@ function messageJumper(_event) {
 //--------------------------------------------------------------------------------------------------------- styles
 var a = true
 function stylesOnNewContact(){
-    changeBackground(a, ["wave", "space", "art"], ["polynomial"]);
+    changeBackground(a, ["wave", "space", "art", "black"], ["polynomial"]);
     a = false; 
     // changeBlur();
 }
@@ -374,7 +374,7 @@ window.onload = () => {
 }
 
 document.onmousedown = event => {
-    if (!event.button && event.target.classList.contains("_2wUmf")) {
+    if (!event.button && event.target.classList.contains("_1-FMR")) {
         event.target.dblclick();
         console.log("return messgae");
     }
