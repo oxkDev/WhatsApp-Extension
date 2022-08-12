@@ -64,7 +64,7 @@ function customColoursOnStart() {
             --compose-input-border: ${main.transparent};
             --compose-panel-background: ${main.transparent};
             --rich-text-panel-background: ${theme.secondary}${tran.unBlur};
-            --popup-panel-background: ${main.black}${tran.overlay};
+            --popup-panel-background: ${main.black}${tran.overlayLight};
             --panel-input-background: ${background.primary}${tran.unBlur};
             --media-editor-image-caption-input-background: ${main.black}${tran.overlay};
             --active-tab-marker: ${theme.lighter}${tran.overlayHeavy};
@@ -202,6 +202,8 @@ function customColoursOnStart() {
             --butterbar-update-icon: ${theme.light};
             --beta-tag-background: ${theme.light};
             --chat-marker-background: ${theme.light}${tran.overlayHeavy};
+            --quick-action-button: ${main.white}${tran.overlay};
+            --reaction-button: ${main.white}${tran.overlay};
             --reactions-picker-bg: ${main.white}${tran.overlayLighter};
             
             /* other colours */

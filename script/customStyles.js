@@ -192,7 +192,7 @@ function customStylesOnStart(){
             animation: onWhatsAppLoad 500ms ease-out;
         }`,
         // message element appear
-        `html[dir] .Nm1g1._22AX6, html[dir] ._2JUrU ._3OC33, html[dir] ._2JUrU ._3Lby7, html[dir=ltr] .EtBAv, html[dir=ltr] .i_Uj-, html[dir] .CHSLU, html[dir=ltr] ._2Fo6S, html[dir=ltr] ._3ImlL, html[dir=ltr] ._5ML0C, html[dir] div[data-testid*="msg"]._1-lf9._3mSPV {
+        `html[dir] .Nm1g1._22AX6, html[dir] ._2JUrU ._3OC33, html[dir] ._2JUrU ._3Lby7, html[dir=ltr] .EtBAv, html[dir=ltr] .i_Uj-, html[dir] .CHSLU, html[dir] ._3DThG, html[dir=ltr] ._2Fo6S, html[dir=ltr] ._3ImlL, html[dir=ltr] ._5ML0C, html[dir] div[data-testid*="msg"]._1-lf9 {
             animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUp;
         }`,
         // media message appear
@@ -334,7 +334,7 @@ function customStylesOnStart(){
     customStyles.insertRule(`
     html[dir=ltr] div > ._33LGR {
         top: -79px;
-        height: calc(100% + 59px + 79px);
+        height: calc(100% + 62px + 80px);
     }`);
     customStyles.insertRule(`
     html[dir=ltr] ._3M3aq._3KRR6 {
@@ -463,9 +463,9 @@ function customStylesOnStart(){
     html[dir] ._2BU3P.tm2tP.copyable-area, html[dir] .lhggkp7q.b9fczbqn.f09rd1o5.p357zi0d, html[dir=ltr] ._1fLGu {
         border-radius: 20px 20px 0px 0px;
     }`);
-    // message bar 2
+    // // message bar 2
     // customStyles.insertRule(`
-    // html[dir] ._2BU3P.tm2tP.copyable-area {
+    // html[dir] ._2BU3P.tm2tP.copyable-area, html[dir] .lhggkp7q.b9fczbqn.f09rd1o5.p357zi0d, html[dir=ltr] ._1fLGu {
     //     border-radius: 20px;
     //     margin: 5px;
     //     width: calc(100% - 10px);
@@ -479,6 +479,10 @@ function customStylesOnStart(){
     customStyles.insertRule(`
     html[dir] .mwp4sxku {
         max-height: 20vh;
+    }`);
+    customStyles.insertRule(`
+    html[dir] .rrq4r3yd {
+        background: ${main.transparent};
     }`);
     // ticks
     customStyles.insertRule(`
@@ -682,7 +686,7 @@ function customStylesOnStart(){
 
     // media message
     customStyles.insertRule(`
-    html:not([dir='rtl']) button.i5tg98hk.f9ovudaz.przvwfww.gx1rr48f.shdiholb, html[dir] .CHSLU, html[dir] ._2Fo6S, html[dir] .sxls5clz, html[dir] ._3vRLq, html[dir] ._1HqS9 {
+    html:not([dir='rtl']) button.i5tg98hk.f9ovudaz.przvwfww.gx1rr48f.shdiholb, html[dir] .CHSLU, html[dir] ._3DThG, html[dir] ._2Fo6S, html[dir] .sxls5clz, html[dir] ._3vRLq, html[dir] ._1HqS9 {
         border-radius: 12px;
         overflow: hidden;
     }`);
