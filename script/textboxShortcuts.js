@@ -297,8 +297,7 @@ function messageJumper(_event) {
 var a = true
 function stylesOnNewContact(){
     changeBackground(a, ["wave", "space", "art", "black"], ["polynomial"]);
-    a = false; 
-    // changeBlur();
+    a = false;
 }
 
 //--------------------------------------------------------------------------------------------------------- final loads

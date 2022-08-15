@@ -23,10 +23,10 @@ const settings = {
         "Blur": newSwitch(),
         "Background Image": newSwitch(),
     },
-    others: {
-        "Link Changer": newSwitch(),
-        "Spammer": newSwitch(),
-    },
+    // others: {
+    //     "Link Changer": newSwitch(),
+    //     "Spammer": newSwitch(),
+    // },
 }
 
 
@@ -265,10 +265,10 @@ const provider = (function() {
 function setSwitchStatus(){
     console.log(`setSwitchStatus():`, utilities);
     console.log(`setSwitchStatus test:`, utilities.linkChanger.status, utilities.spammer.status, utilities.spammer.utilData.count);
-    // deciding link switch statuwaits
-    settings.others["Link Changer"].classList.toggle("enabled", utilities.linkChanger.status);
-    // deciding spam switch status
-    settings.others["Spammer"].classList.toggle("enabled", utilities.spammer.status);
+    // // deciding link switch statuwaits
+    // settings.others["Link Changer"].classList.toggle("enabled", utilities.linkChanger.status);
+    // // deciding spam switch status
+    // settings.others["Spammer"].classList.toggle("enabled", utilities.spammer.status);
     settings.styles["Blur"].classList.toggle("enabled", utilities.styles.utilData.blurStatus);
     settings.styles["Background Image"].classList.toggle("enabled", utilities.styles.utilData.backgroundImgStatus);
 }
@@ -279,17 +279,17 @@ function initialiseAll(){
 }
 
 function eventListeners(){
-    settings.others["Link Changer"].addEventListener("click", function(event){
-            utilities.linkChanger.status = !utilities.linkChanger.status;
-            setSwitchStatus();
-            provider.setData();
-    });
+    // settings.others["Link Changer"].addEventListener("click", function(event){
+    //         utilities.linkChanger.status = !utilities.linkChanger.status;
+    //         setSwitchStatus();
+    //         provider.setData();
+    // });
 
-    settings.others["Spammer"].addEventListener("click", function(event){
-            utilities.spammer.status = !utilities.spammer.status;
-            setSwitchStatus();
-            provider.setData();
-    });
+    // settings.others["Spammer"].addEventListener("click", function(event){
+    //         utilities.spammer.status = !utilities.spammer.status;
+    //         setSwitchStatus();
+    //         provider.setData();
+    // });
 
     settings.styles["Blur"].addEventListener("click", function(event){
             utilities.styles.utilData.blurStatus = !utilities.styles.utilData.blurStatus;

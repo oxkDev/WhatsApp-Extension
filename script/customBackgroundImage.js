@@ -72,12 +72,12 @@ var backgroundImg = {
         repeat: "no-repeat",
         tags: ["art", "abstract", "blue", "black"],
     },
-    stickerWallpaper: {
-        link: "https://wallpaperaccess.com/full/48098.jpg",
-        size: "cover",
-        repeat: "no-repeat",
-        tags: ["wallpaper", "sticker", "black"],
-    },
+    // stickerWallpaper: {
+    //     link: "https://wallpaperaccess.com/full/48098.jpg",
+    //     size: "cover",
+    //     repeat: "no-repeat",
+    //     tags: ["wallpaper", "sticker", "black"],
+    // },
     authumPaintingStreetside: {
         link: "https://wallpaperaccess.com/full/230569.jpg",
         size: "cover",

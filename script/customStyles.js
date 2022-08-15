@@ -320,7 +320,19 @@ function customStylesOnStart(){
             transition: all 100ms ease-in-out;
         }`,
     ];
-    // colours
+    // main settinsg
+    customStyles.insertRule(`
+        html{
+            scroll-behavior: smooth;
+        }
+    `);
+    // customStyles.insertRule(`
+    //     @media screen and (height <= 120vh) {
+    //         html[dir] ._2gzeB:not(.velocity-animating) ._33LGR {
+    //             scroll-behavior: smooth;
+    //         }
+    //     }
+    // `);
     // page sizing
     customStyles.insertRule(`
     html[dir] .app-wrapper-web ._1XkO3, ._1iwk6 {
@@ -333,7 +345,7 @@ function customStylesOnStart(){
     // chat screen sizing
     customStyles.insertRule(`
     html[dir=ltr] div > ._33LGR {
-        top: -79px;
+        top: -80px;
         height: calc(100% + 62px + 80px);
     }`);
     customStyles.insertRule(`
@@ -481,7 +493,7 @@ function customStylesOnStart(){
         max-height: 20vh;
     }`);
     customStyles.insertRule(`
-    html[dir] .rrq4r3yd {
+    html[dir] ._3Bc7H .rrq4r3yd {
         background: ${main.transparent};
     }`);
     // ticks
