@@ -3,18 +3,28 @@ function hexToRgb(hex) {
     return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : `255, 0, 0`;
 }
 
+var themeNumber = 0;
+
 var customColoursElement = document.createElement("style");
 document.head.appendChild(customColoursElement);
+customColoursElement.id = "custom-colours";
 var customColours = customColoursElement.sheet;
 
+var customMetaHeader = document.createElement("meta");
+customMetaHeader.name = "theme-color";
+document.head.append(customMetaHeader);
+
 function customColoursOnStart() {
+    themeNumber = utilities.styles.utilData.themeNumber;
     var blurValue = utilities.styles.utilData.blurValue;
-    var main = utilities.styles.utilData.main;
-    var theme = utilities.styles.utilData.theme;
-    var tran = utilities.styles.utilData.tran;
-    var msg = utilities.styles.utilData.message;
-    var text = utilities.styles.utilData.text;
-    var background = utilities.styles.utilData.background;
+    var main = themes[themeNumber].main;
+    var theme = themes[themeNumber].theme;
+    var tran = themes[themeNumber].tran;
+    var msg = themes[themeNumber].message;
+    var text = themes[themeNumber].text;
+    var background = themes[themeNumber].background;
+
+    customMetaHeader.content = theme.secondary;
 
     colourVariables = [
         `html[dir] body.dark {
@@ -27,7 +37,7 @@ function customColoursOnStart() {
             /* messages */ 
             --outgoing-background: ${msg.send}${tran.unBlur};
             --outgoing-background-rgb: ${hexToRgb(msg.send)};
-            --outgoing-background-deeper: ${main.black}${tran.overlayLight};
+            --outgoing-background-deeper: ${main.theme}${tran.overlayLight};
             --icon-ack: ${msg.status.read};
             --bubble-meta-icon: ${msg.status.sent};
             --inverse: ${main.grey}${tran.overlay};
@@ -35,17 +45,17 @@ function customColoursOnStart() {
             --audio-process-incoming: ${theme.light};
             --incoming-background: ${msg.receive}${tran.unBlur};
             --incoming-background-rgb: ${hexToRgb(msg.receive)};
-            --incoming-background-deeper: ${main.black}${tran.overlayLight};
+            --incoming-background-deeper: ${main.theme}${tran.overlayLight};
             --message-primary: ${text.primary};
-            --audio-track-outgoing: ${main.black}${tran.overlay};
-            --audio-track-incoming: ${main.black}${tran.overlay};
-            --audio-control-outgoing: ${main.white}${tran.overlay};
-            --audio-control-incoming: ${main.white}${tran.overlay};
+            --audio-track-outgoing: ${main.theme}${tran.overlay};
+            --audio-track-incoming: ${main.theme}${tran.overlay};
+            --audio-control-outgoing: ${main.contrast}${tran.overlay};
+            --audio-control-incoming: ${main.contrast}${tran.overlay};
             --reactions-bubble-border:  ${main.transparent};
             --ptt-draft-waveform-background: ${main.transparent};
             --button-bubble: ${theme.light};
-            --round-entry-point-background-color: ${main.black}${tran.unBlur};
-            --quick-action-button-background: ${main.black}${tran.unBlur};
+            --round-entry-point-background-color: ${main.theme}${tran.unBlur};
+            --quick-action-button-background: ${main.theme}${tran.unBlur};
 
             /* unread bar */
             --unread-background: ${theme.secondary}${tran.overlay};
@@ -60,19 +70,19 @@ function customColoursOnStart() {
             --system-message-background: ${background.dark}${tran.unBlur};
             
             /* message bar */
-            --compose-input-background: ${main.black}${tran.overlayLight};
+            --compose-input-background: ${main.theme}${tran.overlayLight};
             --compose-input-border: ${main.transparent};
             --compose-panel-background: ${main.transparent};
             --rich-text-panel-background: ${theme.secondary}${tran.unBlur};
-            --popup-panel-background: ${main.black}${tran.overlayLight};
+            --popup-panel-background: ${main.theme}${tran.overlayLight};
             --panel-input-background: ${background.primary}${tran.unBlur};
-            --media-editor-image-caption-input-background: ${main.black}${tran.overlay};
+            --media-editor-image-caption-input-background: ${main.theme}${tran.overlay};
             --active-tab-marker: ${theme.lighter}${tran.overlayHeavy};
-            --sticker-button-background: ${main.black}${tran.overlay};
+            --sticker-button-background: ${main.theme}${tran.overlay};
             
             /* messages background */
-            --thumb-border-viewer-active: ${main.white}${tran.overlayLighter};
-            --thumb-border-viewer-active-rgb: ${main.white};
+            --thumb-border-viewer-active: ${main.contrast}${tran.overlayLighter};
+            --thumb-border-viewer-active-rgb: ${main.contrast};
 
             /* contact bar / contact header */
             --panel-header-background: ${theme.secondary}${tran.unBlur};
@@ -89,12 +99,12 @@ function customColoursOnStart() {
             --background-default: ${background.dark};
             --background-default-active: ${main.grey}20;
             --background-default-hover: ${main.grey}10;
-            --chatlist-icon: ${main.white}${tran.overlayLight};
-            --border-list: ${main.white}${tran.overlayLighter};
+            --chatlist-icon: ${main.contrast}${tran.overlayLight};
+            --border-list: ${main.contrast}${tran.overlayLighter};
             --border-stronger: ${main.transparent};
-            --avatar-placeholder-background: ${main.white}${tran.overlayLighter};
+            --avatar-placeholder-background: ${main.contrast}${tran.overlayLighter};
             --avatar-placeholder-primary: ${main.grey}${tran.overlayLight};
-            --search-input-background: ${main.black}${tran.overlayLight};
+            --search-input-background: ${main.theme}${tran.overlayLight};
             --search-container-background: ${background.darker};
             --search-input-container-background: ${theme.secondary};
             --search-input-container-background-active: ${theme.secondary};
@@ -111,8 +121,8 @@ function customColoursOnStart() {
             --drawer-background-deep: ${background.darker}${tran.unBlur};
             --border-panel: ${background.darker}${tran.unBlur};
             --drawer-gallery-background: ${background.dark};
-            --drawer-gallery-background-hover: ${main.white}${tran.overlayLighter};
-            --photopicker-overlay-background: ${main.black}${tran.overlay};
+            --drawer-gallery-background-hover: ${main.contrast}${tran.overlayLighter};
+            --photopicker-overlay-background: ${main.theme}${tran.overlay};
 
             /* popup media screen */
             --media-viewer-background: ${background.darker}${tran.unBlur};
@@ -121,13 +131,13 @@ function customColoursOnStart() {
             --panel-background-lighter: ${background.primary}${tran.overlayLight};
             --modal-backdrop: ${background.darker}${tran.unBlur};
             --modal-backdrop-solid: ${background.darker};
-            --modal-background: ${main.white}${tran.overlayLighter};
-            --chevron-button-background: ${main.white}${tran.overlayLighter};
-            --button-background-disabled: ${main.black}${tran.overlayLight};
+            --modal-background: ${main.contrast}${tran.overlayLighter};
+            --chevron-button-background: ${main.contrast}${tran.overlayLighter};
+            --button-background-disabled: ${main.theme}${tran.overlayLight};
             --media-editor-thumb-border-active: ${theme.light};
 
             /* media thumbnail */
-            --media-gallery-thumb-background: ${main.white}${tran.overlayLighter};
+            --media-gallery-thumb-background: ${main.contrast}${tran.overlayLighter};
             
             /* progress indicator */
             --progress-primary: ${theme.primary};
@@ -142,42 +152,42 @@ function customColoursOnStart() {
             --button-primary: ${text.primary};
             --button-primary-background: ${theme.lighter}${tran.overlay};
             --button-primary-background-hover: ${theme.lighter}${tran.overlay};
-            --ptt-draft-button-send-hover: ${main.white}${tran.overlayLighter};
+            --ptt-draft-button-send-hover: ${main.contrast}${tran.overlayLighter};
             --ptt-draft-button-send: ${main.transparent};
             --button-plain-background: ${theme.light}${tran.overlay};
             --button-plain-background-hover: ${theme.lighter}${tran.overlay};
 
             /* switches */
-            --switch-button-color: ${main.white}${tran.overlay};
+            --switch-button-color: ${main.contrast}${tran.overlay};
             --switch-track-color: ${main.grey}${tran.overlay};
             --switch-button-checked-color: ${theme.lighter};
             --switch-track-checked-color: ${theme.primary};
             
             /* status screen */
             --status-background: ${background.darker}${tran.unBlur};
-            --status-background-hover: ${main.black}${tran.overlayLight};
+            --status-background-hover: ${main.theme}${tran.overlayLight};
             --status-primary: ${text.primary};
             
             /* popup */
             --reactions-tray-background: ${background.primary}${tran.unBlur};
             --dropdown-background: ${background.primary}${tran.unBlur};
-            --dropdown-background-hover: ${main.white}${tran.overlayLighter};
+            --dropdown-background-hover: ${main.contrast}${tran.overlayLighter};
             --pip-manager-content: ${background.darker}${tran.unBlur};
             --picker-background: ${background.primary}${tran.unBlur};
             --reactions-details-background: ${background.primary}${tran.unBlur};
             --tooltip-background: ${background.primary}${tran.unBlur};
-            --compose-panel-background-hover: ${main.white}${tran.overlayLighter};
+            --compose-panel-background-hover: ${main.contrast}${tran.overlayLighter};
 
             /* floating notification */
             --toast-background: ${background.primary}${tran.unBlur};
 
             /* primary colours / svg icon colours */
-            --icon-fixed: ${main.white}${tran.overlay};
+            --icon-fixed: ${main.contrast}${tran.overlay};
             --icon-search-back: ${theme.light};
             --icon-bright-highlight: ${theme.light};
             --icon-high-emphasis: ${theme.light};
-            --icon-lighter: ${main.white}${tran.overlayLight};
-            --icon-pinned: ${main.white}${tran.overlay};
+            --icon-lighter: ${main.contrast}${tran.overlayLight};
+            --icon-pinned: ${main.contrast}${tran.overlay};
             --unread-marker-background: ${theme.lighter};
             --unread-timestamp: ${theme.light};
             --teal: ${theme.lighter};
@@ -193,24 +203,24 @@ function customColoursOnStart() {
             --svg-icon-theme-primary: ${theme.primary};
             --svg-icon-theme-light: ${theme.light};
             --svg-icon-theme-lighter: ${theme.lighter};
-            --svg-icon-main-white: ${main.white}${tran.overlay};
-            --media-editor-icon-color: ${main.white}${tran.overlay};
-            --panel-header-icon: ${main.white}${tran.overlay};
+            --svg-icon-main-white: ${main.contrast}${tran.overlay};
+            --media-editor-icon-color: ${main.contrast}${tran.overlay};
+            --panel-header-icon: ${main.contrast}${tran.overlay};
             --checkbox-background: ${theme.lighter};
             --round-icon-background: ${theme.light};
             --input-empty-value-placeholder: ${theme.light};
             --butterbar-update-icon: ${theme.light};
             --beta-tag-background: ${theme.light};
             --chat-marker-background: ${theme.light}${tran.overlayHeavy};
-            --quick-action-button: ${main.white}${tran.overlay};
-            --reaction-button: ${main.white}${tran.overlay};
-            --reactions-picker-bg: ${main.white}${tran.overlayLighter};
+            --quick-action-button: ${main.contrast}${tran.overlay};
+            --reaction-button: ${main.contrast}${tran.overlay};
+            --reactions-picker-bg: ${main.contrast}${tran.overlayLighter};
             
             /* other colours */
             --danger: ${theme.danger};
             --link: ${theme.link};
             --mention-at-symbol: ${theme.link};
-            --icon: ${main.white}${tran.overlay};
+            --icon: ${main.contrast}${tran.overlay};
             
             /* text input light */
             --input-border-active: ${theme.light}${tran.overlayLight};
@@ -222,7 +232,7 @@ function customColoursOnStart() {
 
             /* side audio popup */
             --ptt-ooc-background: ${theme.secondary}${tran.unBlur};
-            --ptt-draft-button-play-pause-out-of-chat: ${main.white}${tran.overlay};
+            --ptt-draft-button-play-pause-out-of-chat: ${main.contrast}${tran.overlay};
 
             /* other text colours */
             --primary: ${text.primary};
@@ -255,8 +265,8 @@ function customColoursOnStart() {
             --outgoing-background: ${msg.send}${tran.blur};
             --incoming-background: ${msg.receive}${tran.blur};
             --unread-bar-background: ${theme.secondary}${tran.overlay};
-            --round-entry-point-background-color: ${main.black}${tran.blur};
-            --quick-action-button-background: ${main.black}${tran.blur};
+            --round-entry-point-background-color: ${main.theme}${tran.blur};
+            --quick-action-button-background: ${main.theme}${tran.blur};
             --notification-e2e-background: ${background.dark}${tran.blur};
             --system-message-background: ${background.dark}${tran.blur};
             --rich-text-panel-background: ${theme.secondary}${tran.blur};
@@ -299,14 +309,23 @@ function customColoursOnStart() {
         }`,
         // media message
         `html[dir] body.dark ._3vRLq {
-            background-color: ${main.white}${tran.overlayLighter};
+            background-color: ${main.contrast}${tran.overlayLighter};
         }`,
         // button, checkbox
         `html[dir] body.dark ._20C5O, html:not([dir='rtl']) body.dark .s2vc4xk1:hover {
-            background-color: ${main.white}${tran.overlayLighter};
+            background-color: ${main.contrast}${tran.overlayLighter};
         }`,
     ];
     for (i in colourVariables) {
         customColours.insertRule(colourVariables[i], i);
     };
 }
+
+chrome.storage.sync.onChanged.addListener(e => {
+    if (themeNumber != e.utilities.newValue.styles.utilData.themeNumber) {
+        for (i in colourVariables) {
+            customColours.deleteRule(0);
+        }
+        customColoursOnStart();
+    }
+})

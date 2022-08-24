@@ -198,26 +198,26 @@ function keyCombinationListener(_event) {
     //     utilities = result.utilities;
     // });
     window.InputEvent = window.Event || window.InputEvent;
-    if (_event.key == "Enter" && textbox.textContent != "" && !_event.shiftKey) { //--------------------------------------------------------------- enter key
-        if (utilities.linkChanger.status){
-            console.log('changing text');
-            setText(textbox.textContent.replaceAll(" ", "_"));
-            textbox.textContent += `_${utilities.linkChanger.utilData.ranStr[randInt(utilities.linkChanger.utilData.ranStr.length)]}`;
-        }
-        if (utilities.spammer.status){
-            console.log(`spamming: \n${utilities.spammer.utilData.count}, ${utilities.spammer.utilData.limit}`);
-            if (utilities.spammer.utilData.count > utilities.spammer.utilData.limit){
-                utilities.spammer.utilData.count = utilities.spammer.utilData.limit;
-                provider.setData();
-                console.log("spam count reduced due to over limit");
-            }
-            spamMessage(utilities.spammer.utilData, textbox.textContent);
-        // }else{
-        }
-        textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
-        document.querySelector("button.tvf2evcx.oq44ahr5.lb5m6g5c.svlsagor.p2rjqpw5.epia9gcq").click();
-        return false;
-    }
+    // if (_event.key == "Enter" && textbox.textContent != "" && !_event.shiftKey) { //--------------------------------------------------------------- enter key
+    //     if (utilities.linkChanger.status){
+    //         console.log('changing text');
+    //         setText(textbox.textContent.replaceAll(" ", "_"));
+    //         textbox.textContent += `_${utilities.linkChanger.utilData.ranStr[randInt(utilities.linkChanger.utilData.ranStr.length)]}`;
+    //     }
+    //     if (utilities.spammer.status){
+    //         console.log(`spamming: \n${utilities.spammer.utilData.count}, ${utilities.spammer.utilData.limit}`);
+    //         if (utilities.spammer.utilData.count > utilities.spammer.utilData.limit){
+    //             utilities.spammer.utilData.count = utilities.spammer.utilData.limit;
+    //             provider.setData();
+    //             console.log("spam count reduced due to over limit");
+    //         }
+    //         spamMessage(utilities.spammer.utilData, textbox.textContent);
+    //     // }else{
+    //     }
+    //     textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
+    //     document.querySelector("button.tvf2evcx.oq44ahr5.lb5m6g5c.svlsagor.p2rjqpw5.epia9gcq").click();
+    //     return false;
+    // }
     if (_event.functionKey() && !(_event.shiftKey || _event.altKey)) { //--------------------------------------------------------------- meta key
         if (Object.keys(textSymbols).indexOf(_event.key) + 1) {
             extraSideSymbols(textSymbols[_event.key]);
@@ -244,7 +244,10 @@ function keyCombinationListener(_event) {
         }
         console.log(`linkChanger.status: ${utilities.linkChanger.status}\nspammer: ${utilities.spammer.status}`);
         provider.setData();
-        return false;
+        if (_event.key == " ") {
+            document.execCommand("insertText", false, "ㅤ");
+            return false;
+        }
     }
 }
 

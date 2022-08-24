@@ -1,5 +1,6 @@
 var backgroundPicturesElement = document.createElement("style");
 document.head.appendChild(backgroundPicturesElement);
+backgroundPicturesElement.id = "custom-background-image";
 var backgroundPictures = backgroundPicturesElement.sheet;
 
 var backgroundImg = {

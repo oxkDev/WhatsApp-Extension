@@ -4,50 +4,101 @@ var utilities;
 
 class Utility {
     constructor(status, code, utilData) {
-        this.status = status;
-        this.code = code;
-        this.utilData = utilData;
+        this.status = Boolean(status);
+        this.code = code || "testCode";
+        this.utilData = utilData || {testData: "no data!"};
     }
 };
 
+// oxk Dark
+class ColourTheme {
+    constructor(theme, background, message, text, main, tran){
+        this.theme = theme || {
+            primary: "#083a55",
+            secondary: "#141b20",
+            light: "#2a7095",
+            lighter: "#298abe",
+            danger: "#f14040",
+            link: "#459dd9",
+        };
+        this.background = background || {
+            primary: "#061527",
+            secondary: "#1a232a",
+            dark: "#071423",
+            light: "#0f1f31",
+            darker: "#000c1a",
+        };
+        this.message = message || {
+            send: this.theme.primary,
+            receive: this.background.secondary,
+            status: {
+                read: "#f2f9ffd4",
+                sent: "#ffffff" + "32",
+            },
+        };
+        this.text = text || {
+            header: this.theme.light,
+            primary: "#ffffff" + "b3",
+            secondary: "#ffffff" + "70",
+            tersary: "#ffffff" + "47",
+            contrast: "#000000" + "70",
+        };
+        this.main = main || {
+            theme: "#000000",
+            contrast: "#FFFFFF",
+            grey: "#777777", 
+            transparent: "transparent",
+        };
+        this.tran = tran || {
+            overlay: "47",
+            overlayHeavy: "75",
+            overlayLight: "32",
+            overlayLighter: "0f",
+            blur: "b0",
+            unBlur: "ea",
+        };
+    }
+}
 
-// // erythrite
-// const defaultTheme = {
-//     primary: "#ff5b61",
-//     secondary: "#ffcccb",
-//     light: "#aa366a",
-//     lighter: "#f64747",
-//     danger: "#ff0000",
-//     link: "#ff0000",
-// };
-
-// const defaultBackground = {
-//     primary: "#FF8991",
-//     secondary: "#ffcccb",
-//     dark: "#f8c8dc",
-//     light: "#ffb6c1",
-//     darker: "#f9cddf",
-// };
-
-// const defaultMessage = {
-//     send: defaultTheme.primary,
-//     receive: defaultBackground.secondary,
-//     status: {
-//         read: "#ff3535",
-//         sent: "#000000" + "32",
-//     },
-// };
-
-// const defaultText = {
-//     header: defaultTheme.light,
-//     primary: "#000000" + "b3",
-//     secondary: "#000000" + "80",
-//     tersary: "#000000" + "47",
-//     contrast: "#FFFFFF" + "70"
-// }
-
-// const whiteBlack = ["#000000", "#FFFFFF"];
-
+// erythrite
+const erythriteTheme = new ColourTheme(
+    theme = {
+        primary: "#ff5b61",
+        secondary: "#ffcccb",
+        light: "#aa366a",
+        lighter: "#f64747",
+        danger: "#ff0000",
+        link: "#ff0000",
+    },
+    background = {
+        primary: "#FF8991",
+        secondary: "#ffcccb",
+        dark: "#f8c8dc",
+        light: "#ffb6c1",
+        darker: "#f9cddf",
+    },
+    {
+        send: theme.primary,
+        receive: background.secondary,
+        status: {
+            read: "#ff3535",
+            sent: "#000000" + "32",
+        },
+    },
+    {
+        header: theme.light,
+        primary: "#000000" + "b3",
+        secondary: "#000000" + "80",
+        tersary: "#000000" + "47",
+        contrast: "#FFFFFF" + "70"
+    },
+    {
+        theme: "#FFFFFF",
+        contrast: "#000000",
+        grey: "#777777",
+        transparent: "transparent",
+    }
+)
 // // oxk Light
 // const defaultTheme = {
 //     primary: "#083a55",
@@ -83,50 +134,15 @@ class Utility {
 //     contrast: "#ffffff" + "70",
 // }
 
-// const whiteBlack = ["#000000", "#FFFFFF"];
+// const main = {"#000000", "#FFFFFF"};
+const themes = [new ColourTheme(), erythriteTheme];
 
-// oxk Dark
-const defaultTheme = {
-    primary: "#083a55",
-    secondary: "#141b20",
-    light: "#2a7095",
-    lighter: "#298abe",
-    danger: "#f14040",
-    link: "#459dd9",
-};
-
-const defaultBackground = {
-    primary: "#061527",
-    secondary: "#1a232a",
-    dark: "#071423",
-    light: "#0f1f31",
-    darker: "#000c1a",
-};
-
-const defaultMessage = {
-    send: defaultTheme.primary,
-    receive: defaultBackground.secondary,
-    status: {
-        read: "#f2f9ffd4",
-        sent: "#ffffff" + "32",
-    },
-};
-
-const defaultText = {
-    header: defaultTheme.light,
-    primary: "#ffffff" + "b3",
-    secondary: "#ffffff" + "70",
-    tersary: "#ffffff" + "47",
-    contrast: "#000000" + "70",
-}
-
-const whiteBlack = ["#FFFFFF", "#000000"];
-
-const DefaultData = {
-    linkChanger: new Utility(
-        false,
-        "linkChanger",
-        {ranStr: [
+class Data {
+    constructor(linkChanger, spammer, styles) {
+        this.linkChanger = linkChanger || new Utility(
+            false,
+            "linkChanger",
+            {ranStr: [
                 "@gmail.gov.sg",
                 ".gov.sg",
                 "@ssts.edu.sg",
@@ -136,69 +152,49 @@ const DefaultData = {
                 "@yahoo.gov.sg",
                 ".pp.com",
                 "tofy.com",
-        ]}
-    ),
-    spammer: new Utility(
-        false,
-        "spammer",
-        {
-            count: 10,
-            limit: 100,
-            delay: 300
-        }
-    ),
-    styles: new Utility(
-        true,
-        "styles",
-        {
-            blurStatus: true,
-            backgroundImgStatus: true,
-            theme: defaultTheme,
-            background: defaultBackground,
-            message: defaultMessage,
-            text: defaultText,
-            blurValue: {
-                medium: "30px",
-                light: "20px",
-                lighter: "15px",
-                heavy: "45px",
-            },
-            main: {
-                white: whiteBlack[0],
-                black: whiteBlack[1],
-                grey: "#777777",
-                transparent: "transparent",
-            },
-            tran: {
-                overlay: "47",
-                overlayHeavy: "75",
-                overlayLight: "32",
-                overlayLighter: "0f",
-                blur: "b0",
-                unBlur: "ea",
-            },
-        }
-    ),
+            ]}
+        );
+        this.spammer = spammer || new Utility(
+            false,
+            "spammer",
+            {
+                count: 10,
+                limit: 100,
+                delay: 300
+            }
+        );
+        this.styles = styles || new Utility(
+            true,
+            "styles",
+            {
+                blurStatus: true,
+                backgroundImgStatus: true,
+                themeNumber: 0,
+                customColours: new ColourTheme(),
+                blurValue: {
+                    medium: "30px",
+                    light: "20px",
+                    lighter: "15px",
+                    heavy: "45px",
+                },
+            }
+        );
+    }
 }
 
 const provider = (function() {
     return {
         getData: function(func){
             user.get("utilities", function (result){
-                utilities = result.utilities;
-                if (!utilities){
-                    resetData(func());
-                    console.log("newData");
-                } else {
-                    if (func) func();
-                }
+                utilities = result.utilities || new Data();
+                if (func) func();
                 console.log("utilities: ", utilities);
             });
             return utilities;
         },
         
         resetData: function(func){
-            utilities = Object.assign(DefaultData);
+            utilities = new Data();
             this.setData();
             if (func) func();
         },
