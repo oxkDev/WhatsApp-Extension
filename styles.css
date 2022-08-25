@@ -1,23 +1,13 @@
-.dark {
+html {
     --background: #262d31;
-    --background-Dark: #13181b;
-    --hover-green: #144949;
-    --active-green: #0d2e2e;
-    --colour-Green: #0f3636;
+    --translucent: #00000034;
+    --translucent-light: #00000021;
+    --contrast-translucent: #FFFFFF21;
+    --contrast-translucent-light: #FFFFFF15;
+    --theme-primary: #144949;
+    --theme-primary-darker: #133f3f;
+    --theme-secondary: #0f3636;
     --text: #a6a8aa;
-    --greyLight: #33383b;
-    --greyDark: #1e2428;
-}
-
-.light {
-    --background: #c6dce9;
-    --background-Dark: #6f7b832e;
-    --hover-green: #28bdc0;
-    --active-green: #24aaac;
-    --colour-Green: #56dfda;
-    --text: #354f61;
-    --greyLight: #a2b0af;
-    --greyDark: #d4ecfc;
 }
 
 :root {
@@ -33,7 +23,7 @@ html {
 }
 
 body {
-    background-color: var(--greyDark);
+    background-color: var(--background);
     padding: 0px;
     user-select: none;
     transition: var(--transition);
@@ -73,12 +63,12 @@ div {
     font: var(--font-title);
     text-transform: uppercase;
     /* transition: var(--transition); */
-    border-bottom: 2px var(--background-Dark);
+    border-bottom: 2px var(--translucent-light);
 
 }
 
 .group:hover {
-    background-color: var(--background-Dark);
+    background-color: var(--translucent-light);
 }
 
 
@@ -104,21 +94,20 @@ div:hover {
 }
 
 .switch {
-    background-color: var(--greyLight);
+    background-color: var(--contrast-translucent);
 }
 
 .switch > .knob {
-    background-color: var(--greyDark);
+    background-color: var(--translucent);
     position: relative;
     left: 0px;
 }
 
 .switch.enabled {
-    background-color: var(--hover-green);
+    background-color: var(--theme-primary);
 }
 
 .switch.enabled > .knob {
-    background-color: var(--colour-Green);
     position: relative;
     left: 20px;
 }
@@ -129,7 +118,7 @@ div:hover {
     margin: 5px 5px 10px 5px;
     padding: 10px;
     color: var(--text);
-    background-color: var(--colour-Green);
+    background-color: var(--theme-primary-darker);
     text-transform: uppercase;
     text-align: center;
     align-items: center;
@@ -141,10 +130,10 @@ div:hover {
 
 .button:hover {
     cursor: pointer;
-    background-color: var(--hover-green);
+    background-color: var(--theme-primary);
 }
 .button:active {
-    background-color: var(--active-green);
+    background-color: var(--theme-secondary);
     letter-spacing: 0.9px;
 }
 

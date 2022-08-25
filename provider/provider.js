@@ -40,7 +40,7 @@ class ColourTheme {
             header: this.theme.light,
             primary: "#ffffff" + "b3",
             secondary: "#ffffff" + "70",
-            tersary: "#ffffff" + "47",
+            tertiary: "#ffffff" + "47",
             contrast: "#000000" + "70",
         };
         this.main = main || {
@@ -54,6 +54,7 @@ class ColourTheme {
             overlayHeavy: "75",
             overlayLight: "32",
             overlayLighter: "0f",
+            overlayLightest: "08",
             blur: "b0",
             unBlur: "ea",
         };
@@ -89,7 +90,7 @@ const erythriteTheme = new ColourTheme(
         header: theme.light,
         primary: "#000000" + "b3",
         secondary: "#000000" + "80",
-        tersary: "#000000" + "47",
+        tertiary: "#000000" + "47",
         contrast: "#FFFFFF" + "70"
     },
     {
@@ -130,7 +131,7 @@ const erythriteTheme = new ColourTheme(
 //     header: defaultTheme.light,
 //     primary: "#000000" + "b3",
 //     secondary: "#000000" + "70",
-//     tersary: "#000000" + "47",
+//     tertiary: "#000000" + "47",
 //     contrast: "#ffffff" + "70",
 // }
 

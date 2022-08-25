@@ -315,10 +315,10 @@ function customStylesOnStart(){
         `html[dir] ._3Hudz, html[dir] ._2B4d4, html[dir] ._3J6wB, html[dir] ._3mpG7, html[dir] ._37FrU {
             transition: all 300ms ease-in-out;
         }`,
-        `html[dir] ._2BU3P.tm2tP.copyable-area, html[dir] .ej3x2ktq, html[dir] ._23P3O, html[dir] .overlay._3IBSU, html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html[dir=ltr] ._12x9I, html:not([dir='rtl']) .kfr1vweg, html[dir] ._2VSMU, html[dir] .odkvbdo1, html[dir] button.fiyt298h, html[dir] ._3l4_3, html[dir] ._3NIfV, html[dir=ltr] div > .Iwkc0, html[dir] ._3BK98._3vy-1, html[dir] ._3BK98:hover, html[dir] a, html[dir=ltr] ._36BuW, html[dir=ltr] ._8KUDv, html:not([dir='rtl']) .s2vc4xk1, html[dir=ltr] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd {
+        `html[dir] ._2BU3P.tm2tP.copyable-area, html[dir] .ej3x2ktq, html[dir] ._23P3O, html[dir] .overlay._3IBSU, html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html[dir=ltr] ._12x9I, html:not([dir='rtl']) .kfr1vweg, html[dir] body ._2VSMU, html[dir] .odkvbdo1, html[dir] button.fiyt298h, html[dir] ._3l4_3, html[dir] ._3NIfV, html[dir=ltr] div > .Iwkc0, html[dir] ._3BK98._3vy-1, html[dir] ._3BK98:hover, html[dir] a, html[dir=ltr] ._36BuW, html[dir=ltr] ._8KUDv, html:not([dir='rtl']) .s2vc4xk1, html[dir=ltr] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd {
             transition: all 200ms ease-in-out;
         }`,
-        `html[dir=ltr] ._2JUrU._2ecOY ._3OC33, html[dir] .Nm1g1._22AX6, html[dir] ._2VSMU, html[dir] ._3nQGi, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf {
+        `html[dir=ltr] ._2JUrU._2ecOY ._3OC33, html[dir] .Nm1g1._22AX6, html[dir] ._2VSMU, html[dir] ._3nQGi, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf, html[dir] div[data-testid*="msg"]._1-lf9 {
             transition: all 100ms ease-in-out;
         }`,
     ];
@@ -337,7 +337,7 @@ function customStylesOnStart(){
     // `);
     // page sizing
     customStyles.insertRule(`
-    html[dir] .app-wrapper-web ._1XkO3, ._1iwk6 {
+    html[dir] .app-wrapper-web ._1XkO3, html[dir] body ._1iwk6 {
         top: 0;
         transition: all 300ms ease-in-out;
         height: 100%;
@@ -355,7 +355,7 @@ function customStylesOnStart(){
         margin-top: 80px;
     }`);
     customStyles.insertRule(`
-    html[dir] ._3K4-L {
+    html[dir] body ._3K4-L {
         padding: 80px 0 59px;
     }`);
     // load screen
@@ -396,7 +396,7 @@ function customStylesOnStart(){
     }`);
     // floating popup notification
     customStyles.insertRule(`
-    html[dir] .bs7a17vp.jxacihee.d53pemmv, html[dir] .NQl4z {
+    html[dir] body .bs7a17vp.jxacihee.d53pemmv, html[dir] body .NQl4z {
         border-radius: 20px;
         overflow: hidden;
     }`);
@@ -461,7 +461,7 @@ function customStylesOnStart(){
     customStyles.insertRule(`
     html[dir] .dKzIw._16kef, html[dir] ._3knDg._2nY6U {
         background: ${main.transparent};
-        border-radius: 30px;
+        border-radius: 10px;
     }`);
     customStyles.insertRule(`
     html[dir] ._3nQGi, html[dir] ._3t1CR {
@@ -486,7 +486,7 @@ function customStylesOnStart(){
     // }`);
     // message bar textbox
     customStyles.insertRule(`
-    html[dir] .p3_M1, html:not([dir='rtl']) .llnowng2, html[dir] div > ._1VmmK {
+    html[dir=ltr] body .p3_M1, html:not([dir='rtl']) .llnowng2, html[dir] div > ._1VmmK {
         border-radius: 20px;
         overflow: hidden;
     }`);
@@ -505,18 +505,24 @@ function customStylesOnStart(){
     }`);
     // receive messages
     customStyles.insertRule(`
-    html[dir] .message-in .Nm1g1._22AX6, html[dir] .message-in ._3OC33, html[dir] .message-in .ItfyB, html[dir=ltr] .message-in ._8bufJ {
+    html[dir] .message-in .Nm1g1._22AX6, html[dir] .message-in ._3OC33, html[dir] .message-in ._1-lf9 .ItfyB, html[dir=ltr] .message-in ._8bufJ .ItfyB{
         border-radius: 7px 15px 15px 7px;
         overflow: hidden;
     }`);
     // receive message starter
     customStyles.insertRule(`
-    html[dir=ltr] .message-in ._8YVHI .Nm1g1._22AX6, html[dir] .message-in ._18q-J ._3OC33, html[dir] .message-in ._18q-J .ItfyB {
+    html[dir=ltr] .message-in ._8YVHI .Nm1g1._22AX6, html[dir] .message-in ._18q-J ._3OC33, html[dir=ltr] body .message-in ._18q-J .ItfyB {
         border-top-left-radius: 15px;
     }`);
+    // receive message ender
+    customStyles.insertRule(`
+    html[dir] ._1-FMR.message-in._3Zpy8 + ._1-FMR.message-in:not(._3Zpy8) > div._1-lf9._3mSPV:not(._18q-J), html[dir] ._1-FMR:last-of-type.message-in ._1-lf9:not(._18q-J), html[dir] ._1-FMR.message-in._3Zpy8 + ._1-FMR.message-in:not(._3Zpy8) > div._1-lf9._3mSPV:not(._18q-J) .ItfyB, html[dir] ._1-FMR:last-of-type.message-in ._1-lf9:not(._18q-J) .ItfyB {
+        border-bottom-left-radius: 15px;
+    }`);
+
     // sent messages
     customStyles.insertRule(`
-    html[dir] .message-out .Nm1g1._22AX6, html[dir] .message-out ._3OC33, html[dir] .message-out .ItfyB, html[dir=ltr] .message-out ._8bufJ {
+    html[dir] .message-out .Nm1g1._22AX6, html[dir] .message-out ._3OC33, html[dir] .message-out ._1-lf9 .ItfyB, html[dir=ltr] .message-out ._8bufJ .ItfyB{
         border-radius: 15px 7px 7px 15px;
         overflow: hidden;
     }`);
@@ -526,8 +532,13 @@ function customStylesOnStart(){
     }`);
     // sent message starter
     customStyles.insertRule(`
-    html[dir=ltr] .message-out ._8YVHI .Nm1g1._22AX6, html[dir] .message-out ._18q-J ._3OC33, html[dir] .message-out ._18q-J .ItfyB {
+    html[dir=ltr] .message-out ._8YVHI .Nm1g1._22AX6, html[dir] .message-out ._18q-J ._3OC33, html[dir=ltr] body .message-out ._18q-J .ItfyB {
         border-top-right-radius: 15px;
+    }`);
+    // sent message ender
+    customStyles.insertRule(`
+    html[dir] ._1-FMR.message-out._3Zpy8 + ._1-FMR.message-out:not(._3Zpy8) > div._1-lf9._3mSPV:not(._18q-J), html[dir] ._1-FMR:last-of-type.message-out ._1-lf9:not(._18q-J), html[dir] ._1-FMR.message-out._3Zpy8 + ._1-FMR.message-out:not(._3Zpy8) > div._1-lf9._3mSPV:not(._18q-J) .ItfyB, html[dir] ._1-FMR:last-of-type.message-out ._1-lf9:not(._18q-J) .ItfyB {
+        border-bottom-right-radius: 15px;
     }`);
     // message padding
     customStyles.insertRule(`
@@ -537,7 +548,7 @@ function customStylesOnStart(){
 
     // dropdown menu button
     customStyles.insertRule(`
-    html[dir=ltr] ._3snhK._3I4pa, html[dir=ltr] ._1-FMR ._18oGY, html[dir="ltr"] ._2wUmf div._18oGY {
+    html[dir=ltr] ._3snhK._3I4pa, html[dir=ltr] ._1-FMR ._18oGY._2copG, html[dir="ltr"] ._2wUmf div._18oGY, html[dir=ltr] body ._18oGY._1UyGr {
         right: 0;
         top: 0;
         height: 30px;
@@ -547,14 +558,10 @@ function customStylesOnStart(){
         background: linear-gradient(30deg,rgba(var(--shadow-own-rgb),0),rgba(var(--shadow-own-rgb),0.05) 45%,rgba(var(--shadow-own-rgb),0.1) 70%,rgba(var(--shadow-own-rgb),0.2));
     }`);
     customStyles.insertRule(`
-    html[dir=ltr] ._3e9My, html[dir=ltr] ._3sryO {
+    html[dir=ltr] body ._3e9My, html[dir=ltr] ._3sryO {
         right: 8px;
         top: auto;
         padding: 0 0 2px 5px;
-    }`);
-    customStyles.insertRule(`
-    html[dir] .fL8od ._3e9My {
-        right: auto;
     }`);
     customStyles.insertRule(`
     html[dir=ltr] ._2copG._18oGY._3QvcT {
@@ -575,8 +582,12 @@ function customStylesOnStart(){
     }`)
     // messages content
     customStyles.insertRule(`
-    html[dir=ltr] ._1beEj {
+    html[dir=ltr] body ._1beEj {
         margin: -13px 0 -6px 10px;
+    }`);
+    customStyles.insertRule(`
+    html[dir=ltr] body .gq1t1y46.lak21jic.e4p1bexh.cr2cog7z.le5p0ye3._1WSmF {
+        margin: 0 0 4px 0;
     }`);
     // messages separate send time
     customStyles.insertRule(`
@@ -641,7 +652,7 @@ function customStylesOnStart(){
         padding: 5px;
     }`);
     customStyles.insertRule(`
-    html[dir] ._1IN0t, html[dir=ltr] ._2stdY {
+    html[dir=ltr] body ._1IN0t, html[dir=ltr] ._2stdY {
         border-radius: 18px;
         margin: 0;
     }`);
@@ -666,7 +677,7 @@ function customStylesOnStart(){
         color: ${main.transparent};
     }`);
     customStyles.insertRule(`
-    html[dir] ._1Hccy, html[dir] ._3x7O3, html[dir] ._3x7O3 > div, html[dir] ._10mnt, html[dir] ._3nQGi ._2hkxa, html[dir] ._3t1CR ._2hkxa, html[dir=ltr] ._1TdPb, html[dir=ltr] ._16kef, html[dir] ._2bgh7, html[dir] ._1NPzg, html[dir] .ga96p4vz:before, html[dir=ltr] ._3U8t1._1UyGr, html[dir] ._2nY6U, html[dir] ._2cYbV .rv6u8h8g, html[dir] div._1Mcu-, html[dir] span[data-icon*="tail"]._1kh65 {
+    html[dir] body ._2nY6U._2_TVt:after, html[dir] body .vq6sj:hover:after, html[dir] body ._3knDg._2nY6U, html[dir=ltr] body .dKzIw._16kef, html[dir=ltr] body ._16kef, html[dir=ltr] body ._1Hccy, html[dir] ._3x7O3, html[dir] ._3x7O3 > div, html[dir] ._10mnt, html[dir] ._3nQGi ._2hkxa, html[dir] ._3t1CR ._2hkxa, html[dir=ltr] body ._1TdPb, html[dir=ltr] body ._16kef, html[dir] body ._2bgh7, html[dir] ._1NPzg, html[dir] .ga96p4vz:before, html[dir=ltr] body ._3U8t1._1UyGr, html[dir] ._2nY6U, html[dir] ._2cYbV .rv6u8h8g, html[dir] div._1Mcu-, html[dir] span[data-icon*="tail"]._1kh65 {
         background: ${main.transparent};
         border: 0;
     }`);

@@ -4,6 +4,7 @@ function hexToRgb(hex) {
 }
 
 var themeNumber = 0;
+var colourVariables;
 
 var customColoursElement = document.createElement("style");
 document.head.appendChild(customColoursElement);
@@ -97,8 +98,8 @@ function customColoursOnStart() {
             
             /* contact/chat list */
             --background-default: ${background.dark};
-            --background-default-active: ${main.grey}20;
-            --background-default-hover: ${main.grey}10;
+            --background-default-active: ${main.contrast}${tran.overlayLighter};
+            --background-default-hover: ${main.contrast}${tran.overlayLightest};
             --chatlist-icon: ${main.contrast}${tran.overlayLight};
             --border-list: ${main.contrast}${tran.overlayLighter};
             --border-stronger: ${main.transparent};
@@ -135,6 +136,7 @@ function customColoursOnStart() {
             --chevron-button-background: ${main.contrast}${tran.overlayLighter};
             --button-background-disabled: ${main.theme}${tran.overlayLight};
             --media-editor-thumb-border-active: ${theme.light};
+            --reactions-details-background-hover: ${main.contrast}${tran.overlayLighter};
 
             /* media thumbnail */
             --media-gallery-thumb-background: ${main.contrast}${tran.overlayLighter};
@@ -243,19 +245,19 @@ function customColoursOnStart() {
             --primary-strong-rgb: ${hexToRgb(text.primary.substring(0, 7))};
             --primary-stronger: ${text.secondary};
             --primary-strongest: ${text.primary};
-            --secondary: ${text.tersary};
+            --secondary: ${text.tertiary};
             --secondary-stronger: ${text.secondary};
-            --text-muted: ${text.tersary}
+            --text-muted: ${text.tertiary}
             --text-secondary-lighter: ${text.secondary};
             --unread-marker-text: ${text.contrast};
-            --chat-meta: ${text.tersary};
+            --chat-meta: ${text.tertiary};
             --bubble-meta: ${text.secondary};
             --status-secondary: ${text.secondary};
             --quoted-message-text: ${text.secondary};
             --drawer-header-title: ${text.primary};
             --link-preview: ${text.secondary};
-            --link-preview-light: ${text.tersary};
-            --link-preview-lighter: ${text.tersary};
+            --link-preview-light: ${text.tertiary};
+            --link-preview-lighter: ${text.tertiary};
             --system-message-text: ${text.secondary};
             --chat-marker-admin: ${text.contrast};
             --tooltip-text: ${text.secondary};
