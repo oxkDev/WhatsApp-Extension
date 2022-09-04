@@ -132,7 +132,7 @@ function customStylesOnStart(){
         `html[dir] body.blur ._3Hudz, html[dir] body.blur ._2B4d4, html[dir] body.blur ._3J6wB, html[dir=ltr] body.blur ._9-YHG, html[dir] body.blur .overlay._3IBSU, html[dir] body.blur .ej3x2kt, html[dir] body.blur ._2M_x0, html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0 {
             backdrop-filter: blur(${blurValue.heavy});
         }`,
-        `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html:not([dir='rtl']) body.blur .kfr1vweg, html[dir] body.blur .o--vV, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf:hover, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C, html[dir="ltr"] body.blur div._356RS, html[dir] body.blur .NQl4z, html[dir] .ItfyB._3nbHh {
+        `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html:not([dir='rtl']) body.blur .kfr1vweg, html[dir] body.blur .o--vV, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf:hover, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C, html[dir="ltr"] body.blur div._356RS, html[dir] body.blur .NQl4z, html[dir] body.blur .ItfyB._3nbHh {
             backdrop-filter: blur(${blurValue.medium});
         }`,
         `html[dir=ltr] body.blur ._2JUrU._2ecOY ._3OC33, html[dir] body.blur .Nm1g1._22AX6, html[dir] body.blur ._2VSMU, html[dir] body.blur ._3nQGi, html[dir] body.blur ._3t1CR, html[dir=ltr] body.blur .EtBAv, html[dir=ltr] body.blur .i_Uj-, html[dir] body.blur ._1w-Ol, html:not([dir='rtl']) body.blur .fahkg6u0, html[dir] body.blur ._1GLVO, html[dir] body.blur ._2JUrU ._3OC33, html[dir] body.blur ._2JUrU ._3Lby7, html[dir] body.blur .epdck8xl, html[dir] body.blur ._3JXTQ, html[dir] body.blur .bs7a17vp.jxacihee.d53pemmv, html[dir] body.blur .GvRI8, html[dir] body.blur ._19zgN._26nDl div[data-testid="tooltip"] {
@@ -155,7 +155,7 @@ function customStylesOnStart(){
             animation: onWhatsAppLoadBlur 500ms ease-out;
         }`,
         // // message element appear
-        // `html[dir] body.blur .Nm1g1._22AX6, html[dir] body.blur ._2JUrU ._3OC33, html[dir] body.blur ._2JUrU ._3Lby7, html[dir=ltr] body.blur .EtBAv, html[dir=ltr] body.blur .i_Uj-, html[dir] body.blur .CHSLU, html[dir=ltr] body.blur ._2Fo6S, html[dir=ltr] body.blur ._3ImlL, html[dir=ltr] body.blur ._25pwu, html[dir=ltr] body.blur ._5ML0C {
+        // `html[dir] body.blur .Nm1g1._22AX6, html[dir] body.blur ._2JUrU ._3OC33, html[dir] body.blur ._2JUrU ._3Lby7, html[dir=ltr] body.blur .EtBAv, html[dir=ltr] body.blur .i_Uj-, html[dir] body.blur .CHSLU, html[dir=ltr] body.blur ._2Fo6S, html[dir] ._3hPBO, html[dir=ltr] body.blur ._3ImlL, html[dir=ltr] body.blur ._25pwu, html[dir=ltr] body.blur ._5ML0C {
         //     animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUpBlur;
         // }`,
         // media message appear
@@ -194,7 +194,7 @@ function customStylesOnStart(){
             animation: onWhatsAppLoad 500ms ease-out;
         }`,
         // message element appear
-        `html[dir] .Nm1g1._22AX6, html[dir] ._2JUrU ._3OC33, html[dir] ._2JUrU ._3Lby7, html[dir=ltr] .EtBAv, html[dir=ltr] .i_Uj-, html[dir] .CHSLU, html[dir] ._3DThG, html[dir=ltr] ._2Fo6S, html[dir=ltr] ._3ImlL, html[dir=ltr] ._5ML0C, html[dir] div[data-testid*="msg"]._1-lf9 {
+        `html[dir] .Nm1g1._22AX6, html[dir] ._2JUrU ._3OC33, html[dir] ._2JUrU ._3Lby7, html[dir=ltr] .EtBAv, html[dir=ltr] .i_Uj-, html[dir] .CHSLU, html[dir] ._3DThG, html[dir=ltr] ._2Fo6S, html[dir] ._3hPBO, html[dir=ltr] ._3ImlL, html[dir=ltr] ._5ML0C, html[dir] div[data-testid*="msg"]._1-lf9 {
             animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUp;
         }`,
         // media message appear
@@ -505,13 +505,13 @@ function customStylesOnStart(){
     }`);
     // receive messages
     customStyles.insertRule(`
-    html[dir] .message-in .Nm1g1._22AX6, html[dir] .message-in ._3OC33, html[dir] .message-in ._1-lf9 .ItfyB, html[dir=ltr] .message-in ._8bufJ .ItfyB{
+    html[dir] .message-in .Nm1g1._22AX6, html[dir] body .message-in ._3OC33, html[dir] .message-in ._1-lf9 .ItfyB, html[dir=ltr] .message-in ._8bufJ .ItfyB{
         border-radius: 7px 15px 15px 7px;
         overflow: hidden;
     }`);
     // receive message starter
     customStyles.insertRule(`
-    html[dir=ltr] .message-in ._8YVHI .Nm1g1._22AX6, html[dir] .message-in ._18q-J ._3OC33, html[dir=ltr] body .message-in ._18q-J .ItfyB {
+    html[dir=ltr] .message-in ._8YVHI .Nm1g1._22AX6, html[dir] body .message-in ._18q-J ._3OC33, html[dir=ltr] body .message-in ._18q-J .ItfyB {
         border-top-left-radius: 15px;
     }`);
     // receive message ender
@@ -522,7 +522,7 @@ function customStylesOnStart(){
 
     // sent messages
     customStyles.insertRule(`
-    html[dir] .message-out .Nm1g1._22AX6, html[dir] .message-out ._3OC33, html[dir] .message-out ._1-lf9 .ItfyB, html[dir=ltr] .message-out ._8bufJ .ItfyB{
+    html[dir] .message-out .Nm1g1._22AX6, html[dir] body .message-out ._3OC33, html[dir] .message-out ._1-lf9 .ItfyB, html[dir=ltr] .message-out ._8bufJ .ItfyB{
         border-radius: 15px 7px 7px 15px;
         overflow: hidden;
     }`);
@@ -532,7 +532,7 @@ function customStylesOnStart(){
     }`);
     // sent message starter
     customStyles.insertRule(`
-    html[dir=ltr] .message-out ._8YVHI .Nm1g1._22AX6, html[dir] .message-out ._18q-J ._3OC33, html[dir=ltr] body .message-out ._18q-J .ItfyB {
+    html[dir=ltr] .message-out ._8YVHI .Nm1g1._22AX6, html[dir] body .message-out ._18q-J ._3OC33, html[dir=ltr] body .message-out ._18q-J .ItfyB {
         border-top-right-radius: 15px;
     }`);
     // sent message ender
@@ -676,8 +676,9 @@ function customStylesOnStart(){
         fill: ${main.transparent};
         color: ${main.transparent};
     }`);
+    // transparent
     customStyles.insertRule(`
-    html[dir] body ._2nY6U._2_TVt:after, html[dir] body .vq6sj:hover:after, html[dir] body ._3knDg._2nY6U, html[dir=ltr] body .dKzIw._16kef, html[dir=ltr] body ._16kef, html[dir=ltr] body ._1Hccy, html[dir] ._3x7O3, html[dir] ._3x7O3 > div, html[dir] ._10mnt, html[dir] ._3nQGi ._2hkxa, html[dir] ._3t1CR ._2hkxa, html[dir=ltr] body ._1TdPb, html[dir=ltr] body ._16kef, html[dir] body ._2bgh7, html[dir] ._1NPzg, html[dir] .ga96p4vz:before, html[dir=ltr] body ._3U8t1._1UyGr, html[dir] ._2nY6U, html[dir] ._2cYbV .rv6u8h8g, html[dir] div._1Mcu-, html[dir] span[data-icon*="tail"]._1kh65 {
+    html[dir] body ._2nY6U, html[dir] body ._2nY6U._2_TVt:after, html[dir] body .vq6sj:hover:after, html[dir] body ._3knDg._2nY6U, html[dir=ltr] body .dKzIw._16kef, html[dir=ltr] body ._16kef, html[dir=ltr] body ._1Hccy, html[dir] ._3x7O3, html[dir] ._3x7O3 > div, html[dir] ._10mnt, html[dir] ._3nQGi ._2hkxa, html[dir] ._3t1CR ._2hkxa, html[dir=ltr] body ._1TdPb, html[dir=ltr] body ._16kef, html[dir] body ._2bgh7, html[dir] ._1NPzg, html[dir] .ga96p4vz:before, html[dir=ltr] body ._3U8t1._1UyGr, html[dir] ._2nY6U, html[dir] ._2cYbV .rv6u8h8g, html[dir] div._1Mcu-, html[dir] span[data-icon*="tail"]._1kh65 {
         background: ${main.transparent};
         border: 0;
     }`);
@@ -711,7 +712,7 @@ function customStylesOnStart(){
 
     // media message
     customStyles.insertRule(`
-    html:not([dir='rtl']) button.i5tg98hk.f9ovudaz.przvwfww.gx1rr48f.shdiholb, html[dir] .CHSLU, html[dir] ._3DThG, html[dir] ._2Fo6S, html[dir] .sxls5clz, html[dir] ._3vRLq, html[dir] ._1HqS9 {
+    html:not([dir='rtl']) button.i5tg98hk.f9ovudaz.przvwfww.gx1rr48f.shdiholb, html[dir] .CHSLU, html[dir] ._3DThG, html[dir] ._2Fo6S, html[dir] ._3hPBO, html[dir] .sxls5clz, html[dir] ._3vRLq, html[dir] ._1HqS9 {
         border-radius: 12px;
         overflow: hidden;
     }`);

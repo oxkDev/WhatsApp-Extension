@@ -25,10 +25,10 @@ function customColoursOnStart() {
     var text = themes[themeNumber].text;
     var background = themes[themeNumber].background;
 
-    customMetaHeader.content = theme.secondary;
+    customMetaHeader.content = background.secondary;
 
     colourVariables = [
-        `html[dir] body.dark {
+        `html[dir] body.dark, html[dir] body.dark :before {
             /* startup background */
             --startup-background: ${background.darker};
             --startup-background-rgb: ${hexToRgb(background.darker)};
@@ -59,8 +59,8 @@ function customColoursOnStart() {
             --quick-action-button-background: ${main.theme}${tran.unBlur};
 
             /* unread bar */
-            --unread-background: ${theme.secondary}${tran.overlay};
-            --unread-bar-background: ${theme.secondary}${tran.overlayHeavy};
+            --unread-background: ${background.secondary}${tran.overlay};
+            --unread-bar-background: ${background.secondary}${tran.overlayHeavy};
 
             /* message screen */
             --conversation-panel-border: ${main.transparent};
@@ -74,7 +74,7 @@ function customColoursOnStart() {
             --compose-input-background: ${main.theme}${tran.overlayLight};
             --compose-input-border: ${main.transparent};
             --compose-panel-background: ${main.transparent};
-            --rich-text-panel-background: ${theme.secondary}${tran.unBlur};
+            --rich-text-panel-background: ${background.secondary}${tran.unBlur};
             --popup-panel-background: ${main.theme}${tran.overlayLight};
             --panel-input-background: ${background.primary}${tran.unBlur};
             --media-editor-image-caption-input-background: ${main.theme}${tran.overlay};
@@ -86,11 +86,11 @@ function customColoursOnStart() {
             --thumb-border-viewer-active-rgb: ${main.contrast};
 
             /* contact bar / contact header */
-            --panel-header-background: ${theme.secondary}${tran.unBlur};
+            --panel-header-background: ${background.secondary}${tran.unBlur};
             --conversation-header-border: ${main.transparent};
             
             /* selector bar */
-            --panel-background: ${theme.secondary}${tran.unBlur};
+            --panel-background: ${background.secondary}${tran.unBlur};
 
             /* message info */
             --drawer-section-background: ${theme.primary}${tran.overlayLight};
@@ -107,18 +107,18 @@ function customColoursOnStart() {
             --avatar-placeholder-primary: ${main.grey}${tran.overlayLight};
             --search-input-background: ${main.theme}${tran.overlayLight};
             --search-container-background: ${background.darker};
-            --search-input-container-background: ${theme.secondary};
-            --search-input-container-background-active: ${theme.secondary};
-            --panel-background-colored-deeper: ${theme.secondary};
-            --butterbar-connection-background: ${theme.secondary};
+            --search-input-container-background: ${background.secondary};
+            --search-input-container-background-active: ${background.secondary};
+            --panel-background-colored-deeper: ${background.secondary};
+            --butterbar-connection-background: ${background.secondary};
             --butterbar-connection-icon: ${theme.light};
-            --butterbar-update-background: ${theme.secondary};
-            --butterbar-notice-smb-background: ${theme.secondary};
+            --butterbar-update-background: ${background.secondary};
+            --butterbar-notice-smb-background: ${background.secondary};
             --butterbar-default-background: ${background.dark};
             --butterbar-notification-icon: ${theme.light};
             
             /* settings side menu */
-            --panel-background-colored: ${theme.secondary};
+            --panel-background-colored: ${background.secondary};
             --drawer-background-deep: ${background.darker}${tran.unBlur};
             --border-panel: ${background.darker}${tran.unBlur};
             --drawer-gallery-background: ${background.dark};
@@ -127,7 +127,7 @@ function customColoursOnStart() {
 
             /* popup media screen */
             --media-viewer-background: ${background.darker}${tran.unBlur};
-            --panel-background: ${theme.secondary};
+            --panel-background: ${background.secondary};
             --panel-background-deeper: ${background.darker}${tran.unBlur};
             --panel-background-lighter: ${background.primary}${tran.overlayLight};
             --modal-backdrop: ${background.darker}${tran.unBlur};
@@ -233,7 +233,7 @@ function customColoursOnStart() {
             --security-icon-background: ${theme.primary};
 
             /* side audio popup */
-            --ptt-ooc-background: ${theme.secondary}${tran.unBlur};
+            --ptt-ooc-background: ${background.secondary}${tran.unBlur};
             --ptt-draft-button-play-pause-out-of-chat: ${main.contrast}${tran.overlay};
 
             /* other text colours */
@@ -266,15 +266,15 @@ function customColoursOnStart() {
         `html[dir] body.dark.blur {
             --outgoing-background: ${msg.send}${tran.blur};
             --incoming-background: ${msg.receive}${tran.blur};
-            --unread-bar-background: ${theme.secondary}${tran.overlay};
+            --unread-bar-background: ${background.secondary}${tran.overlay};
             --round-entry-point-background-color: ${main.theme}${tran.blur};
             --quick-action-button-background: ${main.theme}${tran.blur};
             --notification-e2e-background: ${background.dark}${tran.blur};
             --system-message-background: ${background.dark}${tran.blur};
-            --rich-text-panel-background: ${theme.secondary}${tran.blur};
+            --rich-text-panel-background: ${background.secondary}${tran.blur};
             --panel-input-background: ${background.primary}${tran.blur};
-            --panel-header-background: ${theme.secondary}${tran.blur};
-            --panel-background: ${theme.secondary}${tran.blur};
+            --panel-header-background: ${background.secondary}${tran.blur};
+            --panel-background: ${background.secondary}${tran.blur};
             --drawer-background-deep: ${background.darker}${tran.blur};
             --border-panel: ${background.darker}${tran.blur};
             --media-viewer-background: ${background.darker}${tran.blur};
@@ -289,7 +289,7 @@ function customColoursOnStart() {
             --reactions-details-background: ${background.primary}${tran.blur};
             --tooltip-background: ${background.primary}${tran.blur};
             --toast-background: ${background.primary}${tran.blur};
-            --ptt-ooc-background: ${theme.secondary}${tran.blur};
+            --ptt-ooc-background: ${background.secondary}${tran.blur};
         }`,
         `html[dir] body {
             /* shadow colour */
