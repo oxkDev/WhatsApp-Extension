@@ -231,8 +231,37 @@ const oxkRedDark = new ColourTheme(
         transparent: "transparent",
     }
 )
+const ozkGreenDark = new ColourTheme(
+    {
+        primary: "#085427",
+        secondary: "#15211E",
+        light: "#299446",
+        lighter: "#2ABF66",
+        danger: "#f14040",
+    },
+    {
+        primary: "#062609",
+        secondary: "#192929",
+        dark: "#072418",
+        light: "#0F3015",
+        darker: "#001A01",
+    },
+    {
+        status: {
+            read: "#f2f9ffd4",
+            sent: "#ffffff" + "32",
+        },
+    },
+    {},
+    {
+        theme: "#000000",
+        contrast: "#FFFFFF",
+        grey: "#777777",
+        transparent: "transparent",
+    }
+)
 
-const themes = [new ColourTheme(), oxkLightTheme, erythriteTheme, oxkYellow, oxkRedDark];
+const themes = [new ColourTheme(), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark];
 
 class Data {
     constructor(linkChanger, spammer, styles) {
