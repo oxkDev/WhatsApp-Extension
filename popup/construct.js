@@ -6,6 +6,14 @@ Document.prototype.newElement = function(tag, classes, id, textContent) {
     return element;
 }
 
+CSSStyleSheet.prototype.deleteRules = function(){
+    console.log(this, this.cssRules);
+    for (i = 0; i < this.cssRules.length; i++) {
+        console.log(this.cssRules);
+        this.deleteRule(0);
+    };
+}
+
 // Array.prototype.forEachDelay = function(delay, func) {
 //     arr = this;
 //     (function myLoop(i) {
@@ -51,12 +59,13 @@ function newSwitch(){
 }
 
 
-var customColoursElement = document.createElement("style");
-document.head.appendChild(customColoursElement);
-customColoursElement.id = "custom-colours";
-var customColours = customColoursElement.sheet;
+var popupColoursElement = document.createElement("style");
+document.head.appendChild(popupColoursElement);
+popupColoursElement.id = "custom-colours";
+var popupColours = popupColoursElement.sheet;
 
 function setColours() {
+    popupColours.deleteRules();
     themeNumber = utilities.styles.utilData.themeNumber;
     var blurValue = utilities.styles.utilData.blurValue;
     var main = themes[themeNumber].main;
@@ -80,10 +89,10 @@ function setColours() {
         }`
     ];
     for (i in colourVariables) {
-        customColours.insertRule(colourVariables[i], i);
+        popupColours.insertRule(colourVariables[i], i);
     };
 }
-console.log("setColours():", customColours);
+console.log("setColours():", popupColours);
 
 function setSwitchStatus() {
     console.log(`setSwitchStatus():`, utilities);
