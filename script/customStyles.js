@@ -425,7 +425,7 @@ function customStylesOnStart(){
     html[dir=ltr] .esbg2say, .bha6utru:before {
         animation-timing-function: cubic-bezier(0.17, 0.84, 0.41, 1);
     }`);
-    // side column / chat column
+    // side column /   column
     customStyles.insertRule(`
     html[dir] body ._16C8p {
         border-radius: 20px;
@@ -469,7 +469,7 @@ function customStylesOnStart(){
     }`);
     // shadow
     customStyles.insertRule(`
-    html[dir] body div#main > header._23P3O, html[dir="ltr"] body section.oq44ahr5 > div.ZIBLv, html[dir] div.o--vV {
+    html[dir] body div#main > header._23P3O, html[dir="ltr"] body section.oq44ahr5 > div.ZIBLv, html[dir] div.o--vV, html[dir] section[data-testid="group-info-drawer-body"] > div {
         box-shadow: 0 0 20px var(--shadow-own);
     }`);
     // footer: message bar, audio popup, cannot send message
@@ -545,6 +545,12 @@ function customStylesOnStart(){
     html[dir=ltr] .cm280p3y.m3h9lho3.lna84pfr.psacz3a6.gjfcmax9.mmw11n2j {
         padding: 3px;
     }`);
+    // message error
+    customStyles.insertRule(`
+    html[dir=ltr] ._1aKu8 {
+        opacity: 1;
+    }`);
+
 
     // dropdown menu button
     customStyles.insertRule(`
@@ -922,7 +928,7 @@ function customStylesOnStart(){
         }
     }`);
     customStyles.insertRule(`
-    html[dir] .three .ldL67._2i3T7 {
+    html[dir] .three .ldL67._2i3T7, html[dir] .three ._1bLj8, html[dir] .three ._2i3T7, html[dir] .three ._1bLj8, .two ._2i3T7 {
         flex: 0 0 25%;
     }`);
     customStyles.insertRule(`
@@ -932,13 +938,6 @@ function customStylesOnStart(){
     customStyles.insertRule(`
     html[dir] .two ._3sh5K {
         flex: 70%;
-    }`);
-    // menu column container
-    customStyles.insertRule(`
-    html[dir] ._1is6W, html[dir] .ZIBLv {
-        border-radius: 20px;
-        margin: 10px 10px 0;
-        overflow: hidden;
     }`);
     // side column / status list
     customStyles.insertRule(`
@@ -962,10 +961,12 @@ function customStylesOnStart(){
     html[dir] .epdck8xl {
         border-radius: 50%;
     }`);
+    // menu column container
     customStyles.insertRule(`
-    html[dir=ltr] ._3bTNW {
+    html[dir=ltr] section[data-testid="group-info-drawer-body"] > div {
         border-radius: 20px;
-        border: none;
+        margin: 10px 10px 0;
+        overflow: hidden;
     }`);
     customStyles.insertRule(`
     html:not([dir='rtl']) .lysxvg3k {

@@ -19,7 +19,7 @@ class ColourTheme {
             light: theme.light || "#2a7095",
             lighter: theme.lighter || "#298abe",
             danger: theme.danger || "#f14040",
-            link: theme.link || theme.light || "#459dd9",
+            link: theme.link || main.contrast || "#459dd9",
         } : {
             primary: "#083a55",
             secondary: "#141b20",

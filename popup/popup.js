@@ -3,6 +3,11 @@ function initialiseAll(){
     provider.getData(() => {setSwitchStatus(); setColours();});
 }
 
+CSSStyleSheet.prototype.deleteRules = function(){
+    console.log(this, this.cssRules);
+    for (i in this.cssRules.length) this.deleteRule(0);
+}
+
 function eventListeners(){
     settings.styles["Blur"].addEventListener("click", function(event){
             utilities.styles.utilData.blurStatus = !utilities.styles.utilData.blurStatus;
@@ -18,15 +23,12 @@ function eventListeners(){
         if (utilities.styles.utilData.themeNumber >= themes.length - 1) utilities.styles.utilData.themeNumber = 0;
         else utilities.styles.utilData.themeNumber += 1;
         provider.setData();
-        for (i in colourVariables) {
-            console.log("deleting:", i)
-            customColours.deleteRule(0)
-        }
+        customColours.deleteRules();
         setColours();
         console.log("change theme: ", utilities.styles.utilData.themeNumber)
     });
     resetButton.addEventListener("click", function(event){
-        provider.resetData(setSwitchStatus);
+        provider.resetData(() => {setSwitchStatus(); setColours();});
         console.log("resetting");
         // initialiseAll();
     });

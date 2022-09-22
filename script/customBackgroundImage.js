@@ -31,6 +31,18 @@ var backgroundImg = {
     },
 
     // others
+    glassCubeRefraction: {
+        link: "https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "blue", "cube"],
+    },
+    cubesMattLightsource: {
+        link: "https://images.unsplash.com/photo-1622737133809-d95047b9e673?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80",
+        size: "cover",
+        repeat: "no-repeat",
+        tags: ["art", "black", "cube", "yellow"],
+    },
     abstractPolynomials: {
         link: "https://wallpaperaccess.com/full/1836735.jpg",
         size: "cover",

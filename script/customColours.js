@@ -246,6 +246,8 @@ function customColoursOnStart() {
             --primary-stronger: ${text.secondary};
             --primary-strongest: ${text.primary};
             --secondary: ${text.tertiary};
+            --secondary-light: ${text.secondary};
+            --secondary-lighter: ${text.tertiary};
             --secondary-stronger: ${text.secondary};
             --text-muted: ${text.tertiary}
             --text-secondary-lighter: ${text.secondary};
