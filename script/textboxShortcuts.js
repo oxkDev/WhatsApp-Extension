@@ -1,5 +1,4 @@
 var extensionAddonDelay = 0.001;
-var extensionAddonDelay = 0.001;
 var contacts, selectedContact, textbox;
 var isWin = navigator.userAgentData.platform == "Windows";
 // var blr = ["/*", "*/", "e"];
@@ -11,6 +10,11 @@ var textbox;
 var jumper = {
     element: "",
     n: 0,
+}
+
+var elmClasses = {
+    textbox: "",
+
 }
 
 var textSymbols = {
@@ -142,12 +146,12 @@ function sendMessage(msg){
 function dataChangeHandler(){
     provider.getData(() => {
         console.log(`dataChangeHandler: ${utilities.linkChanger.status}, ${utilities.spammer.status}`);
-        var status = document.querySelector(".p3_M1 ._2vbn4");
-        if (!status) var status = document.querySelector(".p3_M1 .lhggkp7q.qq0sjtgm.jxacihee");
-        if (status)
-            status.innerText = `Link changer: ${utilities.linkChanger.status}    |    Spammer: ${utilities.spammer.status}`.replaceAll("true", "on").replaceAll("false", "off");
-        else
-            console.log("Chat box default message failed to load: ", status);
+        textboxStatus = document.querySelector(".lhggkp7q.qq0sjtgm.jxacihee.qzp46edm");
+        if (textboxStatus)
+            // textboxStatus.innerText = `Link changer: ${utilities.linkChanger.status}    |    Spammer: ${utilities.spammer.status}`.replaceAll("true", "on").replaceAll("false", "off");
+            textboxStatus.innerHTML = `<div class="customStylesFontWeight">${document.querySelector(`[data-testid="conversation-info-header-chat-title"]`).innerText}</div>`;
+            else
+            console.log("Chat box default message failed to load: ", textboxStatus);
     });
     // deciding utility status
 }
@@ -268,7 +272,7 @@ function messageJumper(_event) {
     
     if (textbox.textContent != elements[jumper.n]) jumper.n = 0;
 
-    console.log("test2: ", _event.shiftKey, _event.ctrlKey, jumper.n, elements[jumper.n], "==", textbox.textContent);
+    // console.log("test2: ", _event.shiftKey, _event.ctrlKey, jumper.n, elements[jumper.n], "==", textbox.textContent);
     // console.log(prev);
     if (_event.shiftKey && _event.ctrlKey && elements[jumper.n] == textbox.textContent){
         console.log("jumper");
@@ -307,7 +311,7 @@ function stylesOnNewContact(){
 function textChange(event) {
     console.log("loading text changer... ", textbox);
     dataChangeHandler();
-    textbox.onkeydown = keyCombinationListener;
+    textbox.onkeydown = evnt => {if (textbox.innerText == "\n") {dataChangeHandler();} keyCombinationListener(evnt);}
     textbox.onkeyup = messageJumper;
 }
 function findParentBySelector(elm, selector) {
@@ -328,6 +332,7 @@ function findParentBySelector(elm, selector) {
 }
 
 function contactEvent(event) {
+    console.log(`contactsEvent`)
     chrome.storage.sync.onChanged.addListener(dataChangeHandler);
     setTimeout(() => {
         console.log("change states");
@@ -349,8 +354,9 @@ function initialiseFinal(event) {
     console.log(`loading event listeners...`);
     var contactsParent = document.querySelector("._3uIPm.WYyr1");
     if (contactsParent){
-        contacts = document.querySelectorAll(`.lhggkp7q.ln8gz9je.rx9719la > div[tabindex="-1"]`);
+        contacts = document.querySelectorAll(`[aria-label="Chat list"] ._1Oe6M > div`);
         // contactsParent.onmouseover = initialiseFinal;
+        // console.log("contact elements: ", contacts)
         document.removeEventListener("mouseover", initialiseFinal);
         for (i = 0; i < contacts.length; i++){
             contacts[i].onmouseover = initialiseFinal;
@@ -378,7 +384,7 @@ window.onload = () => {
 document.onmousedown = event => {
     if (!event.button && event.target.classList.contains("_1-FMR")) {
         event.target.dblclick();
-        console.log("return messgae");
+        console.log("return message");
     }
 }
 

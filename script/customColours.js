@@ -319,6 +319,9 @@ function customColoursOnStart() {
         `html[dir] body.dark ._20C5O, html:not([dir='rtl']) body.dark .s2vc4xk1:hover {
             background-color: ${main.contrast}${tran.overlayLighter};
         }`,
+        `html[dir] body ._2mQtw {
+            background-color: ${background.secondary};
+        }`
     ];
     for (i in colourVariables) {
         customColours.insertRule(colourVariables[i], i);

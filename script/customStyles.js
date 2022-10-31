@@ -469,7 +469,7 @@ function customStylesOnStart(){
     }`);
     // shadow
     customStyles.insertRule(`
-    html[dir] body div#main > header._23P3O, html[dir="ltr"] body section.oq44ahr5 > div.ZIBLv, html[dir] div.o--vV, html[dir] section[data-testid="group-info-drawer-body"] > div {
+    html[dir] body div#main > header._23P3O, html[dir="ltr"] body section.oq44ahr5 > div.ZIBLv, html[dir] div.o--vV, html[dir] body .h3bz2vby {
         box-shadow: 0 0 20px var(--shadow-own);
     }`);
     // footer: message bar, audio popup, cannot send message
@@ -490,6 +490,11 @@ function customStylesOnStart(){
         border-radius: 20px;
         overflow: hidden;
     }`);
+    customStyles.insertRule(`
+    html[dir=ltr] body .customStylesFontWeight {
+        font-weight: 300;
+    }`);
+
     customStyles.insertRule(`
     html[dir] .mwp4sxku {
         max-height: 20vh;
@@ -805,7 +810,7 @@ function customStylesOnStart(){
     }`);
     // border none
     customStyles.insertRule(`
-    html[dir] .p357zi0d.ktfrpxia.nu7pwgvd, html[dir] .lhggkp7q.qq0sjtgm.ebjesfe0, html[dir=ltr] .dark .three ._2cYbV, html[dir=ltr] .three ._1bLj8 {
+    html[dir] .p357zi0d.ktfrpxia.nu7pwgvd, html[dir] .lhggkp7q.qq0sjtgm.ebjesfe0, html[dir=ltr] .dark .three ._2cYbV, html[dir=ltr] body .three ._1bLj8 {
         border: none;
     }`);
     // message screen
@@ -944,6 +949,12 @@ function customStylesOnStart(){
     html[dir] ._2HUCB {
         border-radius: 0 20px 20px 0;
     }`);
+    customStyles.insertRule(`
+    @media screen and (min-width: 900px) and (max-width: 1024px) {
+        html[dir] body ._2mQtw {
+            background: transparent;
+        }
+    }`);
     
     // status screen
     customStyles.insertRule(`
@@ -963,7 +974,7 @@ function customStylesOnStart(){
     }`);
     // menu column container
     customStyles.insertRule(`
-    html[dir=ltr] section[data-testid="group-info-drawer-body"] > div {
+    html[dir=ltr] section[data-testid="group-info-drawer-body"] > div, section.tvf2evcx.oq44ahr5.lb5m6g5c.s9fl9ege > div {
         border-radius: 20px;
         margin: 10px 10px 0;
         overflow: hidden;
@@ -1051,13 +1062,6 @@ function customStylesOnStart(){
     //     console.log(customStyles.cssRules.item(index));
     //     console.log(blurRules[index], index);
     });
-
-    // customStyles.insertRule(`
-    // a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
-    //     font-family: "Helvetica";
-    //     letter-spacing: 0.5px;
-    // }`);
-    // font-weight: 200 !important;
 }
 
 
