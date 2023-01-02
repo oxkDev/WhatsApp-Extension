@@ -132,7 +132,7 @@ function customStylesOnStart(){
         `html[dir] body.blur .ej3x2ktq, html[dir] body.blur ._3Hudz, html[dir] body.blur ._2B4d4, html[dir] body.blur ._3J6wB, html[dir=ltr] body.blur ._9-YHG, html[dir] body.blur .overlay._3IBSU, html[dir] body.blur .ej3x2kt, html[dir] body.blur ._2M_x0, html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0 {
             backdrop-filter: blur(${blurValue.heavy});
         }`,
-        `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html:not([dir='rtl']) body.blur .kfr1vweg, html[dir] body.blur .o--vV, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf:hover, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C, html[dir="ltr"] body.blur div._356RS, html[dir] body.blur .NQl4z, html[dir] body.blur .ItfyB._3nbHh {
+        `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html[dir] body.blur .o--vV, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf:hover, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C, html[dir="ltr"] body.blur div._356RS, html[dir] body.blur .NQl4z, html[dir] body.blur .ItfyB._3nbHh {
             backdrop-filter: blur(${blurValue.medium});
         }`,
         `html[dir=ltr] body.blur ._2JUrU._2ecOY ._3OC33, html[dir] body.blur .Nm1g1._22AX6, html[dir] body.blur ._2VSMU, html[dir] body.blur ._3nQGi, html[dir] body.blur ._3t1CR, html[dir=ltr] body.blur .EtBAv, html[dir=ltr] body.blur .i_Uj-, html[dir] body.blur ._1w-Ol, html:not([dir='rtl']) body.blur .fahkg6u0, html[dir] body.blur ._1GLVO, html[dir] body.blur ._2JUrU ._3OC33, html[dir] body.blur ._2JUrU ._3Lby7, html[dir] body.blur .epdck8xl, html[dir] body.blur ._3JXTQ, html[dir] body.blur .bs7a17vp.jxacihee.d53pemmv, html[dir] body.blur .GvRI8, html[dir] body.blur ._19zgN._26nDl div[data-testid="tooltip"] {
@@ -318,7 +318,7 @@ function customStylesOnStart(){
         `html[dir] ._2BU3P.tm2tP.copyable-area, html[dir] .ej3x2ktq, html[dir] ._23P3O, html[dir] .overlay._3IBSU, html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, html[dir=ltr] ._12x9I, html:not([dir='rtl']) .kfr1vweg, html[dir] body ._2VSMU, html[dir] .odkvbdo1, html[dir] button.fiyt298h, html[dir] ._3l4_3, html[dir] ._3NIfV, html[dir=ltr] div > .Iwkc0, html[dir] ._3BK98._3vy-1, html[dir] ._3BK98:hover, html[dir] a, html[dir=ltr] ._36BuW, html[dir=ltr] ._8KUDv, html:not([dir='rtl']) .s2vc4xk1, html[dir=ltr] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd {
             transition: all 200ms ease-in-out;
         }`,
-        `html[dir=ltr] ._2JUrU._2ecOY ._3OC33, html[dir] .Nm1g1._22AX6, html[dir] ._2VSMU, html[dir] ._3nQGi, html[dir="ltr"] body.blur div[class=""] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf, html[dir] div[data-testid*="msg"]._1-lf9 {
+        `html[dir=ltr] ._2JUrU._2ecOY ._3OC33, html[dir] .Nm1g1._22AX6, html[dir] ._2VSMU, html[dir] ._3nQGi, html[dir="ltr"] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf, html[dir] div[data-testid*="msg"]._1-lf9 {
             transition: all 100ms ease-in-out;
         }`,
     ];
@@ -337,7 +337,7 @@ function customStylesOnStart(){
     // `);
     // page sizing
     customStyles.insertRule(`
-    html[dir] .app-wrapper-web ._1XkO3, html[dir] body ._1iwk6 {
+    html[dir] .app-wrapper-web > div, html[dir] body ._1iwk6 {
         top: 0;
         transition: all 300ms ease-in-out;
         height: 100%;
@@ -521,7 +521,7 @@ function customStylesOnStart(){
     }`);
     // receive message ender
     customStyles.insertRule(`
-    html[dir] ._1-FMR.message-in._3Zpy8 + ._1-FMR.message-in:not(._3Zpy8) > div._1-lf9._3mSPV:not(._18q-J), html[dir] ._1-FMR:last-of-type.message-in ._1-lf9:not(._18q-J), html[dir] ._1-FMR.message-in._3Zpy8 + ._1-FMR.message-in:not(._3Zpy8) > div._1-lf9._3mSPV:not(._18q-J) .ItfyB, html[dir] ._1-FMR:last-of-type.message-in ._1-lf9:not(._18q-J) .ItfyB {
+    html[dir] .message-in:not(._3Zpy8) ._1-lf9:not(._18q-J), html[dir] .message-in:not(._3Zpy8) ._1-lf9:not(._18q-J) .ItfyB {
         border-bottom-left-radius: 15px;
     }`);
 
@@ -542,7 +542,7 @@ function customStylesOnStart(){
     }`);
     // sent message ender
     customStyles.insertRule(`
-    html[dir] ._1-FMR.message-out._3Zpy8 + ._1-FMR.message-out:not(._3Zpy8) > div._1-lf9._3mSPV:not(._18q-J), html[dir] ._1-FMR:last-of-type.message-out ._1-lf9:not(._18q-J), html[dir] ._1-FMR.message-out._3Zpy8 + ._1-FMR.message-out:not(._3Zpy8) > div._1-lf9._3mSPV:not(._18q-J) .ItfyB, html[dir] ._1-FMR:last-of-type.message-out ._1-lf9:not(._18q-J) .ItfyB {
+    html[dir] .message-out:not(._3Zpy8) ._1-lf9:not(._18q-J), html[dir] .message-out:not(._3Zpy8) ._1-lf9:not(._18q-J) .ItfyB {
         border-bottom-right-radius: 15px;
     }`);
     // message padding
@@ -1069,7 +1069,6 @@ function setClasses(e){
     if (e) utilities = e.utilities.newValue;
     document.body.classList.toggle("blur", utilities.styles.utilData.blurStatus);
     document.body.classList.toggle("backgroundImage", utilities.styles.utilData.backgroundImgStatus);
-    console.log(document.body.classList[2]);
 }
 
 chrome.storage.sync.onChanged.addListener(setClasses);

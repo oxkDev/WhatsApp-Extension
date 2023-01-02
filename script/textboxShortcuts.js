@@ -79,7 +79,10 @@ Range.prototype.setCaretPosition = function(offset, container, type){
 }
 function setText(text){
     document.execCommand("selectAll");
-    setTimeout(() => {document.execCommand("insertText", false, text)}, 0);
+    setTimeout(() => {
+        document.execCommand("insertText", false, text);
+        if (!text) textboxDefaultMessage();
+    }, 0);
     // this.innerHTML = text;
     // textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
     // new KeyboardEvent("", {bubbles: true});
@@ -143,16 +146,15 @@ function sendMessage(msg){
     document.querySelector("button.tvf2evcx.oq44ahr5.lb5m6g5c.svlsagor.p2rjqpw5.epia9gcq").click();
 }
 
-function dataChangeHandler(){
-    provider.getData(() => {
-        console.log(`dataChangeHandler: ${utilities.linkChanger.status}, ${utilities.spammer.status}`);
-        textboxStatus = document.querySelector(".lhggkp7q.qq0sjtgm.jxacihee.qzp46edm");
-        if (textboxStatus)
-            // textboxStatus.innerText = `Link changer: ${utilities.linkChanger.status}    |    Spammer: ${utilities.spammer.status}`.replaceAll("true", "on").replaceAll("false", "off");
-            textboxStatus.innerHTML = `<div class="customStylesFontWeight">${document.querySelector(`[data-testid="conversation-info-header-chat-title"]`).innerText}</div>`;
-            else
-            console.log("Chat box default message failed to load: ", textboxStatus);
-    });
+function textboxDefaultMessage(){
+        
+    textboxStatus = document.querySelector(".lhggkp7q.qq0sjtgm.jxacihee.qzp46edm");
+
+    if (textboxStatus)
+        // textboxStatus.innerText = `Link changer: ${utilities.linkChanger.status}    |    Spammer: ${utilities.spammer.status}`.replaceAll("true", "on").replaceAll("false", "off");
+        textboxStatus.innerHTML = `<div class="customStylesFontWeight">${document.querySelector(`[data-testid="conversation-info-header-chat-title"]`).innerText}</div>`;
+    else
+        console.log("Chat box default message failed to load: ", textboxStatus);
     // deciding utility status
 }
 
@@ -310,8 +312,8 @@ function stylesOnNewContact(){
 //--------------------------------------------------------------------------------------------------------- final loads
 function textChange(event) {
     console.log("loading text changer... ", textbox);
-    dataChangeHandler();
-    textbox.onkeydown = evnt => {if (textbox.innerText == "\n") {dataChangeHandler();} keyCombinationListener(evnt);}
+    textboxDefaultMessage();
+    textbox.onkeydown = evnt => {if (textbox.innerText == "\n") textboxDefaultMessage(); keyCombinationListener(evnt);}
     textbox.onkeyup = messageJumper;
 }
 function findParentBySelector(elm, selector) {
@@ -333,10 +335,10 @@ function findParentBySelector(elm, selector) {
 
 function contactEvent(event) {
     console.log(`contactsEvent`)
-    chrome.storage.sync.onChanged.addListener(dataChangeHandler);
+    chrome.storage.sync.onChanged.addListener(textboxDefaultMessage);
     setTimeout(() => {
         console.log("change states");
-        // dataChangeHandler();
+        // textboxDefaultMessage();
         textbox = document.querySelector(".p3_M1 ._13NKt.copyable-text.selectable-text");
         if(!textbox) textbox = document.querySelector(`.p3_M1 [role="textbox"][title="Type a message"]`);
         selectedContact = contacts.getElementByTabIndex(0);
