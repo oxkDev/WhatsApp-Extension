@@ -298,7 +298,7 @@ function backgroundImageStylesOnStart() {
 
 
 function changeBackground(force, tags, filters){
-    if (force || (!randInt(2) && utilities.styles.utilData.backgroundImgStatus)){
+    if (force || (!randInt(2) && userData.styles.utilData.backgroundImgStatus)){
         var images = [];
         Object.values(backgroundImg).forEach(iamgeValue => {
             if (

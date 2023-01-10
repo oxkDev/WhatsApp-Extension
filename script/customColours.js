@@ -16,8 +16,8 @@ customMetaHeader.name = "theme-color";
 document.head.append(customMetaHeader);
 
 function customColoursOnStart() {
-    themeNumber = utilities.styles.utilData.themeNumber;
-    var blurValue = utilities.styles.utilData.blurValue;
+    themeNumber = userData.styles.utilData.themeNumber;
+    var blurValue = userData.styles.utilData.blurValue;
     var main = themes[themeNumber].main;
     var theme = themes[themeNumber].theme;
     var tran = themes[themeNumber].tran;
@@ -329,7 +329,8 @@ function customColoursOnStart() {
 }
 
 chrome.storage.sync.onChanged.addListener(e => {
-    if (themeNumber != e.utilities.newValue.styles.utilData.themeNumber) {
+    console.log(e);
+    if (themeNumber != e["whatsapp-extension"].newValue.styles.utilData.themeNumber) {
         for (i in colourVariables) {
             customColours.deleteRule(0);
         }

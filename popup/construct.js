@@ -1,73 +1,39 @@
-Document.prototype.newElement = function(tag, classes, id, textContent) {
-    var element = this.createElement(tag);
-    if (classes) element.className = classes;
-    if (id) element.id = id;
-    if (textContent) element.textContent = textContent;
-    return element;
-}
-
-CSSStyleSheet.prototype.deleteRules = function(){
-    console.log(this, this.cssRules);
-    for (i = 0; i < this.cssRules.length; i++) {
-        console.log(this.cssRules);
-        this.deleteRule(0);
-    };
-}
-
-// Array.prototype.forEachDelay = function(delay, func) {
-//     arr = this;
-//     (function myLoop(i) {
-//         setTimeout(function() {
-//             func(arr[arr.length - i]);
-//             if (--i) myLoop(i);   //  decrement i and call myLoop again if i > 0
-//         }, delay);
-//     })(arr.length);
-// }
+var colourVariables;
 
 const settings = {
     styles: {
-        "Blur": newSwitch(),
-        "Background Image": newSwitch(),
+        "Blur": document.querySelector("div#blur.switch"),
+        "Background Image": document.querySelector("div#bgimg.switch"),
     },
 }
 
+var resetButton = document.querySelector("div#reset.mainButton");
+// var themeButton = document.querySelector("div#theme.mainButton");
 
-Object.keys(settings).forEach(grpKey => {
-    var group = document.newElement("div", "group");
-    document.body.appendChild(group);
-    group.textContent = grpKey;
-    Object.keys(settings[grpKey]).forEach(elmKey => {
-        var field = document.newElement("div", "field");
-        field.textContent = elmKey;
-        console.log("elmKey");
-        group.appendChild(field);
-        field.appendChild(settings[grpKey][elmKey]);
-    });
-});
+var themeParent = document.querySelector("div#theme.selectorWrap");
 
+var themeButtons = [];
 
-var resetButton = document.newElement("div", "button", "reset", "reset settings");
-var themeButton = document.newElement("div", "button", "theme", "change theme");
+function displayThemes() {
+    for (let i = 0; i < themes.length; i++) {
+        setTimeout(() => {
+            themeButtons[i].style.opacity = "";
+        }, i * 20);
+    }
+} 
 
-document.body.appendChild(themeButton);
-document.body.appendChild(resetButton);
-
-function newSwitch(){
-    var element = document.newElement("div", "switch");
-    element.appendChild(document.newElement("div", "knob"));
-    return element;
-}
-
-
-var popupColoursElement = document.createElement("style");
-document.head.appendChild(popupColoursElement);
-popupColoursElement.id = "custom-colours";
-var popupColours = popupColoursElement.sheet;
+var customColoursElement = document.createElement("style");
+document.head.appendChild(customColoursElement);
+customColoursElement.id = "custom-colours";
+var customColours = customColoursElement.sheet;
 
 function setColours() {
-    popupColours.deleteRules();
-    themeNumber = utilities.styles.utilData.themeNumber;
-    var blurValue = utilities.styles.utilData.blurValue;
+    for (i in colourVariables) {
+        console.log("deleting:", i)
+        customColours.deleteRule(0)
+    }
+    themeNumber = userData.styles.utilData.themeNumber;
+    var blurValue = userData.styles.utilData.blurValue;
     var main = themes[themeNumber].main;
     var theme = themes[themeNumber].theme;
     var tran = themes[themeNumber].tran;
@@ -89,15 +55,15 @@ function setColours() {
         }`
     ];
     for (i in colourVariables) {
-        popupColours.insertRule(colourVariables[i], i);
+        customColours.insertRule(colourVariables[i], i);
     };
 }
-console.log("setColours():", popupColours);
+console.log("setColours():", customColours);
 
 function setSwitchStatus() {
-    console.log(`setSwitchStatus():`, utilities);
-    console.log(`setSwitchStatus test:`, utilities.linkChanger.status, utilities.spammer.status, utilities.spammer.utilData.count);
-
-    settings.styles["Blur"].classList.toggle("enabled", utilities.styles.utilData.blurStatus);
-    settings.styles["Background Image"].classList.toggle("enabled", utilities.styles.utilData.backgroundImgStatus);
+    console.log(`setSwitchStatus():`, userData);
+    setTimeout(() => {
+        settings.styles["Blur"].classList.toggle("enabled", userData.styles.utilData.blurStatus);
+        settings.styles["Background Image"].classList.toggle("enabled", userData.styles.utilData.backgroundImgStatus);
+    }, 100);
 }

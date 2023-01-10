@@ -1,11 +1,7 @@
 var extensionAddonDelay = 0.001;
 var contacts, selectedContact, textbox;
 var isWin = navigator.userAgentData.platform == "Windows";
-// var blr = ["/*", "*/", "e"];
 
-// var element;
-// var contacts;
-// var selectedContact;
 var textbox;
 var jumper = {
     element: "",
@@ -147,11 +143,9 @@ function sendMessage(msg){
 }
 
 function textboxDefaultMessage(){
-        
     textboxStatus = document.querySelector(".lhggkp7q.qq0sjtgm.jxacihee.qzp46edm");
 
     if (textboxStatus)
-        // textboxStatus.innerText = `Link changer: ${utilities.linkChanger.status}    |    Spammer: ${utilities.spammer.status}`.replaceAll("true", "on").replaceAll("false", "off");
         textboxStatus.innerHTML = `<div class="customStylesFontWeight">${document.querySelector(`[data-testid="conversation-info-header-chat-title"]`).innerText}</div>`;
     else
         console.log("Chat box default message failed to load: ", textboxStatus);
@@ -162,7 +156,7 @@ function spamMessage(spamData, message){
     // sendMessage(message); //  your code here
     var i = 0;
     interval = setInterval(function() {
-        if (utilities.spammer.status && !(i++ == spamData.count)) sendMessage(message); //  your code here
+        if (userData.spammer.status && !(i++ == spamData.count)) sendMessage(message); //  your code here
         else clearInterval(interval);   //  decrement i and call myLoop again if i > 0
         console.log(message);
     }, spamData.delay);
@@ -179,20 +173,8 @@ function extraSideSymbols(type){
     console.log(`type: ${type}, ${type.length}`)
     console.log(`text: ${selection.startContainer.textContent.slice(selection.startOffset - type.length, selection.startOffset)}, ${selection.endContainer.textContent.slice(selection.endOffset, selection.endOffset + type.length)}`)
     console.log(`Selection: ${selection.startOffset}, ${selection.endOffset}`);
-    
-    // setText(doAdd ? textbox.innerText.addToSelection(start, end, type) : textbox.innerText.removeFromSelection(start, end, type));
-    // if (doAdd) {
+
     selection.editSelection(type);
-    // selection.setCaretPosition();
-        // selection.endContainer.textContent = selection.endContainer.textContent.slice(0, selection.endOffset) + type + selection.startContainer.textContent.slice(selection.startOffset);
-    // }
-    // setText(`${type}${selection.cloneContents().textContent}${type}`);
-    // document.execCommand("selectAll", false);
-    // document.execCommand("insertText", false, doAdd ? textbox.innerText.addToSelection(start, end, type) : textbox.innerText.removeFromSelection(start, end, type))
-    // if (textbox.innerText !== ''){
-    //         setCaretPosition(start + ((2*doAdd - 1) * type.length), end + ((2*doAdd - 1) * type.length));
-    // }
-    // textbox.dispatchEvent(new InputEvent('input', {bubbles: true,}));
 }
 
 //--------------------------------------------------------------------------------------------------------- key combination commands
@@ -200,30 +182,8 @@ function keyCombinationListener(_event) {
     var selection = window.getSelection().getRangeAt(0);
     start = selection.startOffset;
     end = selection.endOffset;
-    // user.get("utilities", result => {
-    //     utilities = result.utilities;
-    // });
     window.InputEvent = window.Event || window.InputEvent;
     // if (_event.key == "Enter" && textbox.textContent != "" && !_event.shiftKey) { //--------------------------------------------------------------- enter key
-    //     if (utilities.linkChanger.status){
-    //         console.log('changing text');
-    //         setText(textbox.textContent.replaceAll(" ", "_"));
-    //         textbox.textContent += `_${utilities.linkChanger.utilData.ranStr[randInt(utilities.linkChanger.utilData.ranStr.length)]}`;
-    //     }
-    //     if (utilities.spammer.status){
-    //         console.log(`spamming: \n${utilities.spammer.utilData.count}, ${utilities.spammer.utilData.limit}`);
-    //         if (utilities.spammer.utilData.count > utilities.spammer.utilData.limit){
-    //             utilities.spammer.utilData.count = utilities.spammer.utilData.limit;
-    //             provider.setData();
-    //             console.log("spam count reduced due to over limit");
-    //         }
-    //         spamMessage(utilities.spammer.utilData, textbox.textContent);
-    //     // }else{
-    //     }
-    //     textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
-    //     document.querySelector("button.tvf2evcx.oq44ahr5.lb5m6g5c.svlsagor.p2rjqpw5.epia9gcq").click();
-    //     return false;
-    // }
     if (_event.functionKey() && !(_event.shiftKey || _event.altKey)) { //--------------------------------------------------------------- meta key
         if (Object.keys(textSymbols).indexOf(_event.key) + 1) {
             extraSideSymbols(textSymbols[_event.key]);
@@ -235,21 +195,6 @@ function keyCombinationListener(_event) {
             return false;
         }
     } else if (_event.functionKey() && _event.shiftKey){
-        if (textbox.textContent.indexOf(`${utilities.linkChanger.code}:on`) + 1){
-            utilities.linkChanger.status = true;
-            replaceTxt(textbox.textContent, `${utilities.linkChanger.code}:on`, ` linkChanger.status-${utilities.linkChanger.status}`);
-        } else if (textbox.textContent.indexOf(`${utilities.linkChanger.code}:off`) + 1){
-            utilities.linkChanger.status = false;
-            replaceTxt(textbox.textContent, `${utilities.linkChanger.code}:off`, ` linkChanger.status-${utilities.linkChanger.status}`);
-        } else if (textbox.textContent.indexOf(`${utilities.spammer.code}:on`) + 1){
-            utilities.spammer.status = true;
-            replaceTxt(textbox.textContent, `${utilities.spammer.code}:on`, ` spammer-${utilities.spammer.status}`);
-        } else if (textbox.textContent.indexOf(`${utilities.spammer.code}:off`) + 1){
-            utilities.spammer.status = false;
-            replaceTxt(textbox.textContent, `${utilities.spammer.code}:off`, ` spammer-${utilities.spammer.status}`);
-        }
-        console.log(`linkChanger.status: ${utilities.linkChanger.status}\nspammer: ${utilities.spammer.status}`);
-        provider.setData();
         if (_event.key == " ") {
             document.execCommand("insertText", false, "ㅤ");
             return false;

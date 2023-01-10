@@ -7,8 +7,8 @@ var customStyles = customStylesElement.sheet;
 // colours
 
 function customStylesOnStart(){
-    var themeNumber = utilities.styles.utilData.themeNumber;
-    var blurValue = utilities.styles.utilData.blurValue;
+    var themeNumber = userData.styles.utilData.themeNumber;
+    var blurValue = userData.styles.utilData.blurValue;
     var main = themes[themeNumber].main;
     var theme = themes[themeNumber].theme;
     var tran = themes[themeNumber].tran;
@@ -1066,9 +1066,14 @@ function customStylesOnStart(){
 
 
 function setClasses(e){
-    if (e) utilities = e.utilities.newValue;
-    document.body.classList.toggle("blur", utilities.styles.utilData.blurStatus);
-    document.body.classList.toggle("backgroundImage", utilities.styles.utilData.backgroundImgStatus);
+    if (e)
+        if (e["whatsapp-extension"])
+            userData = e["whatsapp-extension"].newValue;
+        else
+            userData = e["utilities"].newValue;
+
+    document.body.classList.toggle("blur", userData.styles.utilData.blurStatus);
+    document.body.classList.toggle("backgroundImage", userData.styles.utilData.backgroundImgStatus);
 }
 
 chrome.storage.sync.onChanged.addListener(setClasses);

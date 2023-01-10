@@ -1,6 +1,6 @@
 var user = chrome.storage.sync;
 
-var utilities;
+var userData;
 
 class Utility {
     constructor(status, code, utilData) {
@@ -19,7 +19,7 @@ class ColourTheme {
             light: theme.light || "#2a7095",
             lighter: theme.lighter || "#298abe",
             danger: theme.danger || "#f14040",
-            link: theme.link || main.contrast || "#459dd9",
+            link: theme.link || theme.light || "#459dd9",
         } : {
             primary: "#083a55",
             secondary: "#141b20",
@@ -136,6 +136,7 @@ const erythriteTheme = new ColourTheme(
         transparent: "transparent",
     }
 )
+
 const oxkLightTheme = new ColourTheme(
     {
         primary: "#298abe",
@@ -231,6 +232,7 @@ const oxkRedDark = new ColourTheme(
         transparent: "transparent",
     }
 )
+
 const ozkGreenDark = new ColourTheme(
     {
         primary: "#085427",
@@ -263,32 +265,8 @@ const ozkGreenDark = new ColourTheme(
 
 const themes = [new ColourTheme(), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark];
 
-class Data {
-    constructor(linkChanger, spammer, styles) {
-        this.linkChanger = linkChanger || new Utility(
-            false,
-            "linkChanger",
-            {ranStr: [
-                "@gmail.gov.sg",
-                ".gov.sg",
-                "@ssts.edu.sg",
-                "@rob_e.com",
-                "@yahoo.com",
-                "@gmail.com",
-                "@yahoo.gov.sg",
-                ".pp.com",
-                "tofy.com",
-            ]}
-        );
-        this.spammer = spammer || new Utility(
-            false,
-            "spammer",
-            {
-                count: 10,
-                limit: 100,
-                delay: 300
-            }
-        );
+class UserData {
+    constructor(styles) {
         this.styles = styles || new Utility(
             true,
             "styles",
@@ -296,7 +274,6 @@ class Data {
                 blurStatus: true,
                 backgroundImgStatus: true,
                 themeNumber: 0,
-                customColours: new ColourTheme(),
                 blurValue: {
                     medium: "30px",
                     light: "20px",
@@ -311,27 +288,41 @@ class Data {
 const provider = (function() {
     return {
         getData: function(func){
-            user.get("utilities", function (result){
-                utilities = result.utilities || new Data();
-                if (func) func();
-                console.log("utilities: ", utilities);
+            user.get("whatsapp-extension", function (result){
+                console.log("whatsapp-extension: ", result);
+                userData = result["whatsapp-extension"];
+                if (userData){
+                    if (func) func();
+                    console.log("userData: ", userData);
+                } else
+                    user.get("utilities", function (result){
+                        userData = result.utilities;
+                        if (userData) {
+                            console.log(`user data not in "Whatsappp Extension", present in "utilities": `, userData);
+                        } else {
+                            console.log(`user data missing: ${result}\n creating new data`);
+                            userData = new UserData();
+                        }
+                        user.set({"whatsapp-extension": userData});
+                        if (func) func();
+                        console.log("userData: ", userData);
+                    });
             });
-            return utilities;
+            return userData;
         },
         
         resetData: function(func){
-            utilities = new Data();
+            userData = new UserData();
             this.setData();
             if (func) func();
         },
         
         setData: function(){
-            user.set({"utilities": utilities});
+            user.set({"whatsapp-extension": userData});
         },
     }
 })();
 
-console.log("testttt:", provider.getData());
 // init
 // provider.getData();
 // function init(){

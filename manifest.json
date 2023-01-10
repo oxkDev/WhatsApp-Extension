@@ -6,7 +6,7 @@
     },
 
     "description": "Allows you to use Whatsapp efficiently",
-    "version": "0.2.2",
+    "version": "0.2.3",
     "manifest_version": 3,
 
     "background": {

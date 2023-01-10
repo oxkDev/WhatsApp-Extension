@@ -11,7 +11,7 @@ html {
 }
 
 :root {
-    --transition: all 0.2s cubic-bezier(0.34, 0.03, 0.39, 1.01);
+    --transition: all 0.3s cubic-bezier(0.34, 0.03, 0.39, 1.01);
     --font-sub: lighter 14px "Helvetica";
     --font-title: lighter 16px "Helvetica";
     --letter-spacing-title: 1px;
@@ -112,7 +112,7 @@ div:hover {
     left: 20px;
 }
 
-.button {
+.mainButton {
     border-radius: 21px;
     /* width: 200px; */
     margin: 5px 5px 10px 5px;
@@ -128,13 +128,47 @@ div:hover {
     letter-spacing: var(--letter-spacing-title);
 }
 
-.button:hover {
+.mainButton:hover {
     cursor: pointer;
     background-color: var(--theme-primary);
 }
-.button:active {
+.mainButton:active {
     background-color: var(--theme-secondary);
     letter-spacing: 0.9px;
+}
+
+.selectorWrap {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.selectorWrap::after {
+    content: "";
+    flex: auto;
+}
+
+.themeButton {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    margin: 7px;
+    border-radius: 7px;
+    opacity: 0.8;
+}
+
+.themeButton[active="0"]:hover {
+    border-radius: 5px;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.themeButton[active="0"]:active {
+    opacity: 0.5;
+}
+
+.themeButton[active="1"] {
+    box-shadow: 0 0 0 3px var(--theme-primary);
 }
 
 /* popup animatino */
