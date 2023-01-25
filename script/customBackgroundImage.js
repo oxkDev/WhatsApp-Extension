@@ -282,7 +282,7 @@ function backgroundImageStylesOnStart() {
     }`);
 
     backgroundPictures.insertRule(`
-    html[dir="ltr"] ._3xTHG {
+    html[dir="ltr"] div[data-testid="conversation-panel-wrapper"] {
         background: var(--conversation-panel-background);
         opacity: 1;
         transition: all 1s ease-in-out 1s;
@@ -291,7 +291,7 @@ function backgroundImageStylesOnStart() {
     }`);
 
     backgroundPictures.insertRule(`
-    html[dir=ltr] ._3xTHG {
+    html[dir=ltr] div[data-testid="conversation-panel-wrapper"] {
         background: var(--conversation-panel-background);
     }`);
 }
@@ -322,7 +322,7 @@ function changeBackground(force, tags, filters){
 
         backgroundPictures.deleteRule(0);
         backgroundPictures.insertRule(`
-        html[dir=ltr] body.backgroundImage ._3xTHG {
+        html[dir=ltr] body.backgroundImage div[data-testid="conversation-panel-wrapper"] {
             background: #00000000 url("${img.link}") ${img.repeat} center;
             background-size: ${img.size};
         }`);

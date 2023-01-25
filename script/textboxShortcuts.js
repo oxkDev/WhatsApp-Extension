@@ -141,38 +141,39 @@ function sendMessage(msg){
     // textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
     document.querySelector("button.tvf2evcx.oq44ahr5.lb5m6g5c.svlsagor.p2rjqpw5.epia9gcq").click();
 }
-
+//--------------------------------------------------------------------------------------------------------- default message in textbox
 function textboxDefaultMessage(){
-    textboxStatus = document.querySelector(".lhggkp7q.qq0sjtgm.jxacihee.qzp46edm");
+    textboxStatus = document.querySelector(".lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8");
 
     if (textboxStatus)
-        textboxStatus.innerHTML = `<div class="customStylesFontWeight">${document.querySelector(`[data-testid="conversation-info-header-chat-title"]`).innerText}</div>`;
+        textboxStatus.innerHTML = `<div class="customStylesFontWeight">${document.querySelector(`[data-testid="conversation-info-header-chat-title"]`).innerHTML}</div>`;
     else
         console.log("Chat box default message failed to load: ", textboxStatus);
     // deciding utility status
 }
 
-function spamMessage(spamData, message){
-    // sendMessage(message); //  your code here
-    var i = 0;
-    interval = setInterval(function() {
-        if (userData.spammer.status && !(i++ == spamData.count)) sendMessage(message); //  your code here
-        else clearInterval(interval);   //  decrement i and call myLoop again if i > 0
-        console.log(message);
-    }, spamData.delay);
-}
+// function spamMessage(spamData, message){
+//     // sendMessage(message); //  your code here
+//     var i = 0;
+//     interval = setInterval(function() {
+//         if (userData.spammer.status && !(i++ == spamData.count)) sendMessage(message); //  your code here
+//         else clearInterval(interval);   //  decrement i and call myLoop again if i > 0
+//         console.log(message);
+//     }, spamData.delay);
+// }
 
 //--------------------------------------------------------------------------------------------------------- symbols adder
-function extraSideSymbols(type){
+function extraSideSymbols(e, type){
+    e.preventDefault();
     textbox.formatPlainText();
     var selection = window.getSelection().getRangeAt(0);
     start = selection.startOffset;
     end = selection.endOffset;
     // if symbol in front and symbol behind of selected text is the symbol type.
     
-    console.log(`type: ${type}, ${type.length}`)
-    console.log(`text: ${selection.startContainer.textContent.slice(selection.startOffset - type.length, selection.startOffset)}, ${selection.endContainer.textContent.slice(selection.endOffset, selection.endOffset + type.length)}`)
-    console.log(`Selection: ${selection.startOffset}, ${selection.endOffset}`);
+    // console.log(`type: ${type}, ${type.length}`)
+    // console.log(`text: ${selection.startContainer.textContent.slice(selection.startOffset - type.length, selection.startOffset)}, ${selection.endContainer.textContent.slice(selection.endOffset, selection.endOffset + type.length)}`)
+    // console.log(`Selection: ${selection.startOffset}, ${selection.endOffset}`);
 
     selection.editSelection(type);
 }
@@ -186,12 +187,12 @@ function keyCombinationListener(_event) {
     // if (_event.key == "Enter" && textbox.textContent != "" && !_event.shiftKey) { //--------------------------------------------------------------- enter key
     if (_event.functionKey() && !(_event.shiftKey || _event.altKey)) { //--------------------------------------------------------------- meta key
         if (Object.keys(textSymbols).indexOf(_event.key) + 1) {
-            extraSideSymbols(textSymbols[_event.key]);
+            extraSideSymbols(_event, textSymbols[_event.key]);
             return false;
         }
     } else if (_event.shiftKey && !(_event.ctrlKey || _event.altKey || _event.functionKey())) {
         if (_event.key == '\"'){
-            extraSideSymbols('\"');
+            extraSideSymbols(_event, '\"');
             return false;
         }
     } else if (_event.functionKey() && _event.shiftKey){
@@ -261,60 +262,47 @@ function textChange(event) {
     textbox.onkeydown = evnt => {if (textbox.innerText == "\n") textboxDefaultMessage(); keyCombinationListener(evnt);}
     textbox.onkeyup = messageJumper;
 }
-function findParentBySelector(elm, selector) {
-    var all = document.querySelectorAll(selector);
-    var cur = elm.parentNode;
-    while(
-        cur &&
-        !(() => { //helper function (see below)
-            for(var i = 0, len = all.length; i < len; i ++) {
-                if(all[i] == cur) return true;
-            }
-            return false;
-        })
-    ) { //keep going up until you find a match
-        cur = cur.parentNode; //go up
-    }
-    return cur; //will return null if not found
-}
+
+textboxClasses = [`div[data-testid="conversation-compose-box-input"]`, `.p3_M1 [role="textbox"][title="Type a message"]`, ".p3_M1 ._13NKt.copyable-text.selectable-text"];
 
 function contactEvent(event) {
     console.log(`contactsEvent`)
     chrome.storage.sync.onChanged.addListener(textboxDefaultMessage);
     setTimeout(() => {
         console.log("change states");
-        // textboxDefaultMessage();
-        textbox = document.querySelector(".p3_M1 ._13NKt.copyable-text.selectable-text");
-        if(!textbox) textbox = document.querySelector(`.p3_M1 [role="textbox"][title="Type a message"]`);
-        selectedContact = contacts.getElementByTabIndex(0);
-        selectedContact.onmousedown = undefined;
-        selectedContact.onkeydown = undefined;
-        if (textbox){
+        textboxDefaultMessage();
+
+        tbNew = document.querySelector(textboxClasses[0]);
+
+        for (let i = 1; i < textboxClasses.length; i++) {
+            if (!tbNew) tbNew = document.querySelector(textboxClasses[i]);
+        }
+
+        if (tbNew && tbNew != textbox){
             console.log("textbox: ", textbox);
+            textbox = tbNew;
             textChange();
             stylesOnNewContact();
-        } else console.log("Textbox element not detected: ", textbox);
+        } else console.log("Textbox element not updated: ", tbNew, textbox);
     }, extensionAddonDelay);
 }
 
+contactsParentClasses = [`#side`];
+
 function initialiseFinal(event) {
     console.log(`loading event listeners...`);
-    var contactsParent = document.querySelector("._3uIPm.WYyr1");
-    if (contactsParent){
-        contacts = document.querySelectorAll(`[aria-label="Chat list"] ._1Oe6M > div`);
-        // contactsParent.onmouseover = initialiseFinal;
-        // console.log("contact elements: ", contacts)
-        document.removeEventListener("mouseover", initialiseFinal);
-        for (i = 0; i < contacts.length; i++){
-            contacts[i].onmouseover = initialiseFinal;
-            contacts[i].onmousedown = contactEvent;
-            contacts[i].onkeydown = () => {if (!event.button) contactEvent}
-            if (selectedContact){
-                selectedContact.onmousedown = undefined;
-                selectedContact.onkeydown = undefined;
-            }
-        }
+    var contactsParent = document.querySelector(contactsParentClasses[0]);
+
+    for (let i = 1; i < contactsParentClasses.length; i++) {
+        if (!contactsParent) contactsParent = document.querySelector(contactsParentClasses[i]);
     }
+
+    if (contactsParent){
+        document.removeEventListener("mouseover", initialiseFinal);
+        contactsParent.onmouseover = initialiseFinal;
+        contactsParent.onmousedown = contactEvent;
+    }
+
 }
 console.log('Running script...');
 // chrome.storage.sync.onChanged.addListener(changeBackground);

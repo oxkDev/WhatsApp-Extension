@@ -57,6 +57,8 @@ function customColoursOnStart() {
             --button-bubble: ${theme.light};
             --round-entry-point-background-color: ${main.theme}${tran.unBlur};
             --quick-action-button-background: ${main.theme}${tran.unBlur};
+            --poll-bar-fill-receiver: ${main.contrast}${tran.overlayHeavy};
+            --poll-bar-fill-sender: ${main.contrast}${tran.overlayHeavy};
 
             /* unread bar */
             --unread-background: ${background.secondary}${tran.overlay};
@@ -316,7 +318,7 @@ function customColoursOnStart() {
             background-color: ${main.contrast}${tran.overlayLighter};
         }`,
         // button, checkbox
-        `html[dir] body.dark ._20C5O, html:not([dir='rtl']) body.dark .s2vc4xk1:hover {
+        `html[dir] body.dark div[data-testid*="popup"] div[role="button"], html:not([dir='rtl']) body.dark .s2vc4xk1:hover {
             background-color: ${main.contrast}${tran.overlayLighter};
         }`,
         `html[dir] body ._2mQtw {
