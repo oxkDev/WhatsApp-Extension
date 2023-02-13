@@ -129,7 +129,7 @@ function customStylesOnStart(){
                 background: ${main.transparent};
             }
         }`,
-        `html[dir] body.blur .ej3x2ktq, html[dir] body.blur div[data-testid="status-v3-main-panel"], html[dir] body.blur div[role="dialog"] > div[data-testid*="popup"] > div, html[dir=ltr] body.blur ._9-YHG, html[dir] body.blur .overlay._3IBSU, html[dir] body.blur .ej3x2kt, html[dir] body.blur ._2M_x0, html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0 {
+        `html[dir] body.blur .ej3x2ktq, html[dir] body.blur div[data-testid="status-v3-main-panel"], html[dir] div[role=dialog] div[data-testid*=popup]:has( > div[data-animate-modal-popup]), html[dir=ltr] body.blur ._9-YHG, html[dir] body.blur .overlay._3IBSU, html[dir] body.blur .ej3x2kt, html[dir] body.blur ._2M_x0, html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0 {
             backdrop-filter: blur(${blurValue.heavy});
         }`,
         `html[dir] body.blur ._2BU3P.tm2tP.copyable-area, html[dir] body.blur ._2lSWV._3cjY2.copyable-area, html[dir] body.blur ._23P3O, html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > .g0rxnol2 > div > div, html[dir] body.blur .o--vV, html[dir] body.blur ._2sDI2, html[dir=ltr] body.blur ._1y99G, html[dir] body.blur .f09rd1o5, html[dir] body.blur ._2A-Ve, html[dir="ltr"] body.blur .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf:hover, html[dir] body.blur ._3r7AV, body.blur ._3CRhO, html[dir] .OVz7E, html[dir=ltr] body.blur ._1fLGu, html[dir] body.blur div.landing-window, html[dir=ltr] body.blur ._5ML0C, html[dir="ltr"] body.blur div._356RS, html[dir] body.blur .NQl4z, html[dir] body.blur .ItfyB._3nbHh {
@@ -212,16 +212,16 @@ function customStylesOnStart(){
         `html[dir="ltr"] .esbg2say {
         animation-name: l9dax0qz-B,sl8wg78j-B,fadeInScaleUpSmall;
         }`,
-        // single to double click
-        `span[data-testid$="-dblcheck"] > svg {
-            animation: 200ms ease-in-out 0s 1 normal none running onDoubleTick;
-        }`,
+        // // single to double click
+        // `span[data-testid$="-dblcheck"] > svg {
+        //     animation: 200ms ease-in-out 0s 1 normal none running onDoubleTick;
+        // }`,
         // single to double click
         `span[data-testid$="-check"] > svg, html[dir] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd {
             animation: 200ms ease-in-out 0s 1 normal none running scaleUpSmall;
         }`,
         // svg icon animation
-        `html[dir] .ZIBLv.g0rxnol2 .p357zi0d.ktfrpxia.nu7pwgvd.ac2vgrno.f8m0rgwh.gndfcl4n {
+        `html[dir] span[data-testid="security-drawer-lock"] {
             animation: 2s ease-in-out 0s infinite alternate none running svgIconGlow;
         }`,
 
@@ -282,14 +282,14 @@ function customStylesOnStart(){
                 opacity: 1;
             }
         }`,
-        `@keyframes onDoubleTick {
-            0% {
-                transform: translateX(3px);
-            }
-            50% {
-                opacity: 1;
-            }
-        }`,
+        // `@keyframes onDoubleTick {
+        //     0% {
+        //         transform: translateX(3px);
+        //     }
+        //     50% {
+        //         opacity: 1;
+        //     }
+        // }`,
         `@keyframes fadeInScaleUpSmall {
             0% {
                 opacity: 0;
@@ -315,7 +315,7 @@ function customStylesOnStart(){
         `html[dir] div[data-testid="status-v3-main-panel"], html[dir] ._2B4d4, html[dir] div[data-testid*="popup"] > div, html[dir] ._3mpG7, html[dir] ._37FrU, html[dir] .p4t1lx4y {
             transition: all 300ms ease-in-out;
         }`,
-        `html[dir] ._2BU3P.tm2tP.copyable-area, ._2lSWV._3cjY2.copyable-area, html[dir] .ej3x2ktq, html[dir] ._23P3O, html[dir] .overlay._3IBSU, html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > .g0rxnol2 > div > div, html[dir=ltr] ._12x9I, html:not([dir='rtl']) .kfr1vweg, html[dir] body ._2VSMU, html[dir] .odkvbdo1, html[dir] button.fiyt298h, html[dir] ._3l4_3, html[dir] ._3NIfV, html[dir=ltr] div > .Iwkc0, html[dir] ._3BK98._3vy-1, html[dir] ._3BK98:hover, html[dir] a, html[dir=ltr] ._36BuW, html[dir=ltr] ._8KUDv, html:not([dir='rtl']) .s2vc4xk1, html[dir=ltr] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd, html[dir] div[role="button"], html[dir=ltr] div:has(> div[data-testid="icon-down-context"]),  span[data-testid*="check"] > svg {
+        `html[dir] ._2BU3P.tm2tP.copyable-area, ._2lSWV._3cjY2.copyable-area, html[dir] .ej3x2ktq, html[dir] ._23P3O, html[dir] .overlay._3IBSU, html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > ._3Bc7H > div > div, .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je > .g0rxnol2 > div > div, html[dir=ltr] ._12x9I, html:not([dir='rtl']) .kfr1vweg, html[dir] body ._2VSMU, html[dir] .odkvbdo1, html[dir] button.fiyt298h, html[dir] ._3l4_3, html[dir] ._3NIfV, html[dir=ltr] div > .Iwkc0, html[dir] ._3BK98._3vy-1, html[dir] ._3BK98:hover, html[dir] a, html[dir=ltr] ._36BuW, html[dir=ltr] ._8KUDv, html:not([dir='rtl']) .s2vc4xk1, html[dir=ltr] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd, html[dir] div[role="button"], html[dir=ltr] div:has(> div[data-testid="icon-down-context"]), span[data-testid*="check"] > svg, div:has( > span[data-testid*="check"]) {
             transition: all 200ms ease-in-out;
         }`,
         `html[dir=ltr] ._2JUrU._2ecOY ._3OC33, html[dir] .Nm1g1._22AX6, html[dir] ._2VSMU, html[dir] ._1VGG7, html[dir] ._3nQGi, html[dir="ltr"] .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf, html[dir] div[data-testid*="msg"]._1-lf9 {
@@ -625,15 +625,26 @@ function customStylesOnStart(){
         text-decoration: none;
     }`);
 
-    // messages single tick
+    // messages ticks
     customStyles.insertRule(`
-    span[data-testid$="-check"] > svg {
-        transform: translateX(3px);
+    html[dir] div._2qo4q {
+        margin-right: 4px;
     }`);
     customStyles.insertRule(`
-    span[data-testid^="status-"][data-testid$="check"] > svg {
-        width: 18px;
-        height: 18px;
+    html[dir] div.k6y3xtnu {
+        margin-left: 4px;
+    }`);
+    customStyles.insertRule(`
+    html[dir] div:has( > span[data-testid$="-check"]) {
+        width: 12px;
+    }`);
+    customStyles.insertRule(`
+    html[dir] div:has( > span[data-testid$="-dblcheck"]) {
+        width: 16px;
+    }`);
+    customStyles.insertRule(`
+    html[dir] div:has( > span[data-testid$="-time"]) {
+        width: 16px;
     }`);
     // popup message screen notification
     customStyles.insertRule(`
@@ -975,10 +986,11 @@ function customStylesOnStart(){
     }`);
     // menu column container
     customStyles.insertRule(`
-    html[dir=ltr] section[data-testid="group-info-drawer-body"] > div, section.tvf2evcx.oq44ahr5.lb5m6g5c.s9fl9ege > div {
+    html[dir=ltr] section[data-testid="group-info-drawer-body"] > div, section.tvf2evcx.oq44ahr5.lb5m6g5c.s9fl9ege > div, html[dir] div.lkjmyc96 {
         border-radius: 20px;
         margin: 10px 10px 0;
         overflow: hidden;
+        transition: all ease .3s;
     }`);
     customStyles.insertRule(`
     html:not([dir='rtl']) .lysxvg3k {

@@ -28,7 +28,7 @@ function customColoursOnStart() {
     customMetaHeader.content = background.secondary;
 
     colourVariables = [
-        `html[dir] body.dark, html[dir] body.dark :before {
+        `html[dir] body, html[dir] body :before {
             /* startup background */
             --startup-background: ${background.darker};
             --startup-background-rgb: ${hexToRgb(background.darker)};
@@ -267,7 +267,7 @@ function customColoursOnStart() {
             --tooltip-text: ${text.secondary};
             --input-placeholder: ${text.secondary};
         }`,
-        `html[dir] body.dark.blur {
+        `html[dir] body.blur {
             --outgoing-background: ${msg.send}${tran.blur};
             --incoming-background: ${msg.receive}${tran.blur};
             --unread-bar-background: ${background.secondary}${tran.overlay};
@@ -306,19 +306,19 @@ function customColoursOnStart() {
             --radius-thumb: 12px;
         }`,
         // profile pageQ
-        `html[dir] .dark .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx.tkdu00h0.gfz4du6o.r7fjleex.jv8uhy2r.lhggkp7q.qq0sjtgm.ln8gz9je.tm2tP.copyable-area, html[dir] .dark .se2m7z6i {
+        `html[dir] .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx.tkdu00h0.gfz4du6o.r7fjleex.jv8uhy2r.lhggkp7q.qq0sjtgm.ln8gz9je.tm2tP.copyable-area, html[dir] .se2m7z6i {
             background: ${background.darker}bb;
         }`,
         // emoji menu & message not sent/couldnt send message menu
-        `html[dir] body.dark .o--vV.B_YVs._24No0, html[dir=ltr] body.dark ._1y99G, body.dark ._2nY6U._3C4Vf ._37FrU {
+        `html[dir] body .o--vV.B_YVs._24No0, html[dir=ltr] body ._1y99G, body ._2nY6U._3C4Vf ._37FrU {
             color: ${text.secondary};
         }`,
         // media message
-        `html[dir] body.dark ._3vRLq {
+        `html[dir] body ._3vRLq {
             background-color: ${main.contrast}${tran.overlayLighter};
         }`,
         // button, checkbox
-        `html[dir] body.dark div[data-testid*="popup"] div[role="button"], html:not([dir='rtl']) body.dark .s2vc4xk1:hover {
+        `html[dir] body div[data-testid*="popup"] div[role="button"], html:not([dir='rtl']) body .s2vc4xk1:hover {
             background-color: ${main.contrast}${tran.overlayLighter};
         }`,
         `html[dir] body ._2mQtw {
@@ -328,6 +328,11 @@ function customColoursOnStart() {
     for (i in colourVariables) {
         customColours.insertRule(colourVariables[i], i);
     };
+    setTimeout(() => {
+        document.body.classList.toggle("dark", themes[themeNumber].isDark);
+        document.body.classList.toggle("light", !themes[themeNumber].isDark);
+        console.log(themes[themeNumber].isDark)
+    }, 100);
 }
 
 chrome.storage.sync.onChanged.addListener(e => {
@@ -337,5 +342,6 @@ chrome.storage.sync.onChanged.addListener(e => {
             customColours.deleteRule(0);
         }
         customColoursOnStart();
+
     }
 })

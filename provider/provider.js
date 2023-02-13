@@ -12,7 +12,8 @@ class Utility {
 
 // oxk Dark
 class ColourTheme {
-    constructor(theme, background, message, text, main, tran){
+    constructor(isDark, theme, background, message, text, main, tran){
+        this.isDark = Boolean(isDark);
         this.theme = theme ? {
             primary: theme.primary || "#083a55",
             secondary: theme.secondary || "#141b20",
@@ -102,6 +103,7 @@ class ColourTheme {
 
 // erythrite
 const erythriteTheme = new ColourTheme(
+    false,
     {
         primary: "#ff5b61",
         secondary: "#ffcccb",
@@ -138,6 +140,7 @@ const erythriteTheme = new ColourTheme(
 )
 
 const oxkLightTheme = new ColourTheme(
+    false,
     {
         primary: "#298abe",
         secondary: "#f7f8fa",
@@ -174,6 +177,7 @@ const oxkLightTheme = new ColourTheme(
 )
 
 const oxkYellow = new ColourTheme(
+    true,
     {
         primary: "#84610F",
         secondary: "#232320",
@@ -204,6 +208,7 @@ const oxkYellow = new ColourTheme(
 )
 
 const oxkRedDark = new ColourTheme(
+    true,
     {
         primary: "#750D0D",
         secondary: "#201521",
@@ -234,6 +239,7 @@ const oxkRedDark = new ColourTheme(
 )
 
 const ozkGreenDark = new ColourTheme(
+    true,
     {
         primary: "#085427",
         secondary: "#15211E",
@@ -263,7 +269,38 @@ const ozkGreenDark = new ColourTheme(
     }
 )
 
-const themes = [new ColourTheme(), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark];
+const transparent = new ColourTheme(
+    true,
+    {
+        primary: "#",
+        secondary: "#",
+        light: "#",
+        lighter: "#",
+        danger: "#",
+    },
+    {
+        primary: "#",
+        secondary: "#",
+        dark: "#",
+        light: "#",
+        darker: "#",
+    },
+    {
+        status: {
+            read: "#",
+            sent: "#",
+        },
+    },
+    {},
+    {
+        theme: "#",
+        contrast: "#",
+        grey: "#",
+        transparent: "transparent",
+    }
+)
+
+const themes = [new ColourTheme(true), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark, transparent];
 
 class UserData {
     constructor(styles) {
