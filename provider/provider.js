@@ -272,31 +272,40 @@ const ozkGreenDark = new ColourTheme(
 const transparent = new ColourTheme(
     true,
     {
-        primary: "#",
-        secondary: "#",
-        light: "#",
-        lighter: "#",
-        danger: "#",
+        primary: "transparent",
+        secondary: "transparent",
+        light: "transparent",
+        lighter: "transparent",
+        danger: "transparent",
     },
     {
-        primary: "#",
-        secondary: "#",
-        dark: "#",
-        light: "#",
-        darker: "#",
+        primary: "transparent",
+        secondary: "transparent",
+        dark: "transparent",
+        light: "transparent",
+        darker: "transparent",
     },
     {
         status: {
-            read: "#",
-            sent: "#",
+            read: "transparent",
+            sent: "transparent",
         },
     },
     {},
     {
-        theme: "#",
-        contrast: "#",
-        grey: "#",
+        theme: "transparent",
+        contrast: "transparent",
+        grey: "transparent",
         transparent: "transparent",
+    },
+    {
+        overlay: "47",
+        overlayHeavy: "75",
+        overlayLight: "32",
+        overlayLighter: "0f",
+        overlayLightest: "08",
+        blur: "b0",
+        unBlur: "ea",
     }
 )
 

@@ -143,11 +143,12 @@ function sendMessage(msg){
 }
 //--------------------------------------------------------------------------------------------------------- default message in textbox
 function textboxDefaultMessage(){
-    textboxStatus = document.querySelector(".lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8");
+    textboxStatus = document.querySelector('div[data-testid="compose-box"] .lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8');
 
-    if (textboxStatus)
+    if (textboxStatus) {
         textboxStatus.innerHTML = `<div class="customStylesFontWeight">${document.querySelector(`[data-testid="conversation-info-header-chat-title"]`).innerHTML}</div>`;
-    else
+        console.log("Chat box default message loaded");
+    } else
         console.log("Chat box default message failed to load: ", textboxStatus);
     // deciding utility status
 }
@@ -163,7 +164,7 @@ function textboxDefaultMessage(){
 // }
 
 //--------------------------------------------------------------------------------------------------------- symbols adder
-function extraSideSymbols(e, type){
+async function extraSideSymbols(e, type){
     e.preventDefault();
     textbox.formatPlainText();
     var selection = window.getSelection().getRangeAt(0);
@@ -174,8 +175,16 @@ function extraSideSymbols(e, type){
     // console.log(`type: ${type}, ${type.length}`)
     // console.log(`text: ${selection.startContainer.textContent.slice(selection.startOffset - type.length, selection.startOffset)}, ${selection.endContainer.textContent.slice(selection.endOffset, selection.endOffset + type.length)}`)
     // console.log(`Selection: ${selection.startOffset}, ${selection.endOffset}`);
-
+    if (textbox.textContent == "") {
+        textbox.dispatchEvent(new KeyboardEvent('keydown', {'key': ' '}));
+        document.execCommand("insertText", false, " ")
+        setTimeout(() => {
+            selection.editSelection(type);
+        }, 1);
+        return;
+    }
     selection.editSelection(type);
+    return;
 }
 
 //--------------------------------------------------------------------------------------------------------- key combination commands
@@ -257,9 +266,9 @@ function stylesOnNewContact(){
 
 //--------------------------------------------------------------------------------------------------------- final loads
 function textChange(event) {
-    console.log("loading text changer... ", textbox);
+    console.log("loading text changer... ");
     textboxDefaultMessage();
-    textbox.onkeydown = evnt => {if (textbox.innerText == "\n") textboxDefaultMessage(); keyCombinationListener(evnt);}
+    textbox.onkeydown = evnt => {if (textbox.innerText == "\n") textboxDefaultMessage(); if (evnt.key == "Enter") setTimeout(textboxDefaultMessage); keyCombinationListener(evnt);}
     textbox.onkeyup = messageJumper;
 }
 
@@ -267,7 +276,6 @@ textboxClasses = [`div[data-testid="conversation-compose-box-input"]`, `.p3_M1 [
 
 function contactEvent(event) {
     console.log(`contactsEvent`)
-    chrome.storage.sync.onChanged.addListener(textboxDefaultMessage);
     setTimeout(() => {
         console.log("change states");
         textboxDefaultMessage();

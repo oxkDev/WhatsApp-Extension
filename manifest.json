@@ -6,7 +6,7 @@
     },
 
     "description": "Allows you to use Whatsapp efficiently",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "manifest_version": 3,
 
     "background": {
@@ -36,12 +36,15 @@
             "matches": [
                 "https://web.whatsapp.com/"
             ],
+            "css": [
+                "script/CSS/customStyles.css"
+            ],
             "js": [
                 "provider/provider.js",
-                "script/customStyles.js",
-                "script/customBackgroundImage.js",
-                "script/customColours.js",
-                "script/textboxShortcuts.js"
+                "script/JS/customStyles.js",
+                "script/JS/customBackgroundImage.js",
+                "script/JS/customColours.js",
+                "script/JS/textboxShortcuts.js"
             ]
         }
     ]
