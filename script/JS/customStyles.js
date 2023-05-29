@@ -39,8 +39,8 @@ function customStylesOnStart(){
 
         --message-send: ${message.send};
         --message-receive: ${message.receive};
-        --status-read: ${message.status.read};
-        --status-sent: ${message.status.sent};
+        --status-read: ${message.statusRead};
+        --status-sent: ${message.statusSent};
 
         --text-header: ${text.header};
         --text-primary: ${text.primary};
@@ -60,6 +60,8 @@ function customStylesOnStart(){
         --tran-overlayLightest: ${tran.overlayLightest};
         --tran-blur: ${tran.blur};
         --tran-unBlur: ${tran.unBlur};
+
+        --radius-app: 20px;
     }`);
 
     // blurRules = [

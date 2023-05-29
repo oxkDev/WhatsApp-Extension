@@ -12,84 +12,43 @@ class Utility {
 
 // oxk Dark
 class ColourTheme {
-    constructor(isDark, theme, background, message, text, main, tran){
-        this.isDark = Boolean(isDark);
-        this.theme = theme ? {
-            primary: theme.primary || "#083a55",
-            secondary: theme.secondary || "#141b20",
-            light: theme.light || "#2a7095",
-            lighter: theme.lighter || "#298abe",
-            danger: theme.danger || "#f14040",
-            link: theme.link || theme.light || "#459dd9",
-        } : {
+    constructor({
+        isDark = true, 
+        theme = {
             primary: "#083a55",
             secondary: "#141b20",
             light: "#2a7095",
             lighter: "#298abe",
             danger: "#f14040",
             link: "#459dd9",
-        };
-        this.background = background ? {
-            primary: background.primary || "#061527",
-            secondary: background.secondary || "#1a232a",
-            dark: background.dark || "#071423",
-            light: background.light || "#0f1f31",
-            darker: background.darker || "#000c1a",
-        } : {
+        }, 
+        background = {
             primary: "#061527",
             secondary: "#1a232a",
             dark: "#071423",
             light: "#0f1f31",
             darker: "#000c1a",
-        };
-        this.message = message ? {
-            send: message.send || this.theme.primary,
-            receive: message.receive || this.theme.secondary,
-            status: message.status || {
-                read: "#f2f9ffd4",
-                sent: "#ffffff" + "32",
-            },
-        } : {
-            send: this.theme.primary,
-            receive: this.background.secondary,
-            status: {
-                read: "#f2f9ffd4",
-                sent: "#ffffff" + "32",
-            },
-        };
-        this.text = text ? {
-            header: text.header || this.theme.light,
-            primary: text.primary || "#ffffff" + "b3",
-            secondary: text.secondary || "#ffffff" + "70",
-            tertiary: text.tertiary || "#ffffff" + "47",
-            contrast: text.contrast || "#000000" + "70",
-        } : {
-            header: this.theme.light,
+        }, 
+        message = {
+            send: theme.primary,
+            receive: background.secondary,
+            statusRead: "#f2f9ffd4",
+            statusSent: "#ffffff" + "32",
+        }, 
+        text = {
+            header: theme.light,
             primary: "#ffffff" + "b3",
             secondary: "#ffffff" + "70",
             tertiary: "#ffffff" + "47",
             contrast: "#000000" + "70",
-        };
-        this.main = main ? {
-            theme: main.theme || "#000000",
-            contrast: main.contrast || "#FFFFFF",
-            grey: main.grey || "#777777", 
-            transparent: main.transparent || "transparent",
-        } : {
+        }, 
+        main = {
             theme: "#000000",
             contrast: "#FFFFFF",
             grey: "#777777", 
             transparent: "transparent",
-        };
-        this.tran = tran ? {
-            overlay: tran.overlay || "47",
-            overlayHeavy: tran.overlayHeavy || "75",
-            overlayLight: tran.overlayLight || "32",
-            overlayLighter: tran.overlayLighter || "0f",
-            overlayLightest: tran.overlayLightest || "08",
-            blur: tran.blur || "b0",
-            unBlur: tran.unBlur || "ea",
-        } : {
+        }, 
+        tran = {
             overlay: "47",
             overlayHeavy: "75",
             overlayLight: "32",
@@ -97,14 +56,60 @@ class ColourTheme {
             overlayLightest: "08",
             blur: "b0",
             unBlur: "ea",
+        }
+    })
+    {
+        this.isDark = Boolean(isDark);
+        this.theme = {
+            primary: theme.primary || "#083a55",
+            secondary: theme.secondary || "#141b20",
+            light: theme.light || "#2a7095",
+            lighter: theme.lighter || "#298abe",
+            danger: theme.danger || "#f14040",
+            link: theme.link || theme.light || "#459dd9",
+        };
+        this.background = {
+            primary: background.primary || "#061527",
+            secondary: background.secondary || "#1a232a",
+            dark: background.dark || "#071423",
+            light: background.light || "#0f1f31",
+            darker: background.darker || "#000c1a",
+        };
+        this.message = {
+            send: message.send || this.theme.primary,
+            receive: message.receive || this.theme.secondary,
+            statusRead: message.statusRead || "#f2f9ffd4",
+            statusSent: message.statusSent || "#ffffff" + "32",
+        };
+        this.text = {
+            header: text.header || this.theme.light,
+            primary: text.primary || "#ffffff" + "b3",
+            secondary: text.secondary || "#ffffff" + "70",
+            tertiary: text.tertiary || "#ffffff" + "47",
+            contrast: text.contrast || "#000000" + "70",
+        };
+        this.main = {
+            theme: main.theme || "#000000",
+            contrast: main.contrast || "#FFFFFF",
+            grey: main.grey || "#777777", 
+            transparent: main.transparent || "transparent",
+        };
+        this.tran = {
+            overlay: tran.overlay || "47",
+            overlayHeavy: tran.overlayHeavy || "75",
+            overlayLight: tran.overlayLight || "32",
+            overlayLighter: tran.overlayLighter || "0f",
+            overlayLightest: tran.overlayLightest || "08",
+            blur: tran.blur || "b0",
+            unBlur: tran.unBlur || "ea",
         };
     }
 }
 
 // erythrite
-const erythriteTheme = new ColourTheme(
-    false,
-    {
+const erythriteTheme = new ColourTheme({
+    isDark: false,
+    theme: {
         primary: "#ff5b61",
         secondary: "#ffcccb",
         light: "#aa366a",
@@ -112,36 +117,34 @@ const erythriteTheme = new ColourTheme(
         danger: "#ff0000",
         link: "#ff0000",
     },
-    {
+    background: {
         primary: "#FF8991",
         secondary: "#ffcccb",
         dark: "#f8c8dc",
         light: "#ffb6c1",
         darker: "#f9cddf",
     },
-    {
-        status: {
-            read: "#ff3535",
-            sent: "#000000" + "32",
-        },
+    message: {
+        statusRead: "#ff3535",
+        statusSent: "#000000" + "32",
     },
-    {
+    text: {
         primary: "#000000" + "b3",
         secondary: "#000000" + "80",
         tertiary: "#000000" + "47",
         contrast: "#FFFFFF" + "70"
     },
-    {
+    main: {
         theme: "#FFFFFF",
         contrast: "#000000",
         grey: "#777777",
         transparent: "transparent",
     }
-)
+})
 
-const oxkLightTheme = new ColourTheme(
-    false,
-    {
+const oxkLightTheme = new ColourTheme({
+    isDark: false,
+    theme: {
         primary: "#298abe",
         secondary: "#f7f8fa",
         light: "#083a55",
@@ -149,165 +152,142 @@ const oxkLightTheme = new ColourTheme(
         danger: "#f14040",
         link: "#459dd9",
     },
-    {
+    background: {
         primary: "#e4ebf0",
         secondary: "#edeeef",
         dark: "#e5e5e5",
         light: "#cccccc",
         darker: "#ffffff",
     },
-    {
-        status: {
-            read: "#404f59d4",
-            sent: "#ffffff" + "32",
-        },
+    message: {
+        statusRead: "#404f59d4",
+        statusSent: "#ffffff" + "32",
     },
-    {
+    text: {
         primary: "#000000" + "b3",
         secondary: "#000000" + "70",
         tertiary: "#000000" + "47",
         contrast: "#ffffff" + "70",
     },
-    {
+    main: {
         theme: "#FFFFFF",
         contrast: "#000000",
         grey: "#777777",
         transparent: "transparent",
     }
-)
+})
 
-const oxkYellow = new ColourTheme(
-    true,
-    {
+const oxkYellow = new ColourTheme({
+    isDark: true,
+    theme: {
         primary: "#84610F",
         secondary: "#232320",
         light: "#967A2B",
         lighter: "#BF902A",
         danger: "#f14040",
     },
-    {
+    background: {
         primary: "#201E18",
         secondary: "#251F1B",
         dark: "#1B1916",
         light: "#272215",
         darker: "#161616",
     },
-    {
-        status: {
-            read: "#f2f9ffd4",
-            sent: "#ffffff" + "32",
-        },
+    message: {
+        statusRead: "#f2f9ffd4",
+        statusSent: "#ffffff" + "32",
     },
-    {},
-    {
+    main: {
         theme: "#000000",
         contrast: "#FFFFFF",
         grey: "#777777",
         transparent: "transparent",
     }
-)
+})
 
-const oxkRedDark = new ColourTheme(
-    true,
-    {
+const oxkRedDark = new ColourTheme({
+    isDark: true,
+    theme: {
         primary: "#750D0D",
         secondary: "#201521",
         light: "#942938",
         lighter: "#BF322A",
         danger: "#f14040",
     },
-    {
+    background: {
         primary: "#2C1A19",
         secondary: "#161616",
         dark: "#181114",
         light: "#251515",
         darker: "#1A0000",
     },
-    {
-        status: {
-            read: "#f2f9ffd4",
-            sent: "#ffffff" + "32",
-        },
+    message: {
+        statusRead: "#f2f9ffd4",
+        statusSent: "#ffffff" + "32",
     },
-    {},
-    {
+    main: {
         theme: "#000000",
         contrast: "#FFFFFF",
         grey: "#777777",
         transparent: "transparent",
     }
-)
+})
 
-const ozkGreenDark = new ColourTheme(
-    true,
-    {
+const ozkGreenDark = new ColourTheme({
+    isDark: true,
+    theme: {
         primary: "#085427",
         secondary: "#15211E",
         light: "#299446",
         lighter: "#2ABF66",
         danger: "#f14040",
     },
-    {
+    background: {
         primary: "#062609",
         secondary: "#192929",
         dark: "#072418",
         light: "#0F3015",
         darker: "#001A01",
     },
-    {
-        status: {
-            read: "#f2f9ffd4",
-            sent: "#ffffff" + "32",
-        },
+    message: {
+        statusRead: "#f2f9ffd4",
+        statusSent: "#ffffff" + "32",
     },
-    {},
-    {
+    main: {
         theme: "#000000",
         contrast: "#FFFFFF",
         grey: "#777777",
         transparent: "transparent",
     }
-)
+})
 
-const transparent = new ColourTheme(
-    true,
-    {
+const transparent = new ColourTheme({
+    isDark: true,
+    theme: {
         primary: "transparent",
         secondary: "transparent",
         light: "transparent",
         lighter: "transparent",
         danger: "transparent",
     },
-    {
+    background: {
         primary: "transparent",
         secondary: "transparent",
         dark: "transparent",
         light: "transparent",
         darker: "transparent",
     },
-    {
-        status: {
-            read: "transparent",
-            sent: "transparent",
-        },
+    message: {
+        statusRead: "transparent",
+        statusSent: "transparent",
     },
-    {},
-    {
+    text: {
         theme: "transparent",
         contrast: "transparent",
         grey: "transparent",
         transparent: "transparent",
     },
-    {
-        overlay: "47",
-        overlayHeavy: "75",
-        overlayLight: "32",
-        overlayLighter: "0f",
-        overlayLightest: "08",
-        blur: "b0",
-        unBlur: "ea",
-    }
-)
+})
 
 const themes = [new ColourTheme(true), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark, transparent];
 

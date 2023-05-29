@@ -142,13 +142,15 @@
 
 html[dir] body.blur .ej3x2ktq,
 html[dir] body.blur div[data-testid="status-v3-main-panel"],
-html[dir] div[role=dialog] div[data-testid*=popup]:has(> div[data-animate-modal-popup]),
+html[dir] body.blur div[data-testid*=popup]:has(> div[data-animate-modal-popup]),
 html[dir=ltr] body.blur ._9-YHG,
 html[dir] body.blur .overlay._3IBSU,
 html[dir] body.blur .ej3x2kt,
 html[dir] body.blur ._2M_x0,
-html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0 {
+html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0,
+html[dir] body.blur div[data-testid="media-viewer-modal"] {
     backdrop-filter: blur(var(--blurValue-heavy));
+    overflow: hidden;
 }
 
 html[dir] body.blur ._2BU3P.tm2tP.copyable-area,
@@ -161,7 +163,7 @@ html[dir] body.blur ._2sDI2,
 html[dir=ltr] body.blur ._1y99G,
 html[dir] body.blur .f09rd1o5,
 html[dir] body.blur ._2A-Ve,
-html[dir="ltr"] body.blur .cm280p3y.ln8gz9je.gc15jzxb.eujn52yf:hover,
+html[dir="ltr"] body.blur .kx1rlajt:hover,.kx1rlajt
 html[dir] body.blur ._3r7AV,
 body.blur ._3CRhO,
 html[dir] .OVz7E,
@@ -170,8 +172,10 @@ html[dir] body.blur div.landing-window,
 html[dir=ltr] body.blur ._5ML0C,
 html[dir="ltr"] body.blur div._356RS,
 html[dir] body.blur .NQl4z,
-html[dir] body.blur .ItfyB._3nbHh {
+html[dir] body.blur .ItfyB._3nbHh,
+html[dir] [data-testid="conversation-header"] {
     backdrop-filter: blur(var(--blurValue-medium));
+    overflow: hidden;
 }
 
 html[dir=ltr] body.blur ._2JUrU._2ecOY ._3OC33,
@@ -192,8 +196,9 @@ html[dir] body.blur ._3JXTQ,
 html[dir] body.blur .bs7a17vp.jxacihee.d53pemmv,
 html[dir] body.blur .GvRI8,
 html[dir] body.blur ._19zgN._26nDl div[data-testid="tooltip"],
-html[dir] ._1D6fx,
-html[dir] ._3o1Tf {
+html[dir] body.blur ._1D6fx,
+html[dir] body.blur [data-testid="msg-container"] > ._1BOF7,
+html[dir] body.blur ._34gFf {
     backdrop-filter: blur(var(--blurValue-light));
 }
 
@@ -272,18 +277,7 @@ html[dir] ._3ArsE {
 }
 
 /* message element appear */
-html[dir] .Nm1g1._22AX6,
-html[dir] ._2JUrU ._3OC33,
-html[dir] ._2JUrU ._3Lby7,
-html[dir=ltr] .EtBAv,
-html[dir=ltr] .i_Uj-,
-html[dir] .CHSLU,
-html[dir] ._3DThG,
-html[dir=ltr] ._2Fo6S,
-html[dir] ._3hPBO,
-html[dir=ltr] ._3ImlL,
-html[dir=ltr] ._5ML0C,
-html[dir] div[data-testid*="msg"]._1-lf9 {
+html[dir] [role=application] > div[role=row] {
     animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUp;
 }
 
@@ -430,7 +424,7 @@ html[dir] ._2B4d4,
 html[dir] div[data-testid*="popup"]>div,
 html[dir] ._3mpG7,
 html[dir] ._37FrU,
-html[dir] .p4t1lx4y {
+html[dir] .p4t1lx4y{
     transition: all 300ms ease-in-out;
 }
 
@@ -459,7 +453,9 @@ html[dir=ltr] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd,
 html[dir] div[role="button"],
 html[dir=ltr] div:has(> div[data-testid="icon-down-context"]),
 span[data-testid*="check"]>svg,
-div:has(> span[data-testid*="check"]) {
+div:has(> span[data-testid*="check"]),
+html[dir] .f6cvynhn,
+html[dir] ._30oSb {
     transition: all 200ms ease-in-out;
 }
 
@@ -675,7 +671,7 @@ html[dir=ltr] ._1fLGu {
 /* } */
 /* message bar textbox */
 
-html[dir=ltr] div[data-testid="compose-box"] div[tabindex],
+html[dir=ltr] div[data-testid="compose-box"] ._3Uu1_,
 html:not([dir='rtl']) .llnowng2,
 html[dir] div>._1VmmK {
     border-radius: 20px;
@@ -703,11 +699,7 @@ html[dir] ._3nrYb {
 
 /* receive messages */
 
-html[dir] .message-in .Nm1g1._22AX6,
-html[dir] body .message-in ._3OC33,
-html[dir] .message-in .ItfyB,
-html[dir] message-in ._1D6fx,
-html[dir] message-in ._3o1Tf {
+html[dir] .message-in [data-testid="msg-container"] {
     border-radius: 7px 15px 15px 7px;
     overflow: hidden;
 }
@@ -718,12 +710,7 @@ html[dir] div[data-testid="group-chat-profile-picture"] {
 
 /* receive message starter */
 
-html[dir=ltr] .message-in ._8bufJ,
-html[dir=ltr] .message-in ._8YVHI .Nm1g1._22AX6,
-html[dir] body .message-in ._18q-J ._3OC33,
-html[dir=ltr] body .message-in ._18q-J .ItfyB,
-html[dir=ltr] body .message-in ._18q-J ._1D6fx,
-html[dir=ltr] body .message-in ._18q-J ._3o1Tf {
+html[dir=ltr] .message-in [data-testid="msg-container"]._3m5cz {
     border-top-left-radius: 15px;
 }
 
@@ -738,11 +725,7 @@ html[dir] .message-in:not(._3Zpy8) ._1-lf9:not(._18q-J) ._3o1Tf {
 
 /* sent messages */
 
-html[dir] .message-out .Nm1g1._22AX6,
-html[dir] body .message-out ._3OC33,
-html[dir] .message-out .ItfyB,
-html[dir] message-out ._1D6fx,
-html[dir] message-out ._3o1Tf {
+html[dir] .message-out [data-testid="msg-container"]  {
     border-radius: 15px 7px 7px 15px;
     overflow: hidden;
 }
@@ -753,12 +736,7 @@ html[dir=ltr] body ._2Fo6S {
 
 /* sent message starter */
 
-html[dir=ltr] .message-in ._8bufJ,
-html[dir=ltr] .message-out ._8YVHI .Nm1g1._22AX6,
-html[dir] body .message-out ._18q-J ._3OC33,
-html[dir=ltr] body .message-out ._18q-J .ItfyB,
-html[dir=ltr] body .message-out ._18q-J ._1D6fx,
-html[dir=ltr] body .message-out ._18q-J ._3o1Tf {
+html[dir=ltr] .message-out [data-testid="msg-container"]._3m5cz {
     border-top-right-radius: 15px;
 }
 
@@ -789,6 +767,11 @@ html[dir=ltr] ._1aKu8 {
     opacity: 1;
 }
 
+/* message tail */
+html[dir] span[data-icon*="tail"] {
+    fill: var(--main-transparent);
+    color: var(--main-transparent);
+}
 
 /* dropdown menu button */
 
@@ -891,7 +874,7 @@ html[dir=ltr] body ._5ML0C {
 
 /* status screen */
 
-html[dir] ._3f8oh {
+html[dir] .cm280p3y.ln8gz9je.gc15jzxb.ocd2b0bc.l9g3jx6n.aa0kojfi {
     border-radius: 20px;
 }
 
@@ -899,13 +882,19 @@ html[dir] ._3f8oh {
 
 html[dir] .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je>._3Bc7H>div>div,
 .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je>.g0rxnol2>div>div,
-html[dir=ltr] body div[data-testid="popup_panel"],
+html[dir=ltr] body div[data-testid="popup_panel"]:not(.rv6u8h8g),
 html[dir=ltr] ._1GHsB,
 html[dir=ltr] div._356RS {
     margin: 5px;
     border-radius: 20px;
     background: var(--rich-text-panel-background);
+    /* width: calc(100% - 10px); */
+    width: auto;
     overflow: hidden;
+}
+
+html[dir=ltr] .rv6u8h8g {
+    background: none;
 }
 
 html[dir=ltr] body div[data-testid="popup_panel"] {
@@ -921,7 +910,7 @@ html[dir=ltr] ._1TdPb {
 }
 
 html[dir=ltr] body ._1IN0t,
-html[dir=ltr] body ._2stdY,
+html[dir=ltr] body ._34gFf,
 html[dir=ltr] div[data-testid="popup_panel"]>div {
     border-radius: 15px;
     margin: 0;
@@ -943,9 +932,10 @@ html[dir] body ._1VGG7 {
     padding-left: 10px;
 }
 
-html[dir] span[data-icon*="tail"]._1kh65 {
-    fill: var(--main-transparent);
-    color: var(--main-transparent);
+html[dir] .y7k-3 {
+    border: none !important;
+    background: none !important;
+
 }
 
 /* transparent */
@@ -971,9 +961,9 @@ html[dir] ._1NPzg,
 html[dir] .ga96p4vz:before,
 html[dir=ltr] body ._3U8t1._1UyGr,
 html[dir] ._2nY6U,
-html[dir] .rv6u8h8g,
 html[dir] div._1Mcu-,
-html[dir] span[data-icon*="tail"]._1kh65 {
+html[dir] span[data-icon*="tail"],
+html[dir] div[data-testid="group-admin-marker"] {
     background: var(--main-transparent);
     border: 0;
 }
@@ -1059,21 +1049,17 @@ html[dir=ltr] div[data-testid="quoted-message"] {
     overflow: hidden;
 }
 
-/* media view */
+/* media view / media popup */
 
-html[dir] .zMiDB div.g0rxnol2.ln8gz9je.ppled2lx,
-html[dir] .n_1Lu8G._1p0Ic>div,
-html[dir=ltr] ._1GTRd,
-html[dir] div._1Lu8G._1p0Ic._3n6Y4.Rwf_x,
 html[dir] ._1Lu8G._1p0Ic>div,
-html[dir] .gndfcl4n.p357zi0d.ppled2lx.ac2vgrno.gfz4du6o.r7fjleex.g0rxnol2.ln8gz9je.b9fczbqn.i0jNr {
+html[dir] [data-testid="media-url-provider"] > div /* image media popup */ {
     border-radius: 10px;
     overflow: hidden;
 }
 
 /* media thumbnail */
 
-html[dir] div.fsmudgz7 {
+html[dir] .fsmudgz7 {
     backdrop-filter: blur(var(--blurValue-lighter));
     transition: all 300ms ease-in-out;
 }
@@ -1144,15 +1130,16 @@ html[dir] ._2B4d4 {
     z-index: 1000;
 }
 
-/* button, checkbox */
+/* button , checkbox */
 
 html[dir] div[data-testid*="popup"] div[role="button"],
 html[dir] div[data-testid*="btn"] div[role="button"],
+html[dir] div[role="button"][data-testid="start-a-community"],
 html:not([dir='rtl']) .s2vc4xk1 {
     border-radius: 20px;
 }
 
-html[dir] body.dark div[data-testid*="popup"] div[role="button"]:hover,
+html[dir] body.dark div[data-testid*="popup"] div[role="button"]:not([tabindex]):hover,
 html[dir] div[data-testid*="btn"] div[role="button"]:hover {
     background-color: var(--button-primary-background-hover);
 }
@@ -1304,8 +1291,7 @@ html[dir] .epdck8xl {
 /* menu column container */
 
 html[dir=ltr] section[data-testid="group-info-drawer-body"]>div,
-section.tvf2evcx.oq44ahr5.lb5m6g5c.s9fl9ege>div,
-html[dir] div.lkjmyc96 {
+section.tvf2evcx.oq44ahr5.lb5m6g5c.s9fl9ege>div {
     border-radius: 20px;
     margin: 10px 10px 0;
     overflow: hidden;
@@ -1344,7 +1330,7 @@ html[dir] .os03hap6 {
 
 /* border none */
 
-html[dir=ltr] body div {
+html[dir=ltr] body div#side * {
     border: none !important;
 }
 
@@ -1363,7 +1349,7 @@ html[dir] .dark ::-webkit-scrollbar-thumb {
 html[dir] div.landing-window {
     border-radius: 20px;
     overflow: hidden;
-    background-color: var(--main-contrast)var(--tran-overlay);
+    background-color: var(--main-contrast);
     backdrop-filter: blur(1000px);
 }
 
@@ -1380,4 +1366,8 @@ html[dir] .landing-wrapper:before {
 
 html[dir] ._3-soo {
     background: transparent;
+}
+
+html[dir] .zMiDB {
+    z-index: -10;
 }

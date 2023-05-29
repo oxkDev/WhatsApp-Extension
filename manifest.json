@@ -37,7 +37,8 @@
                 "https://web.whatsapp.com/"
             ],
             "css": [
-                "script/CSS/customStyles.css"
+                "script/CSS/customStyles.css",
+                "script/CSS/customColours.css"
             ],
             "js": [
                 "provider/provider.js",

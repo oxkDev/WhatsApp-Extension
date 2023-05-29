@@ -168,18 +168,19 @@ async function extraSideSymbols(e, type){
     e.preventDefault();
     textbox.formatPlainText();
     var selection = window.getSelection().getRangeAt(0);
-    start = selection.startOffset;
-    end = selection.endOffset;
+    // start = selection.startOffset;
+    // end = selection.endOffset;
     // if symbol in front and symbol behind of selected text is the symbol type.
     
     // console.log(`type: ${type}, ${type.length}`)
     // console.log(`text: ${selection.startContainer.textContent.slice(selection.startOffset - type.length, selection.startOffset)}, ${selection.endContainer.textContent.slice(selection.endOffset, selection.endOffset + type.length)}`)
     // console.log(`Selection: ${selection.startOffset}, ${selection.endOffset}`);
     if (textbox.textContent == "") {
-        textbox.dispatchEvent(new KeyboardEvent('keydown', {'key': ' '}));
         document.execCommand("insertText", false, " ")
         setTimeout(() => {
+            selection = window.getSelection().getRangeAt(0);
             selection.editSelection(type);
+            // textbox.dispatchEvent(new KeyboardEvent('keydown', {'key': ' '}));
         }, 1);
         return;
     }
@@ -324,8 +325,9 @@ window.onload = () => {
     });
 }
 
+// double click change
 document.onmousedown = event => {
-    if (!event.button && event.target.classList.contains("_1-FMR")) {
+    if (!event.button && event.target.classList.contains("focusable-list-item") && !document.querySelectorAll('span > div[role="application"]').length) {
         event.target.dblclick();
         console.log("return message");
     }

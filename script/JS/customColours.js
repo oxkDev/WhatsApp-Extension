@@ -39,8 +39,8 @@ function customColoursOnStart() {
             --outgoing-background: ${msg.send}${tran.unBlur};
             --outgoing-background-rgb: ${hexToRgb(msg.send)};
             --outgoing-background-deeper: ${main.theme}${tran.overlayLight};
-            --icon-ack: ${msg.status.read};
-            --bubble-meta-icon: ${msg.status.sent};
+            --icon-ack: ${msg.statusRead};
+            --bubble-meta-icon: ${msg.statusSent};
             --inverse: ${main.grey}${tran.overlay};
             --inverse-rgb: ${hexToRgb(main.grey)};
             --audio-process-incoming: ${theme.light};
@@ -195,6 +195,7 @@ function customColoursOnStart() {
             --unread-marker-background: ${theme.lighter};
             --unread-timestamp: ${theme.light};
             --teal: ${theme.lighter};
+            --teal-pale: ${theme.lighter}
             --teal-lighter: ${theme.lighter}
             --round-icon-background: ${theme.light};
             --typing: ${theme.light};
@@ -318,7 +319,7 @@ function customColoursOnStart() {
             background-color: ${main.contrast}${tran.overlayLighter};
         }`,
         // button, checkbox
-        `html[dir] body div[data-testid*="popup"] div[role="button"], html:not([dir='rtl']) body .s2vc4xk1:hover {
+        `html[dir] body div[data-testid*="popup"]:not([data-testid*="multi"]) div[role="button"]:hover, html:not([dir='rtl']) body .s2vc4xk1:hover {
             background-color: ${main.contrast}${tran.overlayLighter};
         }`,
         `html[dir] body ._2mQtw {
