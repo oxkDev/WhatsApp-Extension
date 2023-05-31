@@ -175,7 +175,7 @@ html[dir] body.blur .NQl4z,
 html[dir] body.blur .ItfyB._3nbHh,
 html[dir] [data-testid="conversation-header"] {
     backdrop-filter: blur(var(--blurValue-medium));
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 html[dir=ltr] body.blur ._2JUrU._2ecOY ._3OC33,
