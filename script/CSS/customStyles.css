@@ -53,9 +53,9 @@ html[dir] div[data-testid*="msg"]._1-lf9 {
 
 /* main settinsg */
 
-html {
-    /* scroll-behavior: smooth; */
-}
+/* html {
+    scroll-behavior: smooth;
+} */
 
 /* @media screen and (height <= 120vh) { */
 /*         html[dir] ._2gzeB:not(.velocity-animating) ._33LGR { */
@@ -66,7 +66,7 @@ html {
 /* page sizing */
 
 html[dir] .app-wrapper-web>div,
-html[dir] body div[data-testid="status-v3-main-panel"]>div {
+html[dir] body div[data-animate-status-v3-modal-background]>div {
     top: 0;
     transition: all 300ms ease-in-out;
     height: 100%;

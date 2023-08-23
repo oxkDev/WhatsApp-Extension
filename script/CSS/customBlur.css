@@ -1,3 +1,4 @@
+html[dir] body div[data-animate-status-v3-modal-background],
 html[dir] body.blur .ej3x2ktq,
 html[dir] body.blur div[data-testid="status-v3-main-panel"],
 html[dir] body.blur div[data-testid*=popup]:has(> div[data-animate-modal-popup]),
