@@ -1,0 +1,358 @@
+@keyframes imageFadeInBlur {
+    0% {
+        filter: none;
+        opacity: 0;
+    }
+
+    30% {
+        filter: none;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        filter: blur(var(--blurValue-heavy));
+    }
+}
+
+@keyframes backgroundFadeInBlur {
+    0% {
+        backdrop-filter: none;
+        opacity: 0;
+    }
+
+    30% {
+        backdrop-filter: none;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        backdrop-filter: blur(var(--blurValue-heavy));
+    }
+}
+
+@keyframes fadeInSlideUpBlur {
+    0% {
+        opacity: 0;
+        backdrop-filter: none;
+        transform: translateY(25px);
+    }
+
+    30% {
+        backdrop-filter: none;
+    }
+
+    70% {
+        opacity: 1;
+    }
+}
+
+@keyframes onWhatsAppLoadBlur {
+    0% {
+        backdrop-filter: blur(var(--blurValue-heavy));
+        background: var(--startup-background);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+@keyframes delayedFadeInScaleUpBlur {
+    0% {
+        backdrop-filter: blur(var(--blurValue-medium));
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    40% {
+        opacity: 0;
+        transform: scale(0.95);
+        backdrop-filter: blur(var(--blurValue-medium));
+    }
+
+    60% {
+        backdrop-filter: blur(var(--blurValue-medium));
+    }
+
+    90% {
+        opacity: 1;
+    }
+}
+
+@keyframes delayedFadeInScaleUpSmallBlur {
+    0% {
+        backdrop-filter: none;
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    40% {
+        opacity: 0;
+        transform: scale(0.5);
+        backdrop-filter: none;
+    }
+
+    60% {
+        backdrop-filter: none;
+    }
+
+    90% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInScaleUpSmallBlur {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+        backdrop-filter: none;
+    }
+
+    30% {
+        backdrop-filter: none;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUpSmall {
+    0% {
+        transform: scale(0.1);
+    }
+}
+
+@keyframes fadeBlurIn {
+    0% {
+        backdrop-filter: none;
+        background: var(--main-transparent);
+    }
+}
+
+@keyframes imageFadeInBlur {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes onWhatsAppLoad {
+    0% {
+        background: var(--startup-background);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+
+@keyframes delayedFadeInScaleUp {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    40% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes delayedFadeInScaleUpSmall {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    40% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    90% {
+        opacity: 1;
+    }
+}
+
+/* `@keyframes onDoubleTick { */
+/*     0% { */
+/*         transform: translateX(3px); */
+/*     } */
+/*     50% { */
+/*         opacity: 1; */
+/*     } */
+/* } */
+@keyframes fadeInScaleUpSmall {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    90% {
+        opacity: 1;
+    }
+}
+
+@keyframes svgIconGlow {
+    0% {
+        opacity: 0.5;
+        box-shadow: 0 0 30px var(--svg-icon-theme-primary);
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 100px var(--svg-icon-theme-primary);
+    }
+}
+
+
+/* animation Media Popup */
+html[dir] body.blur div[data-testid="status-v3-main-panel"],
+html[dir] body.blur ._2B4d4,
+html[dir] body.blur .ej3x2ktq,
+html[dir] body.blur .overlay._3IBSU,
+html[dir] body.blur .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx,
+html[dir] body.blur ._2M_x0 {
+    animation: backgroundFadeInBlur 500ms ease-in-out;
+}
+
+/* chat background image */
+html[dir="ltr"] body.blur div[data-testid="conversation-panel-wrapper"] {
+    animation: imageFadeinBlur 500ms ease-in-out;
+}
+
+/* /* invert media popup blur */
+/* `html[dir] body.blur div[data-testid="status-v3-main-panel"]:after, html[dir] body.blur ._2B4d4:after, html[dir] body.blur .ej3x2ktq:after, html[dir] body.blur .overlay._3IBSU:after { */
+/*     animation: backgroundFadeInBlur 500ms ease-in-out reverse; */
+/* } */
+/* cover */
+html[dir] body.blur ._3ArsE {
+    animation: onWhatsAppLoadBlur 500ms ease-out;
+}
+
+/* /* message element appear */
+/* `html[dir] body.blur .Nm1g1._22AX6, html[dir] body.blur ._2JUrU ._3OC33, html[dir] body.blur ._2JUrU ._3Lby7, html[dir=ltr] body.blur .EtBAv, html[dir=ltr] body.blur .i_Uj-, html[dir] body.blur .CHSLU, html[dir=ltr] body.blur ._2Fo6S, html[dir] ._3hPBO, html[dir=ltr] body.blur ._3ImlL, html[dir=ltr] body.blur ._25pwu, html[dir=ltr] body.blur ._5ML0C { */
+/*     animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUpBlur; */
+/* } */
+/* media message appear */
+html[dir] body.blur .sxls5cl {
+    animation: 400ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUpBlur;
+}
+
+/* message reactions appear */
+html[dir] body.blur .g0rxnol2.blj1rie1,
+html[dir] body.blur ._3JXTQ {
+    animation: 300ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUpSmallBlur;
+}
+
+/* /* message reaction button appear */
+/* `html[dir] body.blur .GvRI8 { */
+/*     animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInScaleUpSmallBlur; */
+/* } */
+/* change group icon blur */
+html[dir] body.blur .epdck8xl {
+    animation: 400ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeBlurIn;
+}
+
+/* animationRules */
+/* animation Media Popup */
+html[dir] div[data-testid="status-v3-main-panel"],
+html[dir] ._2B4d4,
+html[dir] .ej3x2ktq,
+html[dir] .overlay._3IBSU,
+html[dir] .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx,
+html[dir=ltr] ._9-YHG,
+html[dir] ._2M_x0 {
+    animation: backgroundFadeIn 400ms ease-in-out;
+}
+
+/* chat background image */
+html[dir="ltr"] div[data-testid="conversation-panel-wrapper"] {
+    animation: imageFadein 500ms ease-in-out;
+}
+
+/* /* invert media popup */
+/* `html[dir] div[data-testid="status-v3-main-panel"]:after, html[dir] ._2B4d4:after, html[dir] .ej3x2ktq:after, html[dir] .overlay._3IBSU:after { */
+/*     animation: backgroundFadeIn 500ms ease-in-out reverse; */
+/* } */
+/* cover */
+html[dir] ._3ArsE {
+    animation: onWhatsAppLoad 500ms ease-out;
+}
+
+/* message element appear */
+html[dir] [role=application] > div[role=row] {
+    animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUp;
+}
+
+/* media message appear */
+html[dir] .sxls5clz,
+html[dir] .NQl4z {
+    animation: 400ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUp;
+}
+
+/* message reactions appear */
+html[dir] .g0rxnol2.blj1rie1,
+html[dir] ._3JXTQ {
+    animation: 300ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUpSmall;
+}
+
+/* message reaction button appear & emoji appear */
+html[dir] .GvRI8,
+.bha6utru:before {
+    animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInScaleUpSmall;
+}
+
+html[dir="ltr"] .esbg2say {
+    animation-name: l9dax0qz-B, sl8wg78j-B, fadeInScaleUpSmall;
+}
+
+/* /* single to double click */
+/* `span[data-testid$="-dblcheck"] > svg { */
+/*     animation: 200ms ease-in-out 0s 1 normal none running onDoubleTick; */
+/* } */
+/* single to double click */
+span[data-testid$="-check"]>svg,
+html[dir] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd {
+    animation: 200ms ease-in-out 0s 1 normal none running scaleUpSmall;
+}
+
+/* svg icon animation */
+html[dir] span[data-testid="security-drawer-lock"] {
+    animation: 2s ease-in-out 0s infinite alternate none running svgIconGlow;
+}

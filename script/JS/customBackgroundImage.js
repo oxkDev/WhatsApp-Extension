@@ -322,7 +322,7 @@ function changeBackground(force, tags, filters){
 
         backgroundPictures.deleteRule(0);
         backgroundPictures.insertRule(`
-        html[dir=ltr] body.backgroundImage div[data-testid="conversation-panel-wrapper"] {
+        html[dir=ltr] body.backgroundImage div[id="main"] {
             background: #00000000 url("${img.link}") ${img.repeat} center;
             background-size: ${img.size};
         }`);

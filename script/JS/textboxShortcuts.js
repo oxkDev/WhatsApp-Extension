@@ -142,11 +142,13 @@ function sendMessage(msg){
     document.querySelector("button.tvf2evcx.oq44ahr5.lb5m6g5c.svlsagor.p2rjqpw5.epia9gcq").click();
 }
 //--------------------------------------------------------------------------------------------------------- default message in textbox
+
 function textboxDefaultMessage(){
-    textboxStatus = document.querySelector('div[data-testid="compose-box"] .lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8');
+    textboxStatus = document.querySelector('#main .lexical-rich-text-input .lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8');
+    chatHeader = document.querySelector(`header.AmmtE span[aria-label]`).innerHTML;
 
     if (textboxStatus) {
-        textboxStatus.innerHTML = `<div class="customStylesFontWeight">${document.querySelector(`[data-testid="conversation-info-header-chat-title"]`).innerHTML}</div>`;
+        textboxStatus.innerHTML = `<div class="customStylesFontWeight">${chatHeader}</div>`;
         console.log("Chat box default message loaded");
     } else
         console.log("Chat box default message failed to load: ", textboxStatus);
@@ -273,13 +275,12 @@ function textChange(event) {
     textbox.onkeyup = messageJumper;
 }
 
-textboxClasses = [`div[data-testid="conversation-compose-box-input"]`, `.p3_M1 [role="textbox"][title="Type a message"]`, ".p3_M1 ._13NKt.copyable-text.selectable-text"];
+textboxClasses = [`div[data-testid="conversation-compose-box-input"]`, `.lexical-rich-text-input [role="textbox"][title="Type a message"]`, ".p3_M1 ._13NKt.copyable-text.selectable-text"];
 
 function contactEvent(event) {
     console.log(`contactsEvent`)
     setTimeout(() => {
         console.log("change states");
-        textboxDefaultMessage();
 
         tbNew = document.querySelector(textboxClasses[0]);
 
@@ -288,10 +289,11 @@ function contactEvent(event) {
         }
 
         if (tbNew && tbNew != textbox){
-            console.log("textbox: ", textbox);
+            console.log("Textbox: ", textbox);
             textbox = tbNew;
             textChange();
             stylesOnNewContact();
+            textboxDefaultMessage();
         } else console.log("Textbox element not updated: ", tbNew, textbox);
     }, extensionAddonDelay);
 }

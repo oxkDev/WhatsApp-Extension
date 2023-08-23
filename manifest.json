@@ -38,7 +38,9 @@
             ],
             "css": [
                 "script/CSS/customStyles.css",
-                "script/CSS/customColours.css"
+                "script/CSS/customColours.css",
+                "script/CSS/customAnimations.css",
+                "script/CSS/customBlur.css"
             ],
             "js": [
                 "provider/provider.js",

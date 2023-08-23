@@ -1,423 +1,3 @@
-@keyframes imageFadeInBlur {
-    0% {
-        filter: none;
-        opacity: 0;
-    }
-
-    30% {
-        filter: none;
-    }
-
-    70% {
-        opacity: 1;
-    }
-
-    100% {
-        filter: blur(var(--blurValue-heavy));
-    }
-}
-
-@keyframes backgroundFadeInBlur {
-    0% {
-        backdrop-filter: none;
-        opacity: 0;
-    }
-
-    30% {
-        backdrop-filter: none;
-    }
-
-    70% {
-        opacity: 1;
-    }
-
-    100% {
-        backdrop-filter: blur(var(--blurValue-heavy));
-    }
-}
-
-@keyframes fadeInSlideUpBlur {
-    0% {
-        opacity: 0;
-        backdrop-filter: none;
-        transform: translateY(25px);
-    }
-
-    30% {
-        backdrop-filter: none;
-    }
-
-    70% {
-        opacity: 1;
-    }
-}
-
-@keyframes onWhatsAppLoadBlur {
-    0% {
-        backdrop-filter: blur(var(--blurValue-heavy));
-        background: var(--startup-background);
-    }
-
-    100% {
-        background: transparent;
-    }
-}
-
-@keyframes delayedFadeInScaleUpBlur {
-    0% {
-        backdrop-filter: blur(var(--blurValue-medium));
-        opacity: 0;
-        transform: scale(0.95);
-    }
-
-    40% {
-        opacity: 0;
-        transform: scale(0.95);
-        backdrop-filter: blur(var(--blurValue-medium));
-    }
-
-    60% {
-        backdrop-filter: blur(var(--blurValue-medium));
-    }
-
-    90% {
-        opacity: 1;
-    }
-}
-
-@keyframes delayedFadeInScaleUpSmallBlur {
-    0% {
-        backdrop-filter: none;
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    40% {
-        opacity: 0;
-        transform: scale(0.5);
-        backdrop-filter: none;
-    }
-
-    60% {
-        backdrop-filter: none;
-    }
-
-    90% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInScaleUpSmallBlur {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-        backdrop-filter: none;
-    }
-
-    30% {
-        backdrop-filter: none;
-    }
-
-    70% {
-        opacity: 1;
-    }
-
-    90% {
-        opacity: 1;
-    }
-}
-
-@keyframes scaleUpSmall {
-    0% {
-        transform: scale(0.1);
-    }
-}
-
-@keyframes fadeBlurIn {
-    0% {
-        backdrop-filter: none;
-        background: var(--main-transparent);
-    }
-}
-
-html[dir] body.blur .ej3x2ktq,
-html[dir] body.blur div[data-testid="status-v3-main-panel"],
-html[dir] body.blur div[data-testid*=popup]:has(> div[data-animate-modal-popup]),
-html[dir=ltr] body.blur ._9-YHG,
-html[dir] body.blur .overlay._3IBSU,
-html[dir] body.blur .ej3x2kt,
-html[dir] body.blur ._2M_x0,
-html[dir] body.blur ._1bLj8 div.lhggkp7q.qq0sjtgm.ebjesfe0.jxacihee.tkdu00h0,
-html[dir] body.blur div[data-testid="media-viewer-modal"] {
-    backdrop-filter: blur(var(--blurValue-heavy));
-    overflow: hidden;
-}
-
-html[dir] body.blur ._2BU3P.tm2tP.copyable-area,
-html[dir] body.blur ._2lSWV._3cjY2.copyable-area,
-html[dir] body.blur ._23P3O,
-html[dir] body.blur .lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je>._3Bc7H>div>div,
-.lhggkp7q.jxacihee.tkdu00h0.cm280p3y.ln8gz9je>.g0rxnol2>div>div,
-html[dir] body.blur .o--vV,
-html[dir] body.blur ._2sDI2,
-html[dir=ltr] body.blur ._1y99G,
-html[dir] body.blur .f09rd1o5,
-html[dir] body.blur ._2A-Ve,
-html[dir="ltr"] body.blur .kx1rlajt:hover,.kx1rlajt
-html[dir] body.blur ._3r7AV,
-body.blur ._3CRhO,
-html[dir] .OVz7E,
-html[dir=ltr] body.blur ._1fLGu,
-html[dir] body.blur div.landing-window,
-html[dir=ltr] body.blur ._5ML0C,
-html[dir="ltr"] body.blur div._356RS,
-html[dir] body.blur .NQl4z,
-html[dir] body.blur .ItfyB._3nbHh,
-html[dir] [data-testid="conversation-header"] {
-    backdrop-filter: blur(var(--blurValue-medium));
-    /* overflow: hidden; */
-}
-
-html[dir=ltr] body.blur ._2JUrU._2ecOY ._3OC33,
-html[dir] body.blur .Nm1g1._22AX6,
-html[dir] body.blur ._2VSMU,
-html[dir] body.blur ._1VGG7,
-html[dir] body.blur ._3nQGi,
-html[dir] body.blur ._3t1CR,
-html[dir=ltr] body.blur .EtBAv,
-html[dir=ltr] body.blur .i_Uj-,
-html[dir] body.blur ._1w-Ol,
-html:not([dir='rtl']) body.blur .fahkg6u0,
-html[dir] body.blur ._1GLVO,
-html[dir] body.blur ._2JUrU ._3OC33,
-html[dir] body.blur ._2JUrU ._3Lby7,
-html[dir] body.blur .epdck8xl,
-html[dir] body.blur ._3JXTQ,
-html[dir] body.blur .bs7a17vp.jxacihee.d53pemmv,
-html[dir] body.blur .GvRI8,
-html[dir] body.blur ._19zgN._26nDl div[data-testid="tooltip"],
-html[dir] body.blur ._1D6fx,
-html[dir] body.blur [data-testid="msg-container"] > ._1BOF7,
-html[dir] body.blur ._34gFf {
-    backdrop-filter: blur(var(--blurValue-light));
-}
-
-/* animation Media Popup */
-html[dir] body.blur div[data-testid="status-v3-main-panel"],
-html[dir] body.blur ._2B4d4,
-html[dir] body.blur .ej3x2ktq,
-html[dir] body.blur .overlay._3IBSU,
-html[dir] body.blur .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx,
-html[dir] body.blur ._2M_x0 {
-    animation: backgroundFadeInBlur 500ms ease-in-out;
-}
-
-/* chat background image */
-html[dir="ltr"] body.blur div[data-testid="conversation-panel-wrapper"] {
-    animation: imageFadeinBlur 500ms ease-in-out;
-}
-
-/* /* invert media popup blur */
-/* `html[dir] body.blur div[data-testid="status-v3-main-panel"]:after, html[dir] body.blur ._2B4d4:after, html[dir] body.blur .ej3x2ktq:after, html[dir] body.blur .overlay._3IBSU:after { */
-/*     animation: backgroundFadeInBlur 500ms ease-in-out reverse; */
-/* } */
-/* cover */
-html[dir] body.blur ._3ArsE {
-    animation: onWhatsAppLoadBlur 500ms ease-out;
-}
-
-/* /* message element appear */
-/* `html[dir] body.blur .Nm1g1._22AX6, html[dir] body.blur ._2JUrU ._3OC33, html[dir] body.blur ._2JUrU ._3Lby7, html[dir=ltr] body.blur .EtBAv, html[dir=ltr] body.blur .i_Uj-, html[dir] body.blur .CHSLU, html[dir=ltr] body.blur ._2Fo6S, html[dir] ._3hPBO, html[dir=ltr] body.blur ._3ImlL, html[dir=ltr] body.blur ._25pwu, html[dir=ltr] body.blur ._5ML0C { */
-/*     animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUpBlur; */
-/* } */
-/* media message appear */
-html[dir] body.blur .sxls5cl {
-    animation: 400ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUpBlur;
-}
-
-/* message reactions appear */
-html[dir] body.blur .g0rxnol2.blj1rie1,
-html[dir] body.blur ._3JXTQ {
-    animation: 300ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUpSmallBlur;
-}
-
-/* /* message reaction button appear */
-/* `html[dir] body.blur .GvRI8 { */
-/*     animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInScaleUpSmallBlur; */
-/* } */
-/* change group icon blur */
-html[dir] body.blur .epdck8xl {
-    animation: 400ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeBlurIn;
-}
-
-/* animationRules */
-/* animation Media Popup */
-html[dir] div[data-testid="status-v3-main-panel"],
-html[dir] ._2B4d4,
-html[dir] .ej3x2ktq,
-html[dir] .overlay._3IBSU,
-html[dir] .g6kkip0l.p357zi0d.f8m0rgwh.ppled2lx,
-html[dir=ltr] ._9-YHG,
-html[dir] ._2M_x0 {
-    animation: backgroundFadeIn 400ms ease-in-out;
-}
-
-/* chat background image */
-html[dir="ltr"] div[data-testid="conversation-panel-wrapper"] {
-    animation: imageFadein 500ms ease-in-out;
-}
-
-/* /* invert media popup */
-/* `html[dir] div[data-testid="status-v3-main-panel"]:after, html[dir] ._2B4d4:after, html[dir] .ej3x2ktq:after, html[dir] .overlay._3IBSU:after { */
-/*     animation: backgroundFadeIn 500ms ease-in-out reverse; */
-/* } */
-/* cover */
-html[dir] ._3ArsE {
-    animation: onWhatsAppLoad 500ms ease-out;
-}
-
-/* message element appear */
-html[dir] [role=application] > div[role=row] {
-    animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInSlideUp;
-}
-
-/* media message appear */
-html[dir] .sxls5clz,
-html[dir] .NQl4z {
-    animation: 400ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUp;
-}
-
-/* message reactions appear */
-html[dir] .g0rxnol2.blj1rie1,
-html[dir] ._3JXTQ {
-    animation: 300ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running delayedFadeInScaleUpSmall;
-}
-
-/* message reaction button appear & emoji appear */
-html[dir] .GvRI8,
-.bha6utru:before {
-    animation: 200ms cubic-bezier(0.04, 0.98, 0.48, 1.01) 0s 1 normal none running fadeInScaleUpSmall;
-}
-
-html[dir="ltr"] .esbg2say {
-    animation-name: l9dax0qz-B, sl8wg78j-B, fadeInScaleUpSmall;
-}
-
-/* /* single to double click */
-/* `span[data-testid$="-dblcheck"] > svg { */
-/*     animation: 200ms ease-in-out 0s 1 normal none running onDoubleTick; */
-/* } */
-/* single to double click */
-span[data-testid$="-check"]>svg,
-html[dir] ._3yWey._18wEy .p357zi0d.ktfrpxia.nu7pwgvd {
-    animation: 200ms ease-in-out 0s 1 normal none running scaleUpSmall;
-}
-
-/* svg icon animation */
-html[dir] span[data-testid="security-drawer-lock"] {
-    animation: 2s ease-in-out 0s infinite alternate none running svgIconGlow;
-}
-
-
-@keyframes imageFadeInBlur {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes backgroundFadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInSlideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes onWhatsAppLoad {
-    0% {
-        background: var(--startup-background);
-    }
-
-    100% {
-        background: transparent;
-    }
-}
-
-@keyframes delayedFadeInScaleUp {
-    0% {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-
-    40% {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-}
-
-@keyframes delayedFadeInScaleUpSmall {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    40% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    90% {
-        opacity: 1;
-    }
-}
-
-/* `@keyframes onDoubleTick { */
-/*     0% { */
-/*         transform: translateX(3px); */
-/*     } */
-/*     50% { */
-/*         opacity: 1; */
-/*     } */
-/* } */
-@keyframes fadeInScaleUpSmall {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-
-    90% {
-        opacity: 1;
-    }
-}
-
-@keyframes svgIconGlow {
-    0% {
-        opacity: 0.5;
-        box-shadow: 0 0 30px var(--svg-icon-theme-primary);
-    }
-
-    100% {
-        opacity: 1;
-        box-shadow: 0 0 100px var(--svg-icon-theme-primary);
-    }
-}
 
 html[dir] div[data-testid="status-v3-main-panel"],
 html[dir] ._2B4d4,
@@ -428,6 +8,8 @@ html[dir] .p4t1lx4y{
     transition: all 300ms ease-in-out;
 }
 
+
+html[dir] div[role="listitem"] *,
 html[dir] ._2BU3P.tm2tP.copyable-area,
 ._2lSWV._3cjY2.copyable-area,
 html[dir] .ej3x2ktq,
@@ -472,7 +54,7 @@ html[dir] div[data-testid*="msg"]._1-lf9 {
 /* main settinsg */
 
 html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 }
 
 /* @media screen and (height <= 120vh) { */
@@ -671,10 +253,11 @@ html[dir=ltr] ._1fLGu {
 /* } */
 /* message bar textbox */
 
+html[dir] ._3Uu1_,
 html[dir=ltr] div[data-testid="compose-box"] ._3Uu1_,
 html:not([dir='rtl']) .llnowng2,
 html[dir] div>._1VmmK {
-    border-radius: 20px;
+    border-radius: 20px !important;
     overflow: hidden;
 }
 
@@ -683,7 +266,7 @@ html[dir=ltr] body .customStylesFontWeight {
 }
 
 
-html[dir] .mwp4sxku {
+html[dir] .lexical-rich-text-input {
     max-height: 20vh;
 }
 
@@ -699,9 +282,9 @@ html[dir] ._3nrYb {
 
 /* receive messages */
 
-html[dir] .message-in [data-testid="msg-container"] {
+html[dir] .message-in ._1BOF7{
     border-radius: 7px 15px 15px 7px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 html[dir] div[data-testid="group-chat-profile-picture"] {
@@ -710,8 +293,8 @@ html[dir] div[data-testid="group-chat-profile-picture"] {
 
 /* receive message starter */
 
-html[dir=ltr] .message-in [data-testid="msg-container"]._3m5cz {
-    border-top-left-radius: 15px;
+html[dir=ltr] .message-in ._3m5cz ._1BOF7 {
+    border-top-left-radius: 15px !important;
 }
 
 /* receive message ender */
@@ -720,36 +303,36 @@ html[dir] .message-in:not(._3Zpy8) ._1-lf9:not(._18q-J),
 html[dir] .message-in:not(._3Zpy8) ._1-lf9:not(._18q-J) .ItfyB,
 html[dir] .message-in:not(._3Zpy8) ._1-lf9:not(._18q-J) ._1D6fx,
 html[dir] .message-in:not(._3Zpy8) ._1-lf9:not(._18q-J) ._3o1Tf {
-    border-bottom-left-radius: 15px;
+    border-bottom-left-radius: 15px !important;
 }
 
 /* sent messages */
 
-html[dir] .message-out [data-testid="msg-container"]  {
+html[dir] .message-out ._1BOF7 {
     border-radius: 15px 7px 7px 15px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 html[dir=ltr] body ._2Fo6S {
     margin: -3px -4px 6px -6px;
 }
 
-/* sent message starter */
+/* sent messages starter */
 
-html[dir=ltr] .message-out [data-testid="msg-container"]._3m5cz {
-    border-top-right-radius: 15px;
+html[dir=ltr] .message-out ._3m5cz ._1BOF7 {
+    border-top-right-radius: 15px !important;
 }
 
-/* sent message ender */
+/* sent messages ender */
 
 html[dir] .message-out:not(._3Zpy8) ._1-lf9:not(._18q-J),
 html[dir] .message-out:not(._3Zpy8) ._1-lf9:not(._18q-J) .ItfyB,
 html[dir] .message-out:not(._3Zpy8) ._1-lf9:not(._18q-J) ._1D6fx,
 html[dir] .message-out:not(._3Zpy8) ._1-lf9:not(._18q-J) ._3o1Tf {
-    border-bottom-right-radius: 15px;
+    border-bottom-right-radius: 15px importnt !important;
 }
 
-/* sticker message */
+/* sticker messages */
 
 html[dir] _1D6fx {
     border-radius: 15px;
@@ -775,7 +358,7 @@ html[dir] span[data-icon*="tail"] {
 
 /* dropdown menu button */
 
-html[dir=ltr] div:has(> div[data-testid="icon-down-context"])._2T2Kt {
+html[dir=ltr] div:has(> div[data-js-context-icon="true"])._2T2Kt {
     right: 0;
     top: 0;
     height: 30px;
@@ -785,7 +368,7 @@ html[dir=ltr] div:has(> div[data-testid="icon-down-context"])._2T2Kt {
     background: linear-gradient(30deg, rgba(var(--shadow-own-rgb), 0), rgba(var(--shadow-own-rgb), 0.05) 45%, rgba(var(--shadow-own-rgb), 0.1) 70%, rgba(var(--shadow-own-rgb), 0.2));
 }
 
-html[dir=ltr] body div[data-testid="icon-down-context"] {
+html[dir=ltr] body div[data-js-context-icon="true"] {
     right: 8px;
     top: auto;
     padding: 0 0 2px 5px;
@@ -1322,10 +905,12 @@ div#pane-side>* {
     margin-bottom: 10px;
 }
 
+html[dir] div[role="listitem"],
 html[dir] div[data-testid="cell-frame-container"],
 html[dir] div[data-testid="message-yourself-row"],
 html[dir] .os03hap6 {
     border-radius: 10px;
+    overflow: hidden;
 }
 
 /* border none */
