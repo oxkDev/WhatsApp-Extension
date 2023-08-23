@@ -74,9 +74,9 @@ html[dir] body div[data-testid="status-v3-main-panel"]>div {
     max-width: initial;
 }
 
-/* chat screen sizing */
+/* chat screen / message screen sizing */
 
-html[dir=ltr] div>div[data-testid="conversation-panel-messages"] {
+html[dir=ltr] div>div._5kRIK {
     top: -80px;
     height: calc(100% + 62px + 80px);
 }
@@ -85,7 +85,7 @@ html[dir=ltr] ._3M3aq._3KRR6 {
     margin-top: 80px;
 }
 
-html[dir] body div[data-testid="conversation-panel-messages"] {
+html[dir] body div._5kRIK {
     padding: 80px 0 59px;
 }
 
