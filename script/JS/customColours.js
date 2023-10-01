@@ -195,8 +195,8 @@ function customColoursOnStart() {
             --unread-marker-background: ${theme.lighter};
             --unread-timestamp: ${theme.light};
             --teal: ${theme.lighter};
-            --teal-pale: ${theme.lighter}
-            --teal-lighter: ${theme.lighter}
+            --teal-pale: ${theme.lighter};
+            --teal-lighter: ${theme.lighter};
             --round-icon-background: ${theme.light};
             --typing: ${theme.light};
             --spinner-highlight: ${theme.light};
@@ -252,7 +252,7 @@ function customColoursOnStart() {
             --secondary-light: ${text.secondary};
             --secondary-lighter: ${text.tertiary};
             --secondary-stronger: ${text.secondary};
-            --text-muted: ${text.tertiary}
+            --text-muted: ${text.tertiary};
             --text-secondary-lighter: ${text.secondary};
             --unread-marker-text: ${text.contrast};
             --chat-meta: ${text.tertiary};

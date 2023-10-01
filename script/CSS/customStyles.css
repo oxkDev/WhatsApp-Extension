@@ -9,6 +9,8 @@ html[dir] .p4t1lx4y{
 }
 
 
+html[dir] div:has(> [data-icon*="msg"]),
+html[dir] [data-icon*="msg"],
 html[dir] div[role="listitem"] *,
 html[dir] ._2BU3P.tm2tP.copyable-area,
 ._2lSWV._3cjY2.copyable-area,
@@ -430,14 +432,17 @@ html[dir] div.k6y3xtnu {
     margin-left: 4px;
 }
 
+html[dir] div:has(> span[data-icon$="-check"]),
 html[dir] div:has(> span[data-testid$="-check"]) {
     width: 12px;
 }
 
+html[dir] div:has(> span[data-icon$="-dblcheck"]),
 html[dir] div:has(> span[data-testid$="-dblcheck"]) {
     width: 16px;
 }
 
+html[dir] div:has(> span[data-icon$="-time"]),
 html[dir] div:has(> span[data-testid$="-time"]) {
     width: 16px;
 }
