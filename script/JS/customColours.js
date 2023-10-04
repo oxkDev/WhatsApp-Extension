@@ -204,7 +204,7 @@ function customColoursOnStart() {
             --ptt-draft-button-stop-hover: ${theme.lighter};
             --menu-tabs-list-active: ${theme.lighter};
             --highlight: ${theme.light};
-            --svg-gray-button: ${theme.grey}${tran.overlay};
+            --svg-gray-button: ${main.grey}${tran.overlay};
             --svg-icon-theme-primary: ${theme.primary};
             --svg-icon-theme-light: ${theme.light};
             --svg-icon-theme-lighter: ${theme.lighter};
