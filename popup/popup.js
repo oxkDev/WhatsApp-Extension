@@ -29,11 +29,14 @@ function eventListeners(){
     //     provider.setData();
     //     console.log("change theme: ", userData.styles.utilData.themeNumber);
     // });
-    resetButton.addEventListener("click", function(event){
+    buttons.reset.addEventListener("click", function(event){
         provider.resetData(() => {setSwitchStatus(), setColours(), setThemes()});
         console.log("resetting");
         // initialiseAll();
     });
+
+    buttons.update.addEventListener("click", () => window.open("https://github.com/oxkDev/WhatsApp-Extension", "_blank"))
+
 }
 
 function addThemes() {

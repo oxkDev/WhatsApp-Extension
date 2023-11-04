@@ -13,7 +13,7 @@ class Utility {
 // oxk Dark
 class ColourTheme {
     constructor({
-        isDark = true, 
+        isDark = true,
         theme = {
             primary: "#083a55",
             secondary: "#141b20",
@@ -57,8 +57,7 @@ class ColourTheme {
             blur: "b0",
             unBlur: "ea",
         }
-    })
-    {
+    }) {
         this.isDark = Boolean(isDark);
         this.theme = {
             primary: theme.primary || "#083a55",
@@ -160,8 +159,8 @@ const oxkLightTheme = new ColourTheme({
         darker: "#ffffff",
     },
     message: {
-        statusRead: "#404f59d4",
-        statusSent: "#ffffff" + "32",
+        statusRead: "#ffffff" + "32",
+        statusSent: "#404f59",
     },
     text: {
         primary: "#000000" + "b3",
@@ -289,7 +288,7 @@ const transparent = new ColourTheme({
     },
 })
 
-const themes = [new ColourTheme(true), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark, transparent];
+const themes = [new ColourTheme({}), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark, transparent];
 
 class UserData {
     constructor(styles) {

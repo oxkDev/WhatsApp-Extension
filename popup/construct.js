@@ -7,7 +7,10 @@ const settings = {
     },
 }
 
-var resetButton = document.querySelector("div#reset.mainButton");
+const buttons = {
+    reset: document.querySelector("div#reset.mainButton"),
+    update: document.querySelector("div#update.mainButton"),
+}
 // var themeButton = document.querySelector("div#theme.mainButton");
 
 var themeParent = document.querySelector("div#theme.selectorWrap");

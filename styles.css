@@ -12,9 +12,9 @@ html {
 
 :root {
     --transition: all 0.3s cubic-bezier(0.34, 0.03, 0.39, 1.01);
-    --font-sub: lighter 14px "Helvetica";
-    --font-title: lighter 16px "Helvetica";
-    --letter-spacing-title: 1px;
+    --font-sub: 100 14px "Arial";
+    --font-title: 300 18px "Roboto";
+    --letter-spacing-title: 1.5px;
     --letter-spacing-sub: 1.2px;
 }
 
@@ -24,16 +24,25 @@ html {
 
 body {
     background-color: var(--background);
-    padding: 0px;
+    padding: 5px;
     user-select: none;
     transition: var(--transition);
 }
 body * {
     transition: var(--transition);
+    text-decoration: none;
 }
 
 div {
     letter-spacing: var(--letter-spacing-title);
+}
+
+#title {
+    color: var(--text);
+    font: 300 20px "Roboto";
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 5px;
 }
 
 .field {
@@ -58,6 +67,7 @@ div {
     color: var(--text);
     border-radius: 21px;
     padding: 10px;
+    margin-top: 10px;
     align-items: center;
     overflow: hidden;
     font: var(--font-title);
@@ -68,7 +78,7 @@ div {
 }
 
 .group:hover {
-    background-color: var(--translucent-light);
+    background-color: var(--contrast-translucent-light);
 }
 
 
@@ -115,7 +125,7 @@ div:hover {
 .mainButton {
     border-radius: 21px;
     /* width: 200px; */
-    margin: 5px 5px 10px 5px;
+    margin-top: 10px;
     padding: 10px;
     color: var(--text);
     background-color: var(--theme-primary-darker);

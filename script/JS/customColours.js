@@ -17,15 +17,15 @@ document.head.append(customMetaHeader);
 
 function customColoursOnStart() {
     themeNumber = userData.styles.utilData.themeNumber;
-    var blurValue = userData.styles.utilData.blurValue;
-    var main = themes[themeNumber].main;
-    var theme = themes[themeNumber].theme;
-    var tran = themes[themeNumber].tran;
-    var msg = themes[themeNumber].message;
-    var text = themes[themeNumber].text;
-    var background = themes[themeNumber].background;
+    let blurValue = userData.styles.utilData.blurValue;
+    let main = themes[themeNumber].main;
+    let theme = themes[themeNumber].theme;
+    let tran = themes[themeNumber].tran;
+    let msg = themes[themeNumber].message;
+    let text = themes[themeNumber].text;
+    let background = themes[themeNumber].background;
 
-    customMetaHeader.content = background.secondary;
+    for (const m of document.querySelectorAll("meta[name='theme-color']")) m.content = background.secondary;
 
     colourVariables = [
         `html[dir] body, html[dir] body :before {
