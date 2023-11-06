@@ -1,22 +1,22 @@
 // var blurFields = [["/*", "*/", "ee"], ["", "", "b0"]];
 // var blr = blurFields[+true];
-var customStylesElement = document.createElement("style");
+const customStylesElement = document.createElement("style");
 document.head.appendChild(customStylesElement);
 customStylesElement.id = "custom-styles";
-var customStyles = customStylesElement.sheet;
+const customStyles = customStylesElement.sheet;
 // colours
 
 function customStylesOnStart(){
-    var themeClass = themes[userData.styles.utilData.themeNumber];
-    var blurValue = userData.styles.utilData.blurValue;
-    var main = themeClass.main;
-    var theme = themeClass.theme;
-    var tran = themeClass.tran;
-    var text = themeClass.text;
-    var message = themeClass.message;
-    var background = themeClass.background;
+    let themeNumber = provider.userData.styles.theme;
+    let blurValue = provider.userData.styles.blurValue;
+    let main = themes[themeNumber].main;
+    let theme = themes[themeNumber].theme;
+    let tran = themes[themeNumber].tran;
+    let message = themes[themeNumber].message;
+    let text = themes[themeNumber].text;
+    let background = themes[themeNumber].background;
 
-    console.log(themeClass);
+    console.log(theme);
 
     customStyles.insertRule(`
     :root {
@@ -1130,15 +1130,9 @@ function customStylesOnStart(){
 }
 
 
-function setClasses(e){
-    if (e)
-        if (e["whatsapp-extension"])
-            userData = e["whatsapp-extension"].newValue;
-        else
-            userData = e["utilities"].newValue;
-
-    document.body.classList.toggle("blur", userData.styles.utilData.blurStatus);
-    document.body.classList.toggle("backgroundImage", userData.styles.utilData.backgroundImgStatus);
+function setClasses(){
+    document.body.classList.toggle("blur", provider.userData.styles.blur);
+    document.body.classList.toggle("backgroundImage", provider.userData.styles.backgroundImg);
 }
 
-chrome.storage.sync.onChanged.addListener(setClasses);
+addEventListener("providerUpdate", setClasses);

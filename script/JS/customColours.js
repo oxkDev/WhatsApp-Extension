@@ -3,21 +3,20 @@ function hexToRgb(hex) {
     return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : `255, 0, 0`;
 }
 
-var themeNumber = 0;
-var colourVariables;
-
-var customColoursElement = document.createElement("style");
+const customColoursElement = document.createElement("style");
 document.head.appendChild(customColoursElement);
 customColoursElement.id = "custom-colours";
-var customColours = customColoursElement.sheet;
+const customColours = customColoursElement.sheet;
 
-var customMetaHeader = document.createElement("meta");
+const customMetaHeader = document.createElement("meta");
 customMetaHeader.name = "theme-color";
 document.head.append(customMetaHeader);
 
+let themeNumber;
+
 function customColoursOnStart() {
-    themeNumber = userData.styles.utilData.themeNumber;
-    let blurValue = userData.styles.utilData.blurValue;
+    themeNumber = provider.userData.styles.theme;
+    let blurValue = provider.userData.styles.blurValue;
     let main = themes[themeNumber].main;
     let theme = themes[themeNumber].theme;
     let tran = themes[themeNumber].tran;
@@ -27,7 +26,9 @@ function customColoursOnStart() {
 
     for (const m of document.querySelectorAll("meta[name='theme-color']")) m.content = background.secondary;
 
-    colourVariables = [
+    console.log(themeNumber)
+
+    let colourVariables = [
         `html[dir] body, html[dir] body :before {
             /* startup background */
             --startup-background: ${background.darker};
@@ -332,17 +333,15 @@ function customColoursOnStart() {
     setTimeout(() => {
         document.body.classList.toggle("dark", themes[themeNumber].isDark);
         document.body.classList.toggle("light", !themes[themeNumber].isDark);
-        console.log(themes[themeNumber].isDark)
+        console.log(themes[themeNumber].isDark);
     }, 100);
 }
 
-chrome.storage.sync.onChanged.addListener(e => {
-    console.log(e);
-    if (themeNumber != e["whatsapp-extension"].newValue.styles.utilData.themeNumber) {
-        for (i in colourVariables) {
+addEventListener("providerUpdate", () => {
+    if (themeNumber != provider.userData.styles.theme) {
+        for (const i in customColours.cssRules) {
             customColours.deleteRule(0);
         }
         customColoursOnStart();
-
     }
-})
+});

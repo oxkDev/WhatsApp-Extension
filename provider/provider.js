@@ -1,14 +1,4 @@
-var user = chrome.storage.sync;
-
-var userData;
-
-class Utility {
-    constructor(status, code, utilData) {
-        this.status = Boolean(status);
-        this.code = code || "testCode";
-        this.utilData = utilData || {testData: "no data!"};
-    }
-};
+const extensionName = "whatsapp-extension";
 
 // oxk Dark
 class ColourTheme {
@@ -286,81 +276,134 @@ const transparent = new ColourTheme({
         grey: "transparent",
         transparent: "transparent",
     },
-})
+});
 
 const themes = [new ColourTheme({}), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark, transparent];
 
+class Utility {
+    constructor(status, code, utilData) {
+        this.status = Boolean(status);
+        this.code = code || "testCode";
+        this.utilData = utilData || {testData: "no data!"};
+    }
+};
+
 class UserData {
-    constructor(styles) {
-        this.styles = styles || new Utility(
-            true,
-            "styles",
-            {
-                blurStatus: true,
-                backgroundImgStatus: true,
-                themeNumber: 0,
+    constructor(data) {
+        this.needSet = false;
+
+        this.styles;
+        this.textbox;
+
+        this.default = {
+            styles: {
+                status: true,
+                code: "styles",
+                blur: true,
+                backgroundImg: true,
+                theme: 0,
                 blurValue: {
                     medium: "30px",
                     light: "20px",
                     lighter: "15px",
                     heavy: "45px",
                 },
+            },
+
+            textbox: {
+                bold: true,
+                italic: true,
+                monospace: true,
+                quote: true,
             }
-        );
+        }
+
+        if (data) this.update(data);
+    }
+
+    iterate(def, value) {
+        if (value == undefined) {
+            this.needSet = true;
+            console.log("missing parameter: ", def, value);
+            return def
+        }
+
+        if (typeof(def) == "object") {
+            let obj = {};
+            for (const k in def) {
+                obj[k] = this.iterate(def[k], value[k]);
+            } 
+            return obj;
+        }
+
+        return value
+    }
+
+    update(data) {
+        this.needSet = false;
+        if (!data) {
+            console.log("no data:", data);
+            data = this.default;
+            this.needSet = true;
+        }
+
+        for (const t in this.default) {
+            this[t] = this.iterate(this.default[t], data[t]);
+        }
+
+        return this.needSet;
+    }
+
+    get(name) {
+        let obj = {}
+        for (const t in this.default) {
+            obj[t] = this[t];
+        }
+        
+        if (name) obj[name] = obj;
+        
+        return obj
     }
 }
 
-const provider = (function() {
-    return {
-        getData: function(func){
-            user.get("whatsapp-extension", function (result){
-                console.log("whatsapp-extension: ", result);
-                userData = result["whatsapp-extension"];
-                if (userData){
-                    if (func) func();
-                    console.log("userData: ", userData);
-                } else
-                    user.get("utilities", function (result){
-                        userData = result.utilities;
-                        if (userData) {
-                            console.log(`user data not in "Whatsappp Extension", present in "utilities": `, userData);
-                        } else {
-                            console.log(`user data missing: ${result}\n creating new data`);
-                            userData = new UserData();
-                        }
-                        user.set({"whatsapp-extension": userData});
-                        if (func) func();
-                        console.log("userData: ", userData);
-                    });
-            });
-            return userData;
-        },
-        
-        resetData: function(func){
-            userData = new UserData();
-            this.setData();
-            if (func) func();
-        },
-        
-        setData: function(){
-            user.set({"whatsapp-extension": userData});
-        },
-    }
-})();
 
-// init
-// provider.getData();
-// function init(){
-//   // getting local storage data
-//   user.get("utilities", function (result) {
-//       utilities = result.utilities;
-//       console.log(`present?: ${utilities}`);
-//       if (!utilities){
-//           // user.clear;
-//           user.set({"utilities": DefaultData});
-//           utilities = DefaultData;
-//           console.log(`create: ${utilities}`);
-//       }
-//       console.log("instalation finished!");
-//   });
-// }
+class Provider {
+    constructor(name, load = function() {console.log("Loaded data: load unset")}, dataChange = true) {
+        this.userData = new UserData(false);
+        this.name = name;
+
+        this.userStorage = chrome.storage;
+        this.dataChange = dataChange
+
+        this.getData(load);
+        this.userStorage.sync.onChanged.addListener(() => {
+            if (this.dataChange) this.getData(() => {console.log("providerUpdate: ", this.userData); dispatchEvent(new Event("providerUpdate"))});
+            else console.log("Data changed: dataChange set to false");
+        });
+    }
+
+    getData(func) {
+        this.userStorage.sync.get(this.name, result => {
+            console.log(`${this.name}: `, result);
+            let resUserData = result[this.name];
+
+            if (this.userData.update(resUserData)) this.setData();
+            console.log("userData: ", resUserData, this.userData);
+            
+            if (func && typeof(func) == 'function') func();
+        });
+        return this.userData;
+    }
+    
+    resetData(func) {
+        this.userData.update();
+        console.log("resetData: ", this.userData)
+        this.setData();
+        if (func && typeof(func) == 'function') func();
+    }
+    
+    setData() {
+        console.log("setData: ", this.userData)
+        this.userStorage.sync.set(this.userData.get(this.name));
+    }
+};

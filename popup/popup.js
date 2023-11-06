@@ -1,33 +1,37 @@
-function initialiseAll(){
+let provider;
+function initialiseAll() {
     // getting local storage data
     addThemes();
     displayThemes();
-    provider.getData(() => {
+    provider = new Provider(extensionName, () => {
         setSwitchStatus();
         setColours();
         setThemes();
     });
 }
 
-function eventListeners(){
-    settings.styles["Blur"].addEventListener("click", function(event){
-            userData.styles.utilData.blurStatus = !userData.styles.utilData.blurStatus;
+function eventListeners() {
+    for (const i in settings.styles) {
+        settings.styles[i].addEventListener("click", function(event) {
+            provider.userData.styles[i] = !provider.userData.styles[i];
+
             setSwitchStatus();
             provider.setData();
-    });
-    settings.styles["Background Image"].addEventListener("click", function(event){
-            userData.styles.utilData.backgroundImgStatus = !userData.styles.utilData.backgroundImgStatus;
-            setSwitchStatus();
-            provider.setData();
-    });
+        });
+    }
+    // settings.styles["Background Image"].addEventListener("click", function(event){
+    //         provider.userData.styles.utilData.backgroundImgStatus = !provider.userData.styles.utilData.backgroundImgStatus;
+    //         setSwitchStatus();
+    //         provider.setData();
+    // });
     // themeButton.addEventListener("click", function(event){
-    //     themeButtons[userData.styles.utilData.themeNumber].setAttribute("active", 0);
-    //     if (userData.styles.utilData.themeNumber >= themes.length - 1) userData.styles.utilData.themeNumber = 0;
-    //     else userData.styles.utilData.themeNumber += 1;
-    //     themeButtons[userData.styles.utilData.themeNumber].setAttribute("active", 1);
+    //     themeButtons[provider.userData.styles.theme].setAttribute("active", 0);
+    //     if (provider.userData.styles.theme >= themes.length - 1) provider.userData.styles.theme = 0;
+    //     else provider.userData.styles.theme += 1;
+    //     themeButtons[provider.userData.styles.theme].setAttribute("active", 1);
     //     setColours();
     //     provider.setData();
-    //     console.log("change theme: ", userData.styles.utilData.themeNumber);
+    //     console.log("change theme: ", provider.userData.styles.theme);
     // });
     buttons.reset.addEventListener("click", function(event){
         provider.resetData(() => {setSwitchStatus(), setColours(), setThemes()});
@@ -47,11 +51,11 @@ function addThemes() {
         themeButtons[i].style.backgroundColor = themes[i].theme.primary;
         themeButtons[i].style.opacity = "0";
         themeButtons[i].addEventListener("click", () => {
-            userData.styles.utilData.themeNumber = i;
+            provider.userData.styles.theme = i;
             setThemes();
             setColours();
             provider.setData();
-            console.log("change theme: ", userData.styles.utilData.themeNumber);
+            console.log("change theme: ", provider.userData.styles.theme);
         });
         themeParent.appendChild(themeButtons[i]);
     }
@@ -59,7 +63,7 @@ function addThemes() {
 
 function setThemes() {
     for (let i = 0; i < themes.length; i++) {
-        themeButtons[i].setAttribute("active", (userData.styles.utilData.themeNumber == i) * 1);
+        themeButtons[i].setAttribute("active", (provider.userData.styles.theme == i) * 1);
     }
 }
 // user.clear();

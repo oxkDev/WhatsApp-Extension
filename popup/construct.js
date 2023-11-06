@@ -2,8 +2,8 @@ var colourVariables;
 
 const settings = {
     styles: {
-        "Blur": document.querySelector("div#blur.switch"),
-        "Background Image": document.querySelector("div#bgimg.switch"),
+        "blur": document.querySelector("div#blur.switch"),
+        "backgroundImg": document.querySelector("div#bgimg.switch"),
     },
 }
 
@@ -35,8 +35,8 @@ function setColours() {
         console.log("deleting:", i)
         customColours.deleteRule(0)
     }
-    themeNumber = userData.styles.utilData.themeNumber;
-    var blurValue = userData.styles.utilData.blurValue;
+    themeNumber = provider.userData.styles.theme;
+    var blurValue = provider.userData.styles.blurValue;
     var main = themes[themeNumber].main;
     var theme = themes[themeNumber].theme;
     var tran = themes[themeNumber].tran;
@@ -64,9 +64,9 @@ function setColours() {
 console.log("setColours():", customColours);
 
 function setSwitchStatus() {
-    console.log(`setSwitchStatus():`, userData);
-    setTimeout(() => {
-        settings.styles["Blur"].classList.toggle("enabled", userData.styles.utilData.blurStatus);
-        settings.styles["Background Image"].classList.toggle("enabled", userData.styles.utilData.backgroundImgStatus);
-    }, 100);
+    console.log(`setSwitchStatus():`, provider.userData);
+    // setTimeout(() => {
+    settings.styles["blur"].classList.toggle("enabled", provider.userData.styles.blur);
+    settings.styles["backgroundImg"].classList.toggle("enabled", provider.userData.styles.backgroundImg);
+    // }, 100);
 }

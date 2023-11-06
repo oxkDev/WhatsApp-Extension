@@ -1,19 +1,17 @@
-var extensionAddonDelay = 0.001;
-var contacts, selectedContact, textbox;
-var isWin = navigator.userAgentData.platform == "Windows";
+const extensionAddonDelay = 0.001;
+let textbox;
+const isWin = navigator.userAgentData.platform == "Windows";
 
-var textbox;
-var jumper = {
+let jumper = {
     element: "",
     n: 0,
 }
 
 var elmClasses = {
     textbox: "",
-
 }
 
-var textSymbols = {
+const textSymbols = {
     'b': '*',
     'i': '_',
     's': '~',
@@ -159,7 +157,7 @@ function textboxDefaultMessage(){
 //     // sendMessage(message); //  your code here
 //     var i = 0;
 //     interval = setInterval(function() {
-//         if (userData.spammer.status && !(i++ == spamData.count)) sendMessage(message); //  your code here
+//         if (provider.userData.spammer.status && !(i++ == spamData.count)) sendMessage(message); //  your code here
 //         else clearInterval(interval);   //  decrement i and call myLoop again if i > 0
 //         console.log(message);
 //     }, spamData.delay);
@@ -319,7 +317,7 @@ console.log('Running script...');
 // chrome.storage.sync.onChanged.addListener(changeBackground);
 window.onload = () => {
     document.addEventListener("mouseover", initialiseFinal);
-    provider.getData(() => {
+    provider = new Provider(extensionName, () => {
         customStylesOnStart();
         backgroundImageStylesOnStart();
         customColoursOnStart();

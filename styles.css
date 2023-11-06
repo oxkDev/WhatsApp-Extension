@@ -2,8 +2,8 @@ html {
     --background: #262d31;
     --translucent: #00000034;
     --translucent-light: #00000021;
-    --contrast-translucent: #FFFFFF21;
-    --contrast-translucent-light: #FFFFFF15;
+    --contrast-translucent: #ffffff19;
+    --contrast-translucent-light: #ffffff12;
     --theme-primary: #144949;
     --theme-primary-darker: #133f3f;
     --theme-secondary: #0f3636;
@@ -11,7 +11,8 @@ html {
 }
 
 :root {
-    --transition: all 0.3s cubic-bezier(0.34, 0.03, 0.39, 1.01);
+    --transition: all 0.3s cubic-bezier(0.34, 0, 0.39, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.37, 0, 0.31, 1);
     --font-sub: 100 14px "Arial";
     --font-title: 300 18px "Roboto";
     --letter-spacing-title: 1.5px;
@@ -62,7 +63,7 @@ div {
     animation: onOpenSection 0.3s ease-out;
 }
 
-.group{
+.group {
     animation: onOpenMain 0.3s ease-out;
     color: var(--text);
     border-radius: 21px;
@@ -86,40 +87,50 @@ div:hover {
     letter-spacing: calc(var(--letter-spacing-sub) + 0.2px);
 }
 
+.switch, .switch::before, .switch::after {
+    transition: var(--transition-fast);
+}
+
 .switch {
     display: flex;
-    width: 40px;
-    padding: 4px;
+    width: 48px;
     cursor: pointer;
     border-radius: 14px;
     /* transition: var(--transition); */
+    background-color: var(--contrast-translucent);
+}
+
+.switch:not(.enabled)::before, .switch.enabled::after {
+    width: 0px;
+    content: "";
+}
+
+.switch.enabled::before, .switch:not(.enabled)::after {
+    width: 50px;
+    content: "";
+    transition-delay: 100ms;
+}
+
+.switch:not(.enabled):active::after, .switch.enabled:active::before {
+    width: 30px;
 }
 
 .knob {
     cursor: pointer;
-    width: 20px;
+    width: 100%;
     height: 20px;
-    border-radius: 10px;
-    transition: var(--transition);
-}
-
-.switch {
-    background-color: var(--contrast-translucent);
-}
-
-.switch > .knob {
+    margin: 4px;
+    border-radius: 30px;
     background-color: var(--translucent);
-    position: relative;
-    left: 0px;
+    transition: var(--transition-fast);
+}
+
+.switch:hover > .knob {
+    background-color: var(--translucent-light);
 }
 
 .switch.enabled {
     background-color: var(--theme-primary);
-}
-
-.switch.enabled > .knob {
-    position: relative;
-    left: 20px;
 }
 
 .mainButton {
@@ -148,6 +159,7 @@ div:hover {
 }
 
 .selectorWrap {
+    width: 220px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
