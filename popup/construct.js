@@ -1,26 +1,31 @@
 var colourVariables;
 
 const settings = {
-    styles: {
-        "blur": document.querySelector("div#blur.switch"),
-        "backgroundImg": document.querySelector("div#bgimg.switch"),
+    appearance: {
+        "styles": document.querySelector("#styles.switch"),
+        "blur": document.querySelector("#blur.switch"),
+        "backgroundImg": document.querySelector("#bgimg.switch"),
     },
+    theme: {   
+        "status": document.querySelector("#themeStatus.switch"),
+    }
 }
 
 const buttons = {
-    reset: document.querySelector("div#reset.mainButton"),
-    update: document.querySelector("div#update.mainButton"),
+    reset: document.querySelector("#reset.mainButton"),
+    update: document.querySelector("#update.mainButton"),
 }
-// var themeButton = document.querySelector("div#theme.mainButton");
+// var themeButton = document.querySelector("#theme.mainButton");
 
-var themeParent = document.querySelector("div#theme.selectorWrap");
+const theme = {
+    parent: document.querySelector("#theme.selectorWrap"),
+    selection: [],
+}
 
-var themeButtons = [];
-
-function displayThemes() {
-    for (let i = 0; i < themes.length; i++) {
+function displayThemeSelection() {
+    for (let i = 0; i < themeSelection.length; i++) {
         setTimeout(() => {
-            themeButtons[i].style.opacity = "";
+            theme.selection[i].style.opacity = "";
         }, i * 20);
     }
 } 
@@ -35,22 +40,22 @@ function setColours() {
         console.log("deleting:", i)
         customColours.deleteRule(0)
     }
-    themeNumber = provider.userData.styles.theme;
-    var blurValue = provider.userData.styles.blurValue;
-    var main = themes[themeNumber].main;
-    var theme = themes[themeNumber].theme;
-    var tran = themes[themeNumber].tran;
-    var msg = themes[themeNumber].message;
-    var text = themes[themeNumber].text;
-    var background = themes[themeNumber].background;
+    themeNumber = provider.userData.theme.theme;
+    var blurValue = provider.userData.appearance.blurValue;
+    var main = themeSelection[themeNumber].main;
+    var theme = themeSelection[themeNumber].theme;
+    var tran = themeSelection[themeNumber].tran;
+    var msg = themeSelection[themeNumber].message;
+    var text = themeSelection[themeNumber].text;
+    var background = themeSelection[themeNumber].background;
     
     colourVariables = [
         `:root {
             --background: ${background.primary};
             --translucent: ${main.theme}${tran.overlay};
             --translucent-light: ${main.theme}${tran.overlayLight};
-            --contrast-translucent: ${main.contrast}${tran.overlayLight};
-            --contrast-translucent-light: ${main.contrast}${tran.overlayLighter};
+            --contrast-translucent: ${main.contrast}${tran.overlayLighter};
+            --contrast-translucent-light: ${main.contrast}${tran.overlayLightest};
             --theme-primary: ${theme.light};
             --theme-primary-darker: ${theme.primary};
             --theme-secondary: ${theme.secondary};
@@ -66,7 +71,13 @@ console.log("setColours():", customColours);
 function setSwitchStatus() {
     console.log(`setSwitchStatus():`, provider.userData);
     // setTimeout(() => {
-    settings.styles["blur"].classList.toggle("enabled", provider.userData.styles.blur);
-    settings.styles["backgroundImg"].classList.toggle("enabled", provider.userData.styles.backgroundImg);
+    for (const i in settings.appearance) {
+        settings.appearance[i].classList.toggle("enabled", provider.userData.appearance[i]);
+    }
+
+    for (const i in settings.theme) {
+        settings.theme[i].classList.toggle("enabled", provider.userData.theme[i]);
+    }
+    // settings.appearance["backgroundImg"].classList.toggle("enabled", provider.userData.appearance.backgroundImg);
     // }, 100);
 }

@@ -1,9 +1,9 @@
 html {
     --background: #262d31;
     --translucent: #00000034;
-    --translucent-light: #00000021;
-    --contrast-translucent: #ffffff19;
-    --contrast-translucent-light: #ffffff12;
+    --translucent-light: #00000015;
+    --contrast-translucent: #ffffff22;
+    --contrast-translucent-light: #ffffff05;
     --theme-primary: #144949;
     --theme-primary-darker: #133f3f;
     --theme-secondary: #0f3636;
@@ -38,6 +38,10 @@ div {
     letter-spacing: var(--letter-spacing-title);
 }
 
+div:hover {
+    letter-spacing: calc(var(--letter-spacing-sub) + 0.2px);
+}
+
 #title {
     color: var(--text);
     font: 300 20px "Roboto";
@@ -46,12 +50,40 @@ div {
     margin: 5px;
 }
 
+.group {
+    width: 220px;
+    border-radius: 21px;
+    padding: 10px;
+    margin-top: 10px;
+    align-items: center;
+    overflow: hidden;
+    font: var(--font-title);
+    color: var(--text);
+    text-transform: uppercase;
+    animation: onOpenMain 0.3s ease-out;
+    /* transition: var(--transition); */
+    border-bottom: 2px var(--translucent-light);
+}
+
+.group:hover {
+    background-color: var(--contrast-translucent-light);
+}
+
+
+.fieldWrap {
+    max-height: 320px;
+    border-radius: 21px;
+}
+.group.closed .fieldWrap {
+    max-height: 0px;
+}
+
 .field {
     color: var(--text);
     border-radius: 21px;
-    width: 200px;
+    /* width: 200px; */
     /* margin: 5px auto; */
-    padding: 10px;
+    padding: 10px 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,30 +93,6 @@ div {
     flex: 0px;
     /* transition: var(--transition); */
     animation: onOpenSection 0.3s ease-out;
-}
-
-.group {
-    animation: onOpenMain 0.3s ease-out;
-    color: var(--text);
-    border-radius: 21px;
-    padding: 10px;
-    margin-top: 10px;
-    align-items: center;
-    overflow: hidden;
-    font: var(--font-title);
-    text-transform: uppercase;
-    /* transition: var(--transition); */
-    border-bottom: 2px var(--translucent-light);
-
-}
-
-.group:hover {
-    background-color: var(--contrast-translucent-light);
-}
-
-
-div:hover {
-    letter-spacing: calc(var(--letter-spacing-sub) + 0.2px);
 }
 
 .switch, .switch::before, .switch::after {
@@ -126,7 +134,9 @@ div:hover {
 }
 
 .switch:hover > .knob {
-    background-color: var(--translucent-light);
+    opacity: 0.8;
+    padding: 1px;
+    margin: 3px;
 }
 
 .switch.enabled {
@@ -159,7 +169,6 @@ div:hover {
 }
 
 .selectorWrap {
-    width: 220px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;

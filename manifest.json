@@ -6,7 +6,7 @@
     },
 
     "description": "Allows you to use Whatsapp efficiently",
-    "version": "0.2.4",
+    "version": "0.2.5",
     "manifest_version": 3,
 
     "background": {
@@ -31,23 +31,31 @@
         }
     },
 
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "provider/resources.json",
+                "resources/Wallpaper 2.1 - shapes and sizes (4k).png",
+                "script/CSS/customAnimations.css",
+                "script/CSS/customBlur.css",
+                "script/CSS/customColours.css",
+                "script/CSS/customStyles.css"
+            ],
+            "matches": ["https://web.whatsapp.com/*"]
+        }
+    ],
+
     "content_scripts": [
         {
             "matches": [
                 "https://web.whatsapp.com/"
-            ],
-            "css": [
-                "script/CSS/customStyles.css",
-                "script/CSS/customColours.css",
-                "script/CSS/customAnimations.css",
-                "script/CSS/customBlur.css"
             ],
             "js": [
                 "provider/provider.js",
                 "script/JS/customStyles.js",
                 "script/JS/customBackgroundImage.js",
                 "script/JS/customColours.js",
-                "script/JS/textboxShortcuts.js"
+                "script/JS/textboxShortcuts new.js"
             ]
         }
     ]

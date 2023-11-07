@@ -2,7 +2,7 @@ let provider;
 function initialiseAll() {
     // getting local storage data
     addThemes();
-    displayThemes();
+    displayThemeSelection();
     provider = new Provider(extensionName, () => {
         setSwitchStatus();
         setColours();
@@ -11,27 +11,36 @@ function initialiseAll() {
 }
 
 function eventListeners() {
-    for (const i in settings.styles) {
-        settings.styles[i].addEventListener("click", function(event) {
-            provider.userData.styles[i] = !provider.userData.styles[i];
+    for (const i in settings.appearance) {
+        settings.appearance[i].addEventListener("click", function(event) {
+            provider.userData.appearance[i] = !provider.userData.appearance[i];
 
             setSwitchStatus();
             provider.setData();
         });
     }
-    // settings.styles["Background Image"].addEventListener("click", function(event){
-    //         provider.userData.styles.utilData.backgroundImgStatus = !provider.userData.styles.utilData.backgroundImgStatus;
+    
+    for (const i in settings.theme) {
+        settings.theme[i].addEventListener("click", function(event) {
+            provider.userData.theme[i] = !provider.userData.theme[i];
+
+            setSwitchStatus();
+            provider.setData();
+        });
+    }
+    // settings.appearance["Background Image"].addEventListener("click", function(event){
+    //         provider.userData.appearance.utilData.backgroundImgStatus = !provider.userData.appearance.utilData.backgroundImgStatus;
     //         setSwitchStatus();
     //         provider.setData();
     // });
     // themeButton.addEventListener("click", function(event){
-    //     themeButtons[provider.userData.styles.theme].setAttribute("active", 0);
-    //     if (provider.userData.styles.theme >= themes.length - 1) provider.userData.styles.theme = 0;
-    //     else provider.userData.styles.theme += 1;
-    //     themeButtons[provider.userData.styles.theme].setAttribute("active", 1);
+    //     theme.selection[provider.userData.theme.theme].setAttribute("active", 0);
+    //     if (provider.userData.theme.theme >= themes.length - 1) provider.userData.theme.theme = 0;
+    //     else provider.userData.theme.theme += 1;
+    //     theme.selection[provider.userData.theme.theme].setAttribute("active", 1);
     //     setColours();
     //     provider.setData();
-    //     console.log("change theme: ", provider.userData.styles.theme);
+    //     console.log("change theme: ", provider.userData.theme.theme);
     // });
     buttons.reset.addEventListener("click", function(event){
         provider.resetData(() => {setSwitchStatus(), setColours(), setThemes()});
@@ -44,28 +53,33 @@ function eventListeners() {
 }
 
 function addThemes() {
-    for (let i = 0; i < themes.length; i++) {
-        themeButtons[i] = document.createElement("div");
-        themeButtons[i].classList = "themeButton";
-        themeButtons[i].setAttribute("active", 0);
-        themeButtons[i].style.backgroundColor = themes[i].theme.primary;
-        themeButtons[i].style.opacity = "0";
-        themeButtons[i].addEventListener("click", () => {
-            provider.userData.styles.theme = i;
+    for (let i = 0; i < themeSelection.length; i++) {
+        theme.selection[i] = document.createElement("div");
+        theme.selection[i].classList = "themeButton";
+        theme.selection[i].setAttribute("active", 0);
+        theme.selection[i].style.backgroundColor = themeSelection[i].theme.primary;
+        theme.selection[i].style.opacity = "0";
+        theme.selection[i].addEventListener("click", () => {
+            provider.userData.theme.theme = i;
             setThemes();
             setColours();
             provider.setData();
-            console.log("change theme: ", provider.userData.styles.theme);
+            console.log("change theme: ", provider.userData.theme.theme);
         });
-        themeParent.appendChild(themeButtons[i]);
+        theme.parent.appendChild(theme.selection[i]);
     }
 }
 
 function setThemes() {
-    for (let i = 0; i < themes.length; i++) {
-        themeButtons[i].setAttribute("active", (provider.userData.styles.theme == i) * 1);
+    for (let i = 0; i < themeSelection.length; i++) {
+        theme.selection[i].setAttribute("active", (provider.userData.theme.theme == i) * 1);
     }
 }
 // user.clear();
-initialiseAll();
-eventListeners();
+
+fetch('../provider/resources.json').then((response) => response.json()).then((json) => {
+    for (let n in json["themes"]) {console.log(n); themeSelection.push(new ColourTheme(json["themes"][n]));}
+    console.log(themeSelection)
+    initialiseAll();
+    eventListeners();
+})

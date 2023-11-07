@@ -317,12 +317,16 @@ console.log('Running script...');
 // chrome.storage.sync.onChanged.addListener(changeBackground);
 window.onload = () => {
     document.addEventListener("mouseover", initialiseFinal);
-    provider = new Provider(extensionName, () => {
-        customStylesOnStart();
-        backgroundImageStylesOnStart();
-        customColoursOnStart();
-        setClasses();
-    });
+    provider = new Provider(extensionName, () => 
+        fetch(chrome.runtime.getURL("provider/resources.json")).then((response) => response.json()).then((json) => {    
+            for (let n in json["themes"]) {themes.push(new ColourTheme(json["themes"][n]));}
+            backgroundImg = json["wallpapers"];
+            customStylesOnStart();
+            backgroundImageStylesOnStart();
+            customColoursOnStart();
+            setClasses();
+        })
+    );
 }
 
 // double click change

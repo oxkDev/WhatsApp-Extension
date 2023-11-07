@@ -15,21 +15,21 @@ document.head.append(customMetaHeader);
 let themeNumber;
 
 function customColoursOnStart() {
-    themeNumber = provider.userData.styles.theme;
-    let blurValue = provider.userData.styles.blurValue;
-    let main = themes[themeNumber].main;
-    let theme = themes[themeNumber].theme;
-    let tran = themes[themeNumber].tran;
-    let msg = themes[themeNumber].message;
-    let text = themes[themeNumber].text;
-    let background = themes[themeNumber].background;
+    themeNumber = provider.userData.theme.theme;
+    let blurValue = provider.userData.appearance.blurValue;
+    let main = themeSelection[themeNumber].main;
+    let theme = themeSelection[themeNumber].theme;
+    let tran = themeSelection[themeNumber].tran;
+    let msg = themeSelection[themeNumber].message;
+    let text = themeSelection[themeNumber].text;
+    let background = themeSelection[themeNumber].background;
 
     for (const m of document.querySelectorAll("meta[name='theme-color']")) m.content = background.secondary;
 
     console.log(themeNumber)
 
     let colourVariables = [
-        `html[dir] body, html[dir] body :before {
+        `html[dir] body.custom, html[dir] body :before {
             /* startup background */
             --startup-background: ${background.darker};
             --startup-background-rgb: ${hexToRgb(background.darker)};
@@ -269,7 +269,7 @@ function customColoursOnStart() {
             --tooltip-text: ${text.secondary};
             --input-placeholder: ${text.secondary};
         }`,
-        `html[dir] body.blur {
+        `html[dir] body.custom.blur {
             --outgoing-background: ${msg.send}${tran.blur};
             --incoming-background: ${msg.receive}${tran.blur};
             --unread-bar-background: ${background.secondary}${tran.overlay};
@@ -331,17 +331,8 @@ function customColoursOnStart() {
         customColours.insertRule(colourVariables[i], i);
     };
     setTimeout(() => {
-        document.body.classList.toggle("dark", themes[themeNumber].isDark);
-        document.body.classList.toggle("light", !themes[themeNumber].isDark);
-        console.log(themes[themeNumber].isDark);
+        document.body.classList.toggle("dark", themeSelection[themeNumber].isDark);
+        document.body.classList.toggle("light", !themeSelection[themeNumber].isDark);
+        console.log(themeSelection[themeNumber].isDark);
     }, 100);
 }
-
-addEventListener("providerUpdate", () => {
-    if (themeNumber != provider.userData.styles.theme) {
-        for (const i in customColours.cssRules) {
-            customColours.deleteRule(0);
-        }
-        customColoursOnStart();
-    }
-});

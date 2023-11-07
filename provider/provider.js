@@ -95,190 +95,192 @@ class ColourTheme {
     }
 }
 
-// erythrite
-const erythriteTheme = new ColourTheme({
-    isDark: false,
-    theme: {
-        primary: "#ff5b61",
-        secondary: "#ffcccb",
-        light: "#aa366a",
-        lighter: "#f64747",
-        danger: "#ff0000",
-        link: "#ff0000",
-    },
-    background: {
-        primary: "#FF8991",
-        secondary: "#ffcccb",
-        dark: "#f8c8dc",
-        light: "#ffb6c1",
-        darker: "#f9cddf",
-    },
-    message: {
-        statusRead: "#ff3535",
-        statusSent: "#000000" + "32",
-    },
-    text: {
-        primary: "#000000" + "b3",
-        secondary: "#000000" + "80",
-        tertiary: "#000000" + "47",
-        contrast: "#FFFFFF" + "70"
-    },
-    main: {
-        theme: "#FFFFFF",
-        contrast: "#000000",
-        grey: "#777777",
-        transparent: "transparent",
-    }
-})
+// // erythrite
+// const erythriteTheme = new ColourTheme({
+//     isDark: false,
+//     theme: {
+//         primary: "#ff5b61",
+//         secondary: "#ffcccb",
+//         light: "#aa366a",
+//         lighter: "#f64747",
+//         danger: "#ff0000",
+//         link: "#ff0000",
+//     },
+//     background: {
+//         primary: "#FF8991",
+//         secondary: "#ffcccb",
+//         dark: "#f8c8dc",
+//         light: "#ffb6c1",
+//         darker: "#f9cddf",
+//     },
+//     message: {
+//         statusRead: "#ff3535",
+//         statusSent: "#000000" + "32",
+//     },
+//     text: {
+//         primary: "#000000" + "b3",
+//         secondary: "#000000" + "80",
+//         tertiary: "#000000" + "47",
+//         contrast: "#FFFFFF" + "70"
+//     },
+//     main: {
+//         theme: "#FFFFFF",
+//         contrast: "#000000",
+//         grey: "#777777",
+//         transparent: "transparent",
+//     }
+// })
 
-const oxkLightTheme = new ColourTheme({
-    isDark: false,
-    theme: {
-        primary: "#298abe",
-        secondary: "#f7f8fa",
-        light: "#083a55",
-        lighter: "#2a7095",
-        danger: "#f14040",
-        link: "#459dd9",
-    },
-    background: {
-        primary: "#e4ebf0",
-        secondary: "#edeeef",
-        dark: "#e5e5e5",
-        light: "#cccccc",
-        darker: "#ffffff",
-    },
-    message: {
-        statusRead: "#ffffff" + "32",
-        statusSent: "#404f59",
-    },
-    text: {
-        primary: "#000000" + "b3",
-        secondary: "#000000" + "70",
-        tertiary: "#000000" + "47",
-        contrast: "#ffffff" + "70",
-    },
-    main: {
-        theme: "#FFFFFF",
-        contrast: "#000000",
-        grey: "#777777",
-        transparent: "transparent",
-    }
-})
+// const oxkLightTheme = new ColourTheme({
+//     isDark: false,
+//     theme: {
+//         primary: "#298abe",
+//         secondary: "#f7f8fa",
+//         light: "#083a55",
+//         lighter: "#2a7095",
+//         danger: "#f14040",
+//         link: "#459dd9",
+//     },
+//     background: {
+//         primary: "#e4ebf0",
+//         secondary: "#edeeef",
+//         dark: "#e5e5e5",
+//         light: "#cccccc",
+//         darker: "#ffffff",
+//     },
+//     message: {
+//         statusRead: "#ffffff" + "32",
+//         statusSent: "#404f59",
+//     },
+//     text: {
+//         primary: "#000000" + "b3",
+//         secondary: "#000000" + "70",
+//         tertiary: "#000000" + "47",
+//         contrast: "#ffffff" + "70",
+//     },
+//     main: {
+//         theme: "#FFFFFF",
+//         contrast: "#000000",
+//         grey: "#777777",
+//         transparent: "transparent",
+//     }
+// })
 
-const oxkYellow = new ColourTheme({
-    isDark: true,
-    theme: {
-        primary: "#84610F",
-        secondary: "#232320",
-        light: "#967A2B",
-        lighter: "#BF902A",
-        danger: "#f14040",
-    },
-    background: {
-        primary: "#201E18",
-        secondary: "#251F1B",
-        dark: "#1B1916",
-        light: "#272215",
-        darker: "#161616",
-    },
-    message: {
-        statusRead: "#f2f9ffd4",
-        statusSent: "#ffffff" + "32",
-    },
-    main: {
-        theme: "#000000",
-        contrast: "#FFFFFF",
-        grey: "#777777",
-        transparent: "transparent",
-    }
-})
+// const oxkYellow = new ColourTheme({
+//     isDark: true,
+//     theme: {
+//         primary: "#84610F",
+//         secondary: "#232320",
+//         light: "#967A2B",
+//         lighter: "#BF902A",
+//         danger: "#f14040",
+//     },
+//     background: {
+//         primary: "#201E18",
+//         secondary: "#251F1B",
+//         dark: "#1B1916",
+//         light: "#272215",
+//         darker: "#161616",
+//     },
+//     message: {
+//         statusRead: "#f2f9ffd4",
+//         statusSent: "#ffffff" + "32",
+//     },
+//     main: {
+//         theme: "#000000",
+//         contrast: "#FFFFFF",
+//         grey: "#777777",
+//         transparent: "transparent",
+//     }
+// })
 
-const oxkRedDark = new ColourTheme({
-    isDark: true,
-    theme: {
-        primary: "#750D0D",
-        secondary: "#201521",
-        light: "#942938",
-        lighter: "#BF322A",
-        danger: "#f14040",
-    },
-    background: {
-        primary: "#2C1A19",
-        secondary: "#161616",
-        dark: "#181114",
-        light: "#251515",
-        darker: "#1A0000",
-    },
-    message: {
-        statusRead: "#f2f9ffd4",
-        statusSent: "#ffffff" + "32",
-    },
-    main: {
-        theme: "#000000",
-        contrast: "#FFFFFF",
-        grey: "#777777",
-        transparent: "transparent",
-    }
-})
+// const oxkRedDark = new ColourTheme({
+//     isDark: true,
+//     theme: {
+//         primary: "#750D0D",
+//         secondary: "#201521",
+//         light: "#942938",
+//         lighter: "#BF322A",
+//         danger: "#f14040",
+//     },
+//     background: {
+//         primary: "#2C1A19",
+//         secondary: "#161616",
+//         dark: "#181114",
+//         light: "#251515",
+//         darker: "#1A0000",
+//     },
+//     message: {
+//         statusRead: "#f2f9ffd4",
+//         statusSent: "#ffffff" + "32",
+//     },
+//     main: {
+//         theme: "#000000",
+//         contrast: "#FFFFFF",
+//         grey: "#777777",
+//         transparent: "transparent",
+//     }
+// })
 
-const ozkGreenDark = new ColourTheme({
-    isDark: true,
-    theme: {
-        primary: "#085427",
-        secondary: "#15211E",
-        light: "#299446",
-        lighter: "#2ABF66",
-        danger: "#f14040",
-    },
-    background: {
-        primary: "#062609",
-        secondary: "#192929",
-        dark: "#072418",
-        light: "#0F3015",
-        darker: "#001A01",
-    },
-    message: {
-        statusRead: "#f2f9ffd4",
-        statusSent: "#ffffff" + "32",
-    },
-    main: {
-        theme: "#000000",
-        contrast: "#FFFFFF",
-        grey: "#777777",
-        transparent: "transparent",
-    }
-})
+// const ozkGreenDark = new ColourTheme({
+//     isDark: true,
+//     theme: {
+//         primary: "#085427",
+//         secondary: "#15211E",
+//         light: "#299446",
+//         lighter: "#2ABF66",
+//         danger: "#f14040",
+//     },
+//     background: {
+//         primary: "#062609",
+//         secondary: "#192929",
+//         dark: "#072418",
+//         light: "#0F3015",
+//         darker: "#001A01",
+//     },
+//     message: {
+//         statusRead: "#f2f9ffd4",
+//         statusSent: "#ffffff" + "32",
+//     },
+//     main: {
+//         theme: "#000000",
+//         contrast: "#FFFFFF",
+//         grey: "#777777",
+//         transparent: "transparent",
+//     }
+// })
 
-const transparent = new ColourTheme({
-    isDark: true,
-    theme: {
-        primary: "transparent",
-        secondary: "transparent",
-        light: "transparent",
-        lighter: "transparent",
-        danger: "transparent",
-    },
-    background: {
-        primary: "transparent",
-        secondary: "transparent",
-        dark: "transparent",
-        light: "transparent",
-        darker: "transparent",
-    },
-    message: {
-        statusRead: "transparent",
-        statusSent: "transparent",
-    },
-    text: {
-        theme: "transparent",
-        contrast: "transparent",
-        grey: "transparent",
-        transparent: "transparent",
-    },
-});
+// const transparent = new ColourTheme({
+//     isDark: true,
+//     theme: {
+//         primary: "transparent",
+//         secondary: "transparent",
+//         light: "transparent",
+//         lighter: "transparent",
+//         danger: "transparent",
+//     },
+//     background: {
+//         primary: "transparent",
+//         secondary: "transparent",
+//         dark: "transparent",
+//         light: "transparent",
+//         darker: "transparent",
+//     },
+//     message: {
+//         statusRead: "transparent",
+//         statusSent: "transparent",
+//     },
+//     text: {
+//         theme: "transparent",
+//         contrast: "transparent",
+//         grey: "transparent",
+//         transparent: "transparent",
+//     },
+// });
 
-const themes = [new ColourTheme({}), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark, transparent];
+// const themeSelection = [new ColourTheme({}), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark, transparent];
+
+const themeSelection = [new ColourTheme({})];
 
 class Utility {
     constructor(status, code, utilData) {
@@ -292,22 +294,25 @@ class UserData {
     constructor(data) {
         this.needSet = false;
 
-        this.styles;
+        this.appearance;
         this.textbox;
 
         this.default = {
-            styles: {
-                status: true,
-                code: "styles",
+            appearance: {
+                styles: true,
                 blur: true,
                 backgroundImg: true,
-                theme: 0,
                 blurValue: {
                     medium: "30px",
                     light: "20px",
                     lighter: "15px",
                     heavy: "45px",
                 },
+            },
+
+            theme: {
+                status: true,
+                theme: 0,
             },
 
             textbox: {
