@@ -2,10 +2,9 @@
 <html>
     <head>
         <link rel="stylesheet" href="../styles.css">
-    </head>
-    <body>
+     <body>
         <div id="title">WhatsApp <b>Ext</b></div>
-        <div class="group">
+        <div class="group" id="appearance">
             Feels
             <div class="fieldWrap">
                 <div class="field">
@@ -22,19 +21,19 @@
                 </div>
                 <div class="field">
                     Background Image
-                    <label id="bgimg" class="switch">
+                    <label id="backgroundImg" class="switch">
                         <span class="knob"></span>
                     </label>
                 </div>
             </div>
         </div>
 
-        <div class="group">
+        <div class="group" id="theme">
             Looks
             <div class="fieldWrap">
                 <div class="field">
                     Theme
-                    <label id="themeStatus" class="switch">
+                    <label id="status" class="switch">
                         <span class="knob"></span>
                     </label>
                 </div>
@@ -43,7 +42,17 @@
 
             </div>
         </div>
-        <!-- <div id="theme" class="mainButton">change theme</div> -->
+        <div class="group" id="textbox">
+            Textbox
+            <div class="fieldWrap">
+                <div class="field">
+                    Commands
+                    <label id="commands" class="switch">
+                        <span class="knob"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
         <div id="reset" class="mainButton">reset settings</div>
         <a href="https://github.com/oxkDev/WhatsApp-Extension"><div id="update" class="mainButton">check for updates</div></a>
 

@@ -10,7 +10,7 @@
     "manifest_version": 3,
 
     "background": {
-        "service_worker": "provider/provider.js"
+        "service_worker": "provider/service-worker.js"
     },
 
     "permissions": ["storage", "activeTab", "tabs", "scripting"],
@@ -39,7 +39,8 @@
                 "script/CSS/customAnimations.css",
                 "script/CSS/customBlur.css",
                 "script/CSS/customColours.css",
-                "script/CSS/customStyles.css"
+                "script/CSS/customStyles.css",
+                "provider/versions.json"
             ],
             "matches": ["https://web.whatsapp.com/*"]
         }

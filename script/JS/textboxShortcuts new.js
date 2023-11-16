@@ -1,62 +1,3 @@
-Range.prototype.editSelection = function(type) {
-    // console.log(this);
-
-    Range.prototype.setCaretPosition = function(offset, container, type){
-        // setTimeout(() => {
-            // var selection = document.getSelection().getRangeAt(0);
-            console.log("selectionDetected: ", offset[0], offset[1]);
-
-            console.log("container (end): ", offset[0], container[0]);
-            console.log("container (start): ", offset[1], container[1]);
-            // selection.setStart(selection.startContainer, start);
-            // selection.setEnd(selection.endContainer, end);
-            this.setStart(container[1], type + offset[1]);
-            this.setEnd(container[0], (container[0] == container[1]) * type + offset[0]);
-        // }, 500);
-    }
-
-    var offset = [this.endOffset, this.startOffset];
-    var container = [this.endContainer, this.startContainer];
-    // console.log("offsetStart: ", offset[1], container[1].parentElement.previousSibling);
-    // console.log("offsetEnd: ", offset[0], container[1].textContent.length);
-    if (!offset[1] && container[1].parentElement.previousSibling){
-        offset[1] = container[1].parentElement.previousSibling.textContent.length;
-        container[1] = container[1].parentElement.previousSibling.firstChild;
-        // console.log("offset start changed")
-    }
-    if (offset[0] == container[0].textContent.length && container[0].parentElement.nextSibling) {
-        offset[0] = 0;
-        container[0] = container[0].parentElement.nextSibling.firstChild;
-        // console.log("offset end changed")
-    }
-        
-    console.log("edit selection: ", !(container[1].textContent.slice(offset[1] - type.length, offset[1]) == type && container[0].textContent.slice(offset[0], offset[0] + type.length) == type), offset, container);
-    // !((selection.startContainer.textContent.slice(selection.startOffset - type.length, selection.startOffset) == type) && (selection.endContainer.textContent.slice(selection.endOffset, selection.endOffset + type.length) == type))
-    if(!(container[1].textContent.slice(offset[1] - type.length, offset[1]) == type && container[0].textContent.slice(offset[0], offset[0] + type.length) == type)) {
-        offset.forEach((val, index) => {
-            container[index].textContent = container[index].textContent.slice(0, val) + type + container[index].textContent.slice(val);
-        });
-        this.setCaretPosition(offset, container, type.length);
-    } else {
-        container[0].textContent = container[0].textContent.slice(0, offset[0]) + container[0].textContent.slice(offset[0] + type.length);
-        container[1].textContent = container[1].textContent.slice(0, offset[1] - type.length) + container[1].textContent.slice(offset[1]);
-        this.setCaretPosition(offset, container, -type.length);
-        // offset.forEach((val, index) => {
-        // });
-    }
-}
-
-Element.prototype.formatPlainText = function(){
-    emotes = this.getElementsByTagName("img")
-    console.log("test: ", emotes)
-    for (var i = 0; i < emotes.length; i++){
-        console.log(emotes[i].dataset.plainText)
-        emotes[i].replaceWith(emotes[i].dataset.plainText)
-    }
-    this.dispatchEvent(new InputEvent('input', {bubbles: true,}));
-    return this
-}
-
 Element.prototype.dblclick = function() {
     return this.dispatchEvent(new MouseEvent("dblclick", {
         'view': window,
@@ -70,33 +11,44 @@ var a = true;
 
 class SmartTextbox {
     constructor() {
-        this.extensionAddonDelay = 0.001;
+        this.extensionAddonDelay = 10;
         
         this.jumper = {
             element: "",
             n: 0,
         }
         
-        this.textbox;
+        this.textbox = document.querySelector('body');
         this.classes = {
             textbox: [
+                `.app-wrapper-web > span .lexical-rich-text-input > div[role="textbox"]`,
                 `.lexical-rich-text-input [role="textbox"][title="Type a message"]`,
                 `div[data-testid="conversation-compose-box-input"]`,
                 ".p3_M1 ._13NKt.copyable-text.selectable-text",
             ],
-            contactsParent: [`#side`],
+            // contactsParents: [`#side`, `html[dir] ._2Ts6i`],
+            contactsParents: [`#app`],
 
-            defaultMessage: '#main .lexical-rich-text-input .lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8',
-            chatHeader: `header.AmmtE span[aria-label]`,
+            defaultMessage: ['.app-wrapper-web > span .lexical-rich-text-input .lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8', 'div.two > div._2QgSC .lexical-rich-text-input .lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8', '#main .lexical-rich-text-input .lhggkp7q.qq0sjtgm.jxacihee.c3x5l3r8'],
+            chatHeader: [`.app-wrapper-web > span span[dir="auto"][aria-label].enbbiyaj.lxozqee9.ggj6brxn.gfz4du6o.r7fjleex`, `header.AmmtE span[aria-label]`],
             replyRange: 'span > div[role="application"]',
             chatMessages: '.message-out span.selectable-text.copyable-text',
         };
 
-        this.textSymbols = {
+        this.commandSymbols = {
             'b': '*',
             'i': '_',
             's': '~',
             't': '```',
+        }
+
+        this.textSymbols = {
+            '(': ['(', ')'],
+            '{': ['{', '}'],
+            '[': ['[', ']'],
+            '<': ['<', '>'],
+            '`': '`',
+            '"': '"',
         }
 
         this.boringList = ["ok", "okay", "okay!", "cool", "ok buddy", "no"];
@@ -111,7 +63,40 @@ class SmartTextbox {
         this.keyCombination = this.keyCombination.bind(this);
         this.preventBore = this.preventBore.bind(this);
 
-        document.addEventListener("mouseover", this.init);
+        // document.addEventListener("mouseover", this.init);
+        this.init();
+
+    }
+
+    init() {
+        console.log(`loading event listeners...`);
+
+        const mo = new window.MutationObserver(() => {
+            // let parentElms = [];
+            
+            // for (let i = 0; i < this.classes.contactsParents.length; i++) {
+            //     let elm = document.querySelector(this.classes.contactsParents[i]);
+            //     if (elm) parentElms.push(elm);
+            // }
+            let contactsParents, i = 0;
+            while (!contactsParents && i < this.classes.contactsParents.length) {
+                contactsParents = document.querySelector(this.classes.contactsParents[i++]);
+            }
+            
+            if (contactsParents){
+                // document.removeEventListener("mouseover", this.init);
+                mo.disconnect();
+                const innerMo = new window.MutationObserver(() => {
+                    this.update();
+                });
+                innerMo.observe(contactsParents, {childList: true, subtree: true});
+
+                // parentElms.onmouseover = () => this.init();
+                // for (const i in parentElms) parentElms[i].onmousedown = (e) => this.update(e);
+            }
+        });
+
+        mo.observe(document.body, {childList: true, subtree: true});
 
         // -------------------------------------------------------------------------------------------------- double click change
         document.onmousedown = event => {
@@ -122,114 +107,244 @@ class SmartTextbox {
         }
     }
 
-    init() {
-        console.log(`loading event listeners...`);
+    update() {
+        console.log(`update()`);
+
+        // setTimeout(() => {
+        let i = 0;
         
-        let contactsParent = document.querySelector(this.classes.contactsParent[0]);
-
-        for (let i = 1; i < this.classes.contactsParent.length; i++) {
-            if (!contactsParent) contactsParent = document.querySelector(this.classes.contactsParent[i]);
+        let tbNew = document.querySelector(this.classes.textbox[i]);
+        while (i < this.classes.textbox.length && !tbNew) {
+            tbNew = document.querySelector(this.classes.textbox[i++]);
         }
 
-        if (contactsParent){
-            document.removeEventListener("mouseover", this.init);
-            contactsParent.onmouseover = () => this.init();
-            contactsParent.onmousedown = (e) => this.update(e);
-        }
-    }
+        if (tbNew && tbNew != this.textbox){
+            this.textbox = tbNew;
+            console.log("new this.textbox: ", this.textbox);
 
-    update(event) {
-        console.log(`update()`)
-        setTimeout(() => {
-    
-            let tbNew = document.querySelector(this.classes.textbox[0]);
-    
-            for (let i = 1; i < this.classes.textbox.length; i++) {
-                if (!tbNew) tbNew = document.querySelector(this.classes.textbox[i]);
-                else break;
-            }
-    
-            if (tbNew && tbNew != this.textbox){
-                this.textbox = tbNew;
-                console.log("new this.textbox: ", this.textbox);
+            this.textbox.addEventListener("keydown", evnt => {
+                if (this.textbox.innerText == "\n") this.defaultMessage();
+                if (evnt.key == "Enter") setTimeout(() => this.defaultMessage());
 
-                this.defaultMessage();
+                this.keyCombination(evnt, provider.userData.textbox.commands);
+            });
 
-                this.textbox.onkeydown = evnt => {
-                    if (this.textbox.innerText == "\n") this.defaultMessage();
-                    if (evnt.key == "Enter") setTimeout(() => this.defaultMessage());
+            this.textbox.addEventListener("keyup", (e) => {
+                this.preventBore(e);
+            });
+            
+            this.textbox.addEventListener("keypress", e => {
+                this.messageJumper(e);
+            });
 
-                    this.keyCombination(evnt);
-                }
-
-                this.textbox.onkeyup = (e) => {
-                    this.preventBore(e);
-                }
-                
-                this.textbox.onkeypress = e => {
-                    this.messageJumper(e);
-                }
-
-                changeBackground(a, ["wave", "space", "art", "black"], ["polynomial"]);
-                a = false;
-                this.defaultMessage();
-            } else console.log("Textbox element not updated/found: ", tbNew, this.textbox);
-        }, this.extensionAddonDelay);
+            changeBackground(a, ["wave", "space", "art", "black"], ["polynomial"]);
+            a = false;
+            this.defaultMessage();
+        } else if (!tbNew) console.log("Textbox element not found");
+        // }, this.extensionAddonDelay);
     }
     
     setText(text){
-        // document.execCommand("selectAll");        
+        this.textbox.click();
+        this.textbox.focus();
 
-        const range = document.createRange();
-        range.selectNode(this.textbox);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        setTimeout(() => {
-            document.execCommand("insertText", false, text);
-            if (!text) this.defaultMessage();
-        }, 2000);
+        // const range = document.createRange();
+        // range.selectNode(this.textbox);
+        // window.getSelection().removeAllRanges();
+        // window.getSelection().addRange(range);
+        // setTimeout(() => {
+        document.execCommand("selectAll", false, text)
+        document.execCommand("insertText", false, text);
+        if (!text) this.defaultMessage();
+        // }, 2000);
         // this.innerHTML = text;
         // this.textbox.dispatchEvent(new InputEvent('input', {bubbles: true}));
         // new KeyboardEvent("", {bubbles: true});
     }
 
     //--------------------------------------------------------------------------------------------------------- symbols adder
-    async extraSideSymbols(e, type, onlySelect = false){
-        let selection = window.getSelection().getRangeAt(0);
-        if (onlySelect && !(selection.endOffset - selection.startOffset)) return false;
+    async extraSideSymbols(e, type, onlySelect = false) {
+        let range = window.getSelection().getRangeAt(0);
+        if (onlySelect && !range.toString()) return false;
         
         e.preventDefault();
-        this.textbox.formatPlainText();
+        if (typeof(type) == "string") type = [type, type];
 
-        if (this.textbox.textContent == "") {
-            document.execCommand("insertText", false, " ")
-            setTimeout(() => {
-                selection = window.getSelection().getRangeAt(0);
-                selection.editSelection(type);
-            }, 1);
-            return true;
+        if (this.textbox.textContent == "") { // ----------------------------------------------------------- check if textbox empty
+            document.execCommand("insertText", false, " ");
+            await new Promise(resolve => setTimeout(resolve, 10));
+            range = window.getSelection().getRangeAt(0);
         }
-        selection.editSelection(type);
-        return true;
+        // ------------------------------------------------------------------------------------------------- init offset
+        let offset = {
+            start: range.startOffset,
+            end: range.endOffset,
+        };
+        let container = {
+            start: range.startContainer,
+            end: range.endContainer,
+        };
+        let typeOffset = [type[0].length, type[1].length];
+        // let fullOffset = {
+        //     start: range.startOffset,
+        //     end: range.endOffset,
+        // }
+        // let prv = container.start;
+        // while (prv.parentElement != this.textbox.firstChild) prv = prv.parentElement;
+        // while (prv.previousSibling) {
+        //     prv = prv.previousSibling;
+        //     fullOffset.start += prv.textContent.length;
+        // }
+        // let nxt = container.end;
+        // while (nxt.parentElement != this.textbox.firstChild) nxt = nxt.parentElement;
+
+        // while (nxt.previousSibling) {
+        //     nxt = nxt.previousSibling;
+        //     fullOffset.end += nxt.textContent.length;
+        // }
+        // const textContent = this.textbox.textContent
+        // let checks = [
+        //     textContent.slice(fullOffset.start - typeOffset[0], fullOffset.start),
+        //     textContent.slice(fullOffset.end, fullOffset.end + typeOffset[1]),
+        // ];
+
+        // // let texts = [...this.textbox.querySelectorAll("p .selectable-text.copyable-text"), ...this.textbox.querySelectorAll("p span>span")], i = 0;
+        // // while (i < texts.length) {
+        // //     if (texts[i].firstChild && texts[i] != texts[0]) texts[i].firstChild.textContent = "";
+        // //     i++
+        // // }
+        // range.selectNode(this.textbox.firstChild);
+        // document.execCommand("insertText", false, ' ');
+        // texts[0].firstChild.textContent = textContent.slice(0, fullOffset.start - typeOffset[0]) + textContent.slice(fullOffset.start, fullOffset.end) + textContent.slice(fullOffset.end + typeOffset[0]);
+        
+        // ------------------------------------------------------------------------------------------------- check offset
+        let checks = ['', ''];
+        let del = [];
+        let p = container.start;
+        while (p.parentElement != this.textbox.firstChild) p = p.parentElement;
+        let prev = {elm: p, mod: [offset.start - typeOffset[0], offset.start]};
+
+        if (offset.start < typeOffset[0]) while (checks[0].length < typeOffset[0] && prev.elm.previousSibling) {
+            let remainder = typeOffset[0] - checks[0].length;
+            prev.elm = prev.elm.previousSibling;
+            prev.mod = [prev.elm.textContent.length - remainder, prev.elm.textContent.length];
+            if (prev.elm.textContent.length <= remainder) {
+                del.push(prev.elm);
+                checks[0] = prev.elm.textContent + checks[0];
+                prev.mod[0] = 0;
+            } else {
+                checks[0] = prev.elm.textContent.slice(prev.mod[0]) + checks[0];
+            }
+        } else {
+            checks[0] = prev.elm.textContent.slice(prev.mod[0], prev.mod[1]);
+        }
+
+        p = container.end;
+        while (p.parentElement != this.textbox.firstChild) p = p.parentElement; 
+        let next = {elm: p, mod: [offset.end, offset.end + typeOffset[1]]};
+
+        if ((next.elm.textContent.length - offset.end) < typeOffset[1]) while (checks[1].length < typeOffset[1] && next.elm.nextSibling) {
+            let remainder = typeOffset[1] - checks[1].length;
+            next.elm = next.elm.nextSibling;
+            next.mod = [0, remainder];
+            if (next.elm.textContent.length <= remainder) {
+                del.push(next.elm);
+                checks[1] += next.elm.textContent;
+            } else {
+                checks[1] += next.elm.textContent.slice(next.mod[0], next.mod[1]);
+            }
+        } else {
+            checks[1] = next.elm.textContent.slice(next.mod[0], next.mod[1]);
+        }
+
+        console.log("prev", prev)
+        console.log("next", next)
+        console.log("del", del)
+        console.log("edit range: ", checks, offset, container.start, container.end);
+        
+        let setCaret = () => { // ----------------------------------------------------------------------------------------------- set caret position
+            document.getSelection().setBaseAndExtent(
+                container.end,
+                (container.end == container.start) * typeOffset[1] + offset.end,
+                container.start,
+                typeOffset[0] + offset.start,
+            )
+            console.log("rangeDetected: ", offset, container);
+            
+            console.log("container (end): ", (container.end == container.start) * typeOffset[1] + offset.end, container.end);
+            console.log("container (start): ", typeOffset[0] + offset.start, container.start);
+
+            // let range = document.createRange();
+            // range.selectNode(this.textbox);
+            // range.setEnd(
+            //     container.end,
+            //     (container.end == container.start) * typeOffset[1] + offset.end
+            // ),
+            // range.setStart(
+            //     container.start,
+            //     typeOffset[0] + offset.start
+            // );
+            // document.getSelection().addRange(range);
+            // range.setStart(container.start, type.length + offset.start);
+            // range.setEnd(container.end, (container.end == container.start) * type.length + offset.end);
+            // range = document.createRange()
+
+        }
+        // !((range.startContainer.textContent.slice(range.startOffset - typeOffset, range.startOffset) == type) && (range.endContainer.textContent.slice(range.endOffset, range.endOffset + typeOffset) == type))
+        if (checks[0] == type[0] && checks[1] == type[1]) {
+            // container.end.textContent = container.end.textContent.slice(0, offset.end) + container.end.textContent.slice(offset.end + typeOffset[1]);
+            // container.start.textContent = container.start.textContent.slice(0, offset.start - typeOffset[0]) + container.start.textContent.slice(offset.start);
+            // this.setCaretPosition(offset, container, -typeOffset);
+            console.log("expected: ",
+            prev.elm.textContent.slice(0, prev.mod[0]) + prev.elm.textContent.slice(prev.mod[1]),
+            next.elm.textContent.slice(0, next.mod[0]) + next.elm.textContent.slice(next.mod[1])
+            );
+            typeOffset = [-type[0].length, -type[1].length];
+            next.elm.firstChild.textContent = next.elm.textContent.slice(0, next.mod[0]) + next.elm.textContent.slice(next.mod[1]),
+            prev.elm.firstChild.textContent = prev.elm.textContent.slice(0, prev.mod[0]) + prev.elm.textContent.slice(prev.mod[1]);
+            // this.setCaretPosition(offset, container, typeOffset);
+            for (const i in del) {
+                if (del[i].textContent != "") del[i].firstChild.textContent = "";
+            }
+            setCaret();
+        } else {
+            console.log("expected: ",
+            container.start.textContent.slice(0, offset.start) + type[0] + container.start.textContent.slice(offset.start),
+            container.end.textContent.slice(0, offset.end) + type[1] + container.end.textContent.slice(offset.end),
+            );
+
+            container.end.textContent = container.end.textContent.slice(0, offset.end) + type[1] + container.end.textContent.slice(offset.end),
+            container.start.textContent = container.start.textContent.slice(0, offset.start) + type[0] + container.start.textContent.slice(offset.start);
+            // document.execCommand("insertText", false, type[0] + selection.toString() + type[1]),
+            setCaret();
+            // offset.forEach((val, index) => {
+            // });
+        }
+        return false;
     }
 
     
     //--------------------------------------------------------------------------------------------------------- default message in textbox
-
     defaultMessage(){
-        const textboxStatus = document.querySelector(this.classes.defaultMessage);
-        const chatHeader = document.querySelector(this.classes.chatHeader).innerHTML;
+        let textboxStatus = document.querySelector(this.classes.defaultMessage[0]), i = 1;
+        while (!textboxStatus && i < this.classes.defaultMessage.length) {
+            textboxStatus = document.querySelector(this.classes.defaultMessage[i]); i++;
+        }
+        let chatHeader = document.querySelector(this.classes.chatHeader[0]);
+        i = 1;
+        while (!chatHeader && i < this.classes.chatHeader.length) {
+            chatHeader = document.querySelector(this.classes.chatHeader[i]); i++;
+        }
 
         if (textboxStatus) {
-            textboxStatus.innerHTML = `<div class="customStylesFontWeight">${chatHeader}</div>`;
-            console.log("Chat box default message loaded");
+            textboxStatus.innerHTML = `<div class="customStylesFontWeight">${chatHeader.innerHTML}</div>`;
+            // console.log("Chat box default message loaded");
         } else
             console.log("Chat box default message failed to load: ", textboxStatus);
         // deciding utility status
     }
 
     //--------------------------------------------------------------------------------------------------------- up down messages jumper
-
     messageJumper(mjEvent) {
         let elements = [];
         Array.from(document.querySelectorAll(this.classes.chatMessages)).forEach(elm => {
@@ -275,7 +390,7 @@ class SmartTextbox {
     }
 
     //--------------------------------------------------------------------------------------------------------- key combination commands
-    keyCombination(kclEvent) {
+    keyCombination(kclEvent, enableCommands = true) {
         let funcKey = false;
         
         if (navigator.userAgentData.platform == "Windows")
@@ -283,19 +398,19 @@ class SmartTextbox {
         else
             funcKey = kclEvent.metaKey
 
-        const selection = window.getSelection().getRangeAt(0);
-        const start = selection.startOffset;
-        const end = selection.endOffset;
-        window.InputEvent = window.Event || window.InputEvent;
+        // const selection = window.getSelection().getRangeAt(0);
+        // const start = selection.startOffset;
+        // const end = selection.endOffset;
+        // window.InputEvent = window.Event || window.InputEvent;
         // if (kclEvent.key == "Enter" && textbox.textContent != "" && !kclEvent.shiftKey) { //--------------------------------------------------------------- enter key
-        if (funcKey && !(kclEvent.shiftKey || kclEvent.altKey)) { //--------------------------------------------------------------- meta key
-            if (Object.keys(this.textSymbols).indexOf(kclEvent.key) + 1) {
-                this.extraSideSymbols(kclEvent, this.textSymbols[kclEvent.key]);
+        if (funcKey && !(kclEvent.shiftKey || kclEvent.altKey) && enableCommands) { //--------------------------------------------------------------- meta key
+            if (Object.keys(this.commandSymbols).indexOf(kclEvent.key) + 1) {
+                this.extraSideSymbols(kclEvent, this.commandSymbols[kclEvent.key]);
                 return false;
             }
-        } else if (kclEvent.shiftKey && !(kclEvent.ctrlKey || kclEvent.altKey || funcKey)) {
-            if (kclEvent.key == '\"'){
-                this.extraSideSymbols(kclEvent, '\"', true);
+        } else if (!(kclEvent.ctrlKey || kclEvent.altKey || funcKey)) {
+            if (this.textSymbols[kclEvent.key]){
+                this.extraSideSymbols(kclEvent, this.textSymbols[kclEvent.key], true);
                 return false;
             }
         } else if (funcKey && kclEvent.shiftKey){
@@ -308,7 +423,7 @@ class SmartTextbox {
 
     //--------------------------------------------------------------------------------------------------------------- prevent boring replies
     preventBore(pbEvent) {
-        console.log(this.boringList.indexOf(this.textbox.textContent));
+        // console.log(this.boringList.indexOf(this.textbox.textContent));
         if (!(pbEvent.ctrlKey || pbEvent.altKey || pbEvent.metaKey) && (this.boringList.indexOf(this.textbox.textContent) + 1) && Math.floor(Math.random() * 3) == 2) {
             pbEvent.preventDefault();
             let betterResp = this.betterList[Math.floor(Math.random() * this.betterList.length)];
@@ -342,36 +457,32 @@ function setClasses(){
     document.body.classList.toggle("backgroundImage", provider.userData.appearance.backgroundImg);
     document.body.classList.toggle("custom", provider.userData.theme.status)
 }
-
+let provider;
 addEventListener("load", () => {
-    provider = new Provider(extensionName, () => 
-    fetch(chrome.runtime.getURL("provider/resources.json")).then((response) => response.json()).then((json) => {    
+    provider = new Provider(async function() { 
+        json = await fetch(chrome.runtime.getURL("provider/resources.json")).then(r => r.json());
+        
         for (let n in json["themes"]) {themeSelection.push(new ColourTheme(json["themes"][n]));}
         backgroundImg = json["wallpapers"];
-        
+            
         const smartTextbox = new SmartTextbox();
         stylesMainOnStart();
         backgroundImageStylesOnStart();
-        customColoursOnStart();
+        coloursAdd();
         setClasses();
 
         addEventListener("providerUpdate", () => {
-            if (themeNumber != provider.userData.theme.theme && customColours.cssRules.length) {
-                for (const i in customColours.cssRules) {
-                    customColours.deleteRule(0);
-                }
-                customColoursOnStart();
-            }
+            if (themeNumber != provider.userData.theme.theme) coloursAdd();
 
             if (provider.userData.appearance.styles) for (i in stylesElm) {
-                    stylesElm[i].removeAttribute("disabled")
-                }
-            else for (i in stylesElm) {
-                    stylesElm[i].setAttribute("disabled", "")
-                }
+                stylesElm[i].removeAttribute("disabled");
+            } else for (i in stylesElm) {
+                stylesElm[i].setAttribute("disabled", "");
+            }
+
             setClasses();
         });
-    }));
+    });
 });
 
 // (prop("Completion") == "Completed!") ? prop("Completion") : (empty(prop("Submission")) ? "No due date" : (((prop("Submission") < now()) ? "Overdue by" : "Due in") + " " + ((abs(dateBetween(prop("Submission"), now(), "hours")) < 24) ? (format(abs(dateBetween(prop("Submission"), now(), "hours"))) + " hour" + (dateBetween(prop("Submission"), now(), "hours") == 1 ? "" : "s")) : format(abs(dateBetween(prop("Submission"), now(), "days"))) + " day" + ((abs(dateBetween(prop("Submission"), now(), "days")) > 1) ? "s" : ""))))

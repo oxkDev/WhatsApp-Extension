@@ -14,7 +14,7 @@ document.head.append(customMetaHeader);
 
 let themeNumber;
 
-function customColoursOnStart() {
+function coloursAdd() {
     themeNumber = provider.userData.theme.theme;
     let blurValue = provider.userData.appearance.blurValue;
     let main = themeSelection[themeNumber].main;
@@ -26,7 +26,9 @@ function customColoursOnStart() {
 
     for (const m of document.querySelectorAll("meta[name='theme-color']")) m.content = background.secondary;
 
-    console.log(themeNumber)
+    console.log("theme: ", themeNumber);
+
+    if (customColours.cssRules.length) for (let i = 0; i < customColours.cssRules.length; i++) customColours.deleteRule(0);
 
     let colourVariables = [
         `html[dir] body.custom, html[dir] body :before {
@@ -140,6 +142,7 @@ function customColoursOnStart() {
             --button-background-disabled: ${main.theme}${tran.overlayLight};
             --media-editor-thumb-border-active: ${theme.light};
             --reactions-details-background-hover: ${main.contrast}${tran.overlayLighter};
+            --reactions-panel-background-color: ${main.transparent};
 
             /* media thumbnail */
             --media-gallery-thumb-background: ${main.contrast}${tran.overlayLighter};
@@ -333,6 +336,5 @@ function customColoursOnStart() {
     setTimeout(() => {
         document.body.classList.toggle("dark", themeSelection[themeNumber].isDark);
         document.body.classList.toggle("light", !themeSelection[themeNumber].isDark);
-        console.log(themeSelection[themeNumber].isDark);
     }, 100);
 }

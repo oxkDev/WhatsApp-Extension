@@ -1,0 +1,24 @@
+{
+    "0.2.4": {
+        "appearance": {
+            "styles": [1, true],
+            "blur": [2, true],
+            "backgroundImg": [3, true],
+            "blurValue": {
+                "medium": [4, "30px"],
+                "light": [5, "20px"],
+                "lighter": [6, "15px"],
+                "heavy": [7, "45px"]
+            }
+        },
+
+        "theme": {
+            "status": [8, true],
+            "theme": [9, 0]
+        },
+
+        "textbox": {
+            "commands": [10, true]
+        }
+    }
+}

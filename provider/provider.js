@@ -1,4 +1,4 @@
-const extensionName = "whatsapp-extension";
+const extensionVersion = "0.2.4";
 
 // oxk Dark
 class ColourTheme {
@@ -47,7 +47,7 @@ class ColourTheme {
             blur: "b0",
             unBlur: "ea",
         }
-    }) {
+    } = {}) {
         this.isDark = Boolean(isDark);
         this.theme = {
             primary: theme.primary || "#083a55",
@@ -95,207 +95,14 @@ class ColourTheme {
     }
 }
 
-// // erythrite
-// const erythriteTheme = new ColourTheme({
-//     isDark: false,
-//     theme: {
-//         primary: "#ff5b61",
-//         secondary: "#ffcccb",
-//         light: "#aa366a",
-//         lighter: "#f64747",
-//         danger: "#ff0000",
-//         link: "#ff0000",
-//     },
-//     background: {
-//         primary: "#FF8991",
-//         secondary: "#ffcccb",
-//         dark: "#f8c8dc",
-//         light: "#ffb6c1",
-//         darker: "#f9cddf",
-//     },
-//     message: {
-//         statusRead: "#ff3535",
-//         statusSent: "#000000" + "32",
-//     },
-//     text: {
-//         primary: "#000000" + "b3",
-//         secondary: "#000000" + "80",
-//         tertiary: "#000000" + "47",
-//         contrast: "#FFFFFF" + "70"
-//     },
-//     main: {
-//         theme: "#FFFFFF",
-//         contrast: "#000000",
-//         grey: "#777777",
-//         transparent: "transparent",
-//     }
-// })
-
-// const oxkLightTheme = new ColourTheme({
-//     isDark: false,
-//     theme: {
-//         primary: "#298abe",
-//         secondary: "#f7f8fa",
-//         light: "#083a55",
-//         lighter: "#2a7095",
-//         danger: "#f14040",
-//         link: "#459dd9",
-//     },
-//     background: {
-//         primary: "#e4ebf0",
-//         secondary: "#edeeef",
-//         dark: "#e5e5e5",
-//         light: "#cccccc",
-//         darker: "#ffffff",
-//     },
-//     message: {
-//         statusRead: "#ffffff" + "32",
-//         statusSent: "#404f59",
-//     },
-//     text: {
-//         primary: "#000000" + "b3",
-//         secondary: "#000000" + "70",
-//         tertiary: "#000000" + "47",
-//         contrast: "#ffffff" + "70",
-//     },
-//     main: {
-//         theme: "#FFFFFF",
-//         contrast: "#000000",
-//         grey: "#777777",
-//         transparent: "transparent",
-//     }
-// })
-
-// const oxkYellow = new ColourTheme({
-//     isDark: true,
-//     theme: {
-//         primary: "#84610F",
-//         secondary: "#232320",
-//         light: "#967A2B",
-//         lighter: "#BF902A",
-//         danger: "#f14040",
-//     },
-//     background: {
-//         primary: "#201E18",
-//         secondary: "#251F1B",
-//         dark: "#1B1916",
-//         light: "#272215",
-//         darker: "#161616",
-//     },
-//     message: {
-//         statusRead: "#f2f9ffd4",
-//         statusSent: "#ffffff" + "32",
-//     },
-//     main: {
-//         theme: "#000000",
-//         contrast: "#FFFFFF",
-//         grey: "#777777",
-//         transparent: "transparent",
-//     }
-// })
-
-// const oxkRedDark = new ColourTheme({
-//     isDark: true,
-//     theme: {
-//         primary: "#750D0D",
-//         secondary: "#201521",
-//         light: "#942938",
-//         lighter: "#BF322A",
-//         danger: "#f14040",
-//     },
-//     background: {
-//         primary: "#2C1A19",
-//         secondary: "#161616",
-//         dark: "#181114",
-//         light: "#251515",
-//         darker: "#1A0000",
-//     },
-//     message: {
-//         statusRead: "#f2f9ffd4",
-//         statusSent: "#ffffff" + "32",
-//     },
-//     main: {
-//         theme: "#000000",
-//         contrast: "#FFFFFF",
-//         grey: "#777777",
-//         transparent: "transparent",
-//     }
-// })
-
-// const ozkGreenDark = new ColourTheme({
-//     isDark: true,
-//     theme: {
-//         primary: "#085427",
-//         secondary: "#15211E",
-//         light: "#299446",
-//         lighter: "#2ABF66",
-//         danger: "#f14040",
-//     },
-//     background: {
-//         primary: "#062609",
-//         secondary: "#192929",
-//         dark: "#072418",
-//         light: "#0F3015",
-//         darker: "#001A01",
-//     },
-//     message: {
-//         statusRead: "#f2f9ffd4",
-//         statusSent: "#ffffff" + "32",
-//     },
-//     main: {
-//         theme: "#000000",
-//         contrast: "#FFFFFF",
-//         grey: "#777777",
-//         transparent: "transparent",
-//     }
-// })
-
-// const transparent = new ColourTheme({
-//     isDark: true,
-//     theme: {
-//         primary: "transparent",
-//         secondary: "transparent",
-//         light: "transparent",
-//         lighter: "transparent",
-//         danger: "transparent",
-//     },
-//     background: {
-//         primary: "transparent",
-//         secondary: "transparent",
-//         dark: "transparent",
-//         light: "transparent",
-//         darker: "transparent",
-//     },
-//     message: {
-//         statusRead: "transparent",
-//         statusSent: "transparent",
-//     },
-//     text: {
-//         theme: "transparent",
-//         contrast: "transparent",
-//         grey: "transparent",
-//         transparent: "transparent",
-//     },
-// });
-
-// const themeSelection = [new ColourTheme({}), oxkLightTheme, oxkYellow, erythriteTheme, oxkRedDark, ozkGreenDark, transparent];
-
-const themeSelection = [new ColourTheme({})];
-
-class Utility {
-    constructor(status, code, utilData) {
-        this.status = Boolean(status);
-        this.code = code || "testCode";
-        this.utilData = utilData || {testData: "no data!"};
-    }
-};
+const themeSelection = [new ColourTheme()];
 
 class UserData {
-    constructor(data) {
+    constructor(version) {
         this.needSet = false;
 
-        this.appearance;
-        this.textbox;
+        this.version = version;
+        this.allDefaults;
 
         this.default = {
             appearance: {
@@ -316,35 +123,60 @@ class UserData {
             },
 
             textbox: {
-                bold: true,
-                italic: true,
-                monospace: true,
-                quote: true,
+                commands: true,
             }
         }
 
+        this.appearance = this.default.appearance;
+        this.theme = this.default.theme
+        this.textbox = this.default.text;
+    }
+
+    async init(data) {
+        this.allDefaults = await fetch(chrome.runtime.getURL("provider/versions.json")).then(r => r.json());
+        
+        console.log(this.allDefaults);
         if (data) this.update(data);
     }
 
-    iterate(def, value) {
-        if (value == undefined) {
-            this.needSet = true;
-            console.log("missing parameter: ", def, value);
-            return def
-        }
+    getDefault(version = this.version) {
+        function iterator(obj) {
 
-        if (typeof(def) == "object") {
-            let obj = {};
-            for (const k in def) {
-                obj[k] = this.iterate(def[k], value[k]);
-            } 
+            if (Array.isArray(obj)) return obj[1];
+            
+            if (typeof(obj) == "object") {
+                let subObj = {};
+                for (const k in obj) subObj[k] = iterator(obj[k]);
+                
+                return subObj;
+            }
+            
             return obj;
         }
-
-        return value
+        
+        return version == this.version ? this.default : iterator(this.allDefaults[version]);
     }
 
     update(data) {
+
+        let iterator = (def, value) => {
+            if (value == undefined) {
+                this.needSet = true;
+                console.log("missing parameter: ", def, value);
+                return def
+            }
+    
+            if (typeof(def) == "object") {
+                let obj = {};
+                for (const k in def) {
+                    obj[k] = iterator(def[k], value[k]);
+                } 
+                return obj;
+            }
+    
+            return value
+        }
+        
         this.needSet = false;
         if (!data) {
             console.log("no data:", data);
@@ -353,62 +185,85 @@ class UserData {
         }
 
         for (const t in this.default) {
-            this[t] = this.iterate(this.default[t], data[t]);
+            this[t] = iterator(this.default[t], data[t]);
         }
 
         return this.needSet;
     }
 
-    get(name) {
+    getByPath(path = []) {
+        return path.reduce((v, p) => v[p], this.get());
+    }
+
+    setByPath(path = [], value) {
+        let data = this;
+        let i;
+        for (i = 0; i < path.length - 1; i++) data = data[path[i]];
+
+        if (!value && typeof(data[path[i]]) == "boolean") data[path[i]] = !data[path[i]];
+        else data[path[i]] = value;
+    }
+
+    get(name, version = this.version) {
         let obj = {}
         for (const t in this.default) {
             obj[t] = this[t];
         }
         
-        if (name) obj[name] = obj;
+        if (name) {
+            obj[name] = obj;
+            obj["version"] = version;
+        }
+
         
         return obj
     }
 }
 
-
 class Provider {
-    constructor(name, load = function() {console.log("Loaded data: load unset")}, dataChange = true) {
-        this.userData = new UserData(false);
-        this.name = name;
+    constructor(load = function(data) {console.log("Loaded data: load unset")}, dataChange = true, initialise = true, version = extensionVersion) {
+        this.name = "whatsapp-extension";
+        this.version = version;
+        this.userData = new UserData(this.version);
 
         this.userStorage = chrome.storage;
-        this.dataChange = dataChange
+        this.dataChange = dataChange;
 
-        this.getData(load);
-        this.userStorage.sync.onChanged.addListener(() => {
-            if (this.dataChange) this.getData(() => {console.log("providerUpdate: ", this.userData); dispatchEvent(new Event("providerUpdate"))});
+        if (initialise) this.init(load);
+    }
+    
+    async init(handler) {
+        await this.userData.init();
+        this.getData(handler);
+
+        this.userStorage.sync.onChanged.addListener((e) => {
+            if (this.dataChange) this.getData(() => {console.log("providerUpdate: ", e); dispatchEvent(new CustomEvent("providerUpdate", {detail: {e: e}}))});
             else console.log("Data changed: dataChange set to false");
         });
     }
 
-    getData(func) {
-        this.userStorage.sync.get(this.name, result => {
-            console.log(`${this.name}: `, result);
-            let resUserData = result[this.name];
+    async getData(handler = data => {}) {
+        let result = await this.userStorage.sync.get(this.name)
+        let resUserData = result[this.name];
+        console.log(`${this.name}: `, result);
 
-            if (this.userData.update(resUserData)) this.setData();
-            console.log("userData: ", resUserData, this.userData);
-            
-            if (func && typeof(func) == 'function') func();
-        });
-        return this.userData;
+        if (this.userData.update(resUserData)) this.setData();
+        console.log("userData: ", resUserData, this.userData);
+        
+        if (handler && typeof(handler) == 'function') handler(this.userData.get());
+
+        return this.userData.get();
     }
     
-    resetData(func) {
+    resetData(handler = () => {}) {
         this.userData.update();
         console.log("resetData: ", this.userData)
         this.setData();
-        if (func && typeof(func) == 'function') func();
+        if (handler && typeof(handler) == 'function') handler();
     }
     
-    setData() {
+    setData(data = this.userData.get(this.name)) {
         console.log("setData: ", this.userData)
-        this.userStorage.sync.set(this.userData.get(this.name));
+        this.userStorage.sync.set(data);
     }
 };
