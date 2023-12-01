@@ -32,13 +32,6 @@ class VersionProvider extends Provider {
         return iterator(this.userData.allDefaults[version]);
     }
 
-    // async getRawData(handler = data => {}) {
-    //     let result = await this.userStorage.sync.get(this.name);
-
-    //     if (handler && typeof(handler) == 'function') handler(result);
-    //     return result[this.name];
-    // }
-
     mergeVariables(versionOld, versionNew = this.version) {
         let oldMap = this.versionMap(versionOld);
         

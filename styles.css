@@ -93,16 +93,16 @@ div {
     animation: onOpenSection 0.3s ease-out;
 }
 
-.switch, .switch::before, .switch::after {
+.switch::before, .switch::after {
     transition: var(--transition-fast);
 }
 
 .switch {
     display: flex;
     width: 48px;
+    height: 28px;
     cursor: pointer;
     border-radius: 14px;
-    /* transition: var(--transition); */
     background-color: var(--contrast-translucent);
 }
 

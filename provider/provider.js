@@ -158,7 +158,6 @@ class UserData {
     }
 
     update(data) {
-
         let iterator = (def, value) => {
             if (value == undefined) {
                 this.needSet = true;
@@ -205,18 +204,19 @@ class UserData {
     }
 
     get(name, version = this.version) {
-        let obj = {}
+        const obj = {}
         for (const t in this.default) {
             obj[t] = this[t];
         }
         
         if (name) {
-            obj[name] = obj;
-            obj["version"] = version;
+            const returnObj = {}
+            returnObj[name] = {...obj};
+            returnObj["version"] = version;
+            return returnObj;
         }
 
-        
-        return obj
+        return obj;
     }
 }
 
@@ -245,10 +245,9 @@ class Provider {
     async getData(handler = data => {}) {
         let result = await this.userStorage.sync.get(this.name)
         let resUserData = result[this.name];
-        console.log(`${this.name}: `, result);
 
         if (this.userData.update(resUserData)) this.setData();
-        console.log("userData: ", resUserData, this.userData);
+        console.log("getData: ", resUserData, this.userData);
         
         if (handler && typeof(handler) == 'function') handler(this.userData.get());
 
@@ -263,7 +262,7 @@ class Provider {
     }
     
     setData(data = this.userData.get(this.name)) {
-        console.log("setData: ", this.userData)
+        console.log("setData: ", data)
         this.userStorage.sync.set(data);
     }
 };

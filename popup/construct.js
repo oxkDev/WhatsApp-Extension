@@ -33,10 +33,10 @@ class Construct {
     async init(refData) {
         // --------------------------------------------------------------------------- set buttons
         this.buttons.reset.addEventListener("click", () => {
+            console.log("resetting...");
             this.provider.resetData(() => {
                 this.setColour();
             });
-            console.log("resetting");
         });
 
         this.buttons.update.addEventListener("click", () => window.open("https://github.com/oxkDev/WhatsApp-Extension/releases", "_blank"));
@@ -90,6 +90,7 @@ class Construct {
             if (i >= this.theme.elements.length) clearInterval(interval);
         }, 50);
 
+        // --------------------------------------------------------------------------- set provider update
         addEventListener("providerUpdate", (e) => {
             console.log(e)
             this.setSwitchStatus();
@@ -127,7 +128,6 @@ class Construct {
     }
 
     setSwitchStatus(gradual = false) {
-
         let setSwitch = (path) => this.switches[path].classList.toggle("enabled", this.provider.userData.getByPath(path.split(".")));
 
         if (gradual) {
